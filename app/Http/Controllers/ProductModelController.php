@@ -28,7 +28,25 @@ class ProductModelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Aqui se guarda el producto en la base de datos
+        $request->validate([
+            'nombre' => 'required|min:10',
+            'precio' => 'required|decimal|min:0.01',
+            'cantidad' => 'required|integer|min:1',
+            'categoria' => 'required'
+        ]);
+        
+        $producto = new Producto();
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descpricion;
+        $producto->precio = $request->precio;
+        $producto->cantidad = $request->cantidad;
+        $producto->categoria = $request->categoria;
+        
+        #Este metodo guarda el objeto en la base de datos
+        $producto->save();
+        #salimos para evitar enviar los datos del formualrio dos veces
+        return redirect('Producto/indexProducto');
     }
 
     /**

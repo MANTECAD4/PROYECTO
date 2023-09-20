@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductModelController;
+use App\Http\Controllers\EmpleadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('producto',ProductModelController::class);
+Route::resource('empleado',EmpleadoController::class);
+//Route::post('/empleado', [EmpleadoController::class, 'store']);
+
+
 
