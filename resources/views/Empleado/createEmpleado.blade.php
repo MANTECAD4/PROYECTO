@@ -10,7 +10,7 @@
 <body>
     <div class="container mt-5">
         <h1>Formulario de Empleados</h1>
-        <form action="{{ route('empleado.store') }}" method="POST">
+        <form action="/empleado" method="POST">
             @csrf <!-- Agrega el token CSRF -->
 
             <div class="mb-3">

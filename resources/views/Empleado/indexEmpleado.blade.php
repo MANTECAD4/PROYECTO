@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1>Listado de empleados</h1>
+    <ol>
+        @foreach ($empleados as $empleado)
+            <li>{{ $empleado->nombre }} - {{ $empleado->correo_electronico }}</li>
+        @endforeach
+        <a href="/empleado/create" style="color: #007BFF"">Registrar Empleado</a>
+    </ol>
 </body>
 </html>

@@ -12,7 +12,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        return view('Empleado/indexEmpleado');
+        $empleados = Empleado::all();
+        return view('Empleado/indexEmpleado', compact('empleados'));
     }
 
     /**
@@ -52,7 +53,7 @@ class EmpleadoController extends Controller
     
         $empleado->save();
 
-        return redirect()->route('empleado.index');
+        return redirect('/empleado');
     }
 
     /**
