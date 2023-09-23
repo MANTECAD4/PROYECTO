@@ -1,54 +1,86 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Producto</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Productos</title>
+        <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    </head>
+    <body>  
+        <div class=" bg-dark " style="height: 100vh;">
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h2>Formulario de Producto</h2>
-                </div>
-                <div class="card-body">
-                    <form action="/producto" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="nombre">Nombre del Producto</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcion">Descripción del Producto</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="4" ></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="precio">Precio del Producto</label>
-                            <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="categoria">Categoría del Producto</label>
-                            <input type="text" class="form-control" id="categoria" name="categoria" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="marca">Marca del Producto</label>
-                            <input type="text" class="form-control" id="marca" name="marca" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="unidades">Unidades Disponibles</label>
-                            <input type="number" class="form-control" id="unidades" name="unidades" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Guardar Producto</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+            <form action="/producto" method="POST" class="my-auto h-100">
+                @csrf <!-- Agrega el token CSRF -->
+                <div class="container h-100 my-auto">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col">
+                            <div class="card card-registration my-4 p-4">
+                                <div class="row g-0">
+                                    <div class="col-xl-6 d-none d-xl-block">
+                                    <img src="https://i.pinimg.com/564x/49/b3/a8/49b3a836a56f28cadbe2e171a42b5e2e.jpg"
+                                        alt="Sample photo" class="img-fluid"
+                                        style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="card-body p-md-5 text-black">
+                                            <h3 class="mb-5 text-uppercase">Registro Productos</h3>
+                            
+                                            <div class="row">
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                <input type="text" id="nombre" class="form-control form-control-lg" />
+                                                <label class="form-label" for="nombre">Nombre</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                <input type="text" id="marca" class="form-control form-control-lg" />
+                                                <label class="form-label" for="marca">Marca</label>
+                                                </div>
+                                            </div>
+                                            </div>
+                            
+                                            <div class="row">
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                <input type="text" id="categoria" class="form-control form-control-lg" />
+                                                <label class="form-label" for="categoria">Categoría</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                <input type="text" id="form3Example1n1" class="form-control form-control-lg" />
+                                                <label class="form-label" for="form3Example1n1">Precio</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="form-outline">
+                                                <input type="text" id="form3Example1n1" class="form-control form-control-lg" />
+                                                <label class="form-label" for="form3Example1n1">Unidades existentes</label>
+                                                </div>
+                                            </div>
+                                            </div>
+                            
+                                            <div class="form-outline mb-4">
+                                            <textarea type="text" id="form3Example8" class="form-control form-control-lg" rows="4"></textarea>
+                                            <label class="form-label" for="form3Example8">Descripción</label>
+                                            </div>
 
-</body>
+
+                                            <div class="d-flex justify-content-left pt-3">
+                                            <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
+                                            <button type="button" class="btn btn-warning btn-lg ">Enviar formulario</button>
+                                            </div>
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div> 
+    </body>
 </html>
