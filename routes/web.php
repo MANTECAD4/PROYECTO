@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductModelController;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +18,9 @@ use App\Http\Controllers\EmpleadoController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('producto',ProductModelController::class);
 Route::resource('empleado',EmpleadoController::class);
+Route::resource('producto',ProductoController::class);
+
 //Route::post('/empleado', [EmpleadoController::class, 'store']);
 
 

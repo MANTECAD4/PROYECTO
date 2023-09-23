@@ -7,5 +7,11 @@
 </head>
 <body>
     <h1>Listado de productos</h1>
+    <ol>
+        @foreach ($productos as $producto)
+            <li>{{ $producto->nombre }} - {{ $producto->descripcion }}</li>
+        @endforeach
+        <a href="/producto/create" style="color: #007BFF"">Registrar producto</a>
+    </ol>
 </body>
 </html>
