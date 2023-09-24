@@ -6,7 +6,6 @@
         <title>Formulario de Productos</title>
         <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="resources\css\EmpleadoEstilos\style.css">
 
     </head>
     <body>  
