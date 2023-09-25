@@ -9,7 +9,7 @@
 
     </head>
     <body>  
-        <div class="bg-dark" style="height: 100vh; background: linear-gradient(to bottom, #412200, #000);">
+        <div class="bg-dark" style="height: 100vh; background: linear-gradient(to bottom, #013253, #010846);">
             <form action="/producto" method="POST" class="my-auto h-100">
                 @csrf <!-- Agrega el token CSRF -->
                 <div class="container h-100 my-auto">
@@ -70,9 +70,8 @@
 
                                             <div class="d-flex justify-content-left pt-3">
                                             <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
-                                            <button type=" submit" class="btn btn-warning btn-lg shadow-sm ">Enviar formulario</button>
+                                            <button type=" submit" class="btn btn-warning btn-lg shadow-sm">Enviar formulario</button>
                                             </div>
-                            
                                         </div>
                                     </div>
                                 </div>

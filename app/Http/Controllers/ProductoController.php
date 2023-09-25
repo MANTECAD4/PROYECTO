@@ -13,7 +13,8 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all();
-        return view('producto/indexproducto', compact('productos'));
+        return view('producto/indexproducto', compact('productos'))->with('css', asset('/css/EmpleadoEstilos/style.css'));
+
     }
 
     /**
@@ -56,6 +57,7 @@ class ProductoController extends Controller
     public function show(Producto $producto)
     {
         //
+        return view('producto/showProducto', compact('producto'));
     }
 
     /**
