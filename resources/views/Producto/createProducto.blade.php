@@ -63,14 +63,13 @@
                                             </div>
                             
                                             <div class="form-outline mb-4">
-                                            <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-lg" rows="4"></textarea>
-                                            <label class="form-label" for="descripcion">Descripción</label>
+                                                <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-lg" rows="4"></textarea>
+                                                <label class="form-label" for="descripcion">Descripción</label>
                                             </div>
 
-
                                             <div class="d-flex justify-content-left pt-3">
-                                            <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
-                                            <button type=" submit" class="btn btn-warning btn-lg shadow-sm">Enviar formulario</button>
+                                                <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
+                                                <button type=" submit" class="btn btn-warning btn-lg shadow-sm">Enviar formulario</button>
                                             </div>
                                         </div>
                                     </div>

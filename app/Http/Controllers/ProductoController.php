@@ -75,6 +75,17 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         //
+        $request->validate([
+            'nombre' => 'required',
+            'precio' => 'required|numeric|min:1',
+            'unidades' => 'required|integer|min:1',
+            'marca' => 'required',
+            'categoria' => 'required',
+        ]);
+    
+        $producto->update($request->all());
+
+        return redirect('/producto');
     }
 
     /**
