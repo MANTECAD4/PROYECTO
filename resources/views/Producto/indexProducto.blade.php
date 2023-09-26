@@ -46,6 +46,7 @@
                                                         <td>{{ $producto->descripcion }}</td>
                                                         <td>{{ $producto->created_at }}</td>
                                                         <td>{{ $producto->updated_at }}</td>
+                                                        <td><a href="{{route('producto.edit',$producto)}}">EDITAR</a></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
