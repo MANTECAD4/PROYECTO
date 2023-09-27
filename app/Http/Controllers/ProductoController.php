@@ -33,6 +33,7 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'precio' => 'required|numeric|min:1',
+            'descripcion' => 'max:164',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
             'categoria' => 'required',
@@ -77,15 +78,23 @@ class ProductoController extends Controller
         //
         $request->validate([
             'nombre' => 'required',
+            'descripcion' => 'max:164',
             'precio' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
             'categoria' => 'required',
         ]);
     
-        $producto->update($request->all());
+        $producto->nombre = $request->nombre;
+        $producto->descripcion = $request->descripcion;
+        $producto->precio = $request->precio;
+        $producto->unidades = $request->unidades;
+        $producto->marca = $request->marca;
+        $producto->categoria = $request->categoria;
+    
+        $producto->save();
 
-        return redirect('/producto');
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -94,5 +103,7 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         //
+        $producto->delete();
+        return redirect()->route('producto.index');
     }
 }

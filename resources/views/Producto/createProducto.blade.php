@@ -5,11 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulario de Productos</title>
         <!-- Agrega los enlaces a los archivos CSS de Bootstrap -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{asset('tabla/css/bootstrap.min.css')}}">
 
     </head>
     <body>  
-        <div class="bg-dark" style="height: 100vh; background: linear-gradient(to bottom, #013253, #010846);">
+        <div class="bg-dark" style="height: 100vh; background: linear-gradient(to bottom, #f7f7f7, #67baff););">
             <form action="/producto" method="POST" class="my-auto h-100">
                 @csrf <!-- Agrega el token CSRF -->
                 <div class="container h-100 my-auto">
@@ -29,13 +29,13 @@
                                             <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                <input type="text" id="nombre" name="nombre" class="form-control form-control-lg" required/>
+                                                <input type="text" id="nombre" name="nombre" class="form-control form-control-lg" value="{{old('nombre')}}" required/>
                                                 <label class="form-label" for="nombre">Nombre</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                <input type="text" id="marca" name="marca" class="form-control form-control-lg" required />
+                                                <input type="text" id="marca" name="marca" class="form-control form-control-lg" value="{{old('marca')}}" required />
                                                 <label class="form-label" for="marca">Marca</label>
                                                 </div>
                                             </div>
@@ -44,32 +44,33 @@
                                             <div class="row">
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                <input type="text" id="categoria" name="categoria" class="form-control form-control-lg" required/>
+                                                <input type="text" id="categoria" name="categoria" class="form-control form-control-lg" value="{{old('categoria')}}" required/>
                                                 <label class="form-label" for="categoria">Categoría</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                <input type="number" id="precio" name="precio" class="form-control form-control-lg" required/>
+                                                <input type="number" id="precio" name="precio" class="form-control form-control-lg" value="{{old('precio')}}" required/>
                                                 <label class="form-label" for="precio">Precio</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
-                                                <input type="number" step="1" min="1" id="unidades" name="unidades" class="form-control form-control-lg" />
+                                                <input type="number" step="1" min="1" id="unidades" name="unidades" class="form-control form-control-lg" value="{{old('unidades')}}" required/>
                                                 <label class="form-label" for="unidades">Unidades existentes</label>
                                                 </div>
                                             </div>
                                             </div>
                             
                                             <div class="form-outline mb-4">
-                                                <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-lg" rows="4"></textarea>
+                                                <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-lg" rows="4">{{old('descripcion')}}</textarea>
                                                 <label class="form-label" for="descripcion">Descripción</label>
                                             </div>
 
                                             <div class="d-flex justify-content-left pt-3">
                                                 <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
-                                                <button type=" submit" class="btn btn-warning btn-lg shadow-sm">Enviar formulario</button>
+                                                <button type=" submit" class="btn btn-lg shadow-sm" style="background-color: #013253; color:beige">Enviar formulario</button>
+                                                <a href="{{route('producto.index')}}" class="btn btn-lg shadow-sm ml-3" style="background-color: #013253; color:beige">Regresar</a>
                                             </div>
                                         </div>
                                     </div>

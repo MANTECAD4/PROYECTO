@@ -54,11 +54,20 @@
                         <td>{{ $producto->created_at }}</td>
                         <td>{{ $producto->updated_at }}</td>
                         <td><a href="{{route('producto.edit',$producto)}} " class="more">EDITAR</a></td>
-                        <td><a href="#" class="more2">ELIMINAR</a></td>
+                        <td>
+                          <form action="{{route('producto.destroy',$producto)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="more2" >ELIMINAR</button>
+                          </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
           </table>
+          <div class="text-center">
+            <a href="{{route('producto.create')}}" class="btn  btn-lg shadow-sm" style="background-color: #013253; color:beige">Nuevo producto</a>
+          </div>
         </div>
       </div>
     </div>
