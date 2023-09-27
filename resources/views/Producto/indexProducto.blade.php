@@ -11,9 +11,12 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{asset('tabla/css/style.css')}}">
 
+    <link rel="stylesheet" href="{{asset('navbar/style.css')}}">
+
     <title>Tabla productos</title>
   </head>
   <body>
+
     <div class="content">
       <div class="container">
         <h2 class="mb-5">PRODUCTOS</h2>
@@ -39,7 +42,7 @@
                     <tr>
                         <td scope="row">{{ $producto->id }}</td>
                         <td>
-                            <a href="{{route('producto.show',$producto)}}">
+                            <a class="more" href="{{route('producto.show',$producto)}}">
                                 {{ $producto->nombre }}
                             </a>
                             <small class="d-block">{{ $producto->descripcion }}</small>

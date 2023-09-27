@@ -70,7 +70,7 @@
 
                                             <div class="d-flex justify-content-left pt-3">
                                             <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
-                                            <button type=" submit" class="btn btn-warning btn-lg shadow-sm">Guardar cambios</button>
+                                            <button type=" submit" class="btn  btn-lg shadow-sm" style="background-color: #013253; color:beige">Guardar cambios</button>
                                             </div>
                                         </div>
                                     </div>
