@@ -11,8 +11,6 @@
     <!-- Style -->
     <link rel="stylesheet" href="{{asset('tabla/css/style.css')}}">
 
-    <link rel="stylesheet" href="{{asset('navbar/style.css')}}">
-
     <title>Tabla productos</title>
   </head>
   <body>
@@ -66,7 +64,7 @@
             </tbody>
           </table>
           <div class="text-center">
-            <a href="{{route('producto.create')}}" class="btn  btn-lg shadow-sm" style="background-color: #013253; color:beige">Nuevo producto</a>
+            <a href="{{route('producto.create')}}" class="btn  btn-lg shadow-sm mt-2" style="background: linear-gradient(to bottom, #67baff, #0186f3); color:beige">Nuevo producto</a>
           </div>
         </div>
       </div>

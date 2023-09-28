@@ -32,13 +32,13 @@
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                 <input type="text" id="nombre" name="nombre" class="form-control form-control-lg" value="{{ old('nombre') ?? $producto->nombre}}" required/>
-                                                <label class="form-label" for="nombre">Nombre</label>
+                                                <label class="form-label ml-2" for="nombre">Nombre</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                 <input type="text" id="marca" name="marca" class="form-control form-control-lg" value="{{ old('marca') ?? $producto->marca}}" required />
-                                                <label class="form-label" for="marca">Marca</label>
+                                                <label class="form-label ml-2" for="marca">Marca</label>
                                                 </div>
                                             </div>
                                             </div>
@@ -47,26 +47,26 @@
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                 <input type="text" id="categoria" name="categoria" class="form-control form-control-lg" value="{{ old('categoria') ?? $producto->categoria}}" required/>
-                                                <label class="form-label" for="categoria">Categoría</label>
+                                                <label class="form-label ml-2" for="categoria">Categoría</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                 <input type="number" id="precio" name="precio" class="form-control form-control-lg" value="{{ old('precio') ?? $producto->precio}}" required/>
-                                                <label class="form-label" for="precio">Precio</label>
+                                                <label class="form-label ml-2" for="precio">Precio</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                 <input type="number" step="1" min="1" id="unidades" name="unidades" class="form-control form-control-lg" value="{{ old('unidades') ?? $producto->unidades}}"/>
-                                                <label class="form-label" for="unidades">Unidades existentes</label>
+                                                <label class="form-label ml-2" for="unidades">Unidades existentes</label>
                                                 </div>
                                             </div>
                                             </div>
                             
                                             <div class="form-outline mb-4">
                                             <textarea type="text" id="descripcion" name="descripcion" class="form-control form-control-lg" rows="4">{{$producto->descripcion}}</textarea>
-                                            <label class="form-label" for="descripcion">Descripción</label>
+                                            <label class="form-label ml-2" for="descripcion">Descripción</label>
                                             </div>
 
 
