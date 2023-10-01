@@ -70,7 +70,7 @@
                                             <div class="d-flex justify-content-left pt-3">
                                                 <!--<button type="button" class="btn btn-light btn-lg">Reset all</button> -->
                                                 <button type=" submit" class="btn btn-lg shadow-sm" style="background-color: #013253; color:beige">Enviar formulario</button>
-                                                <a href="{{route('producto.index')}}" class="btn btn-lg shadow-sm ml-3" style="background-color: #013253; color:beige">Regresar</a>
+                                                <a href="{{route('producto.index')}}" class="btn btn-primary ml-3">Regresar</a>
                                             </div>
                                         </div>
                                     </div>
