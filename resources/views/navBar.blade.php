@@ -12,16 +12,16 @@
 
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link nav-icon" href="https://facebook.com/" target="_blank">
             <i class="bi bi-facebook"></i>
         </a><!-- End Notification Icon -->
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link nav-icon" href="https://twitter.com/" target="_blank">
             <i class="bi bi-twitter"></i>
         </a><!-- End Notification Icon -->
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link nav-icon" href="https://www.instagram.com/" target="_blank">
             <i class="bi bi-instagram"></i>
         </a><!-- End Notification Icon -->
-        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link nav-icon" href="https://mx.linkedin.com/" target="_blank">
             <i class="bi bi-linkedin"></i>
         </a><!-- End Notification Icon -->
         <li class="nav-item dropdown pe-3">
