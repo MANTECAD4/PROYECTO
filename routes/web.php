@@ -18,6 +18,9 @@ use App\Http\Controllers\ProductoController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return view('login');
+});
 Route::resource('empleado',EmpleadoController::class);
 Route::resource('producto',ProductoController::class);
 

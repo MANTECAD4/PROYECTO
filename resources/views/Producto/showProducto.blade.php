@@ -88,6 +88,22 @@
                                             {{$producto->descripcion}}
                                         </p>
                                     </div>
+                                    <div style="display: flex; justify-content: flex-start;">
+                                        <a href="{{ route('producto.index') }}" class="btn btn-primary">
+                                            <i class="bi bi-house me-1"></i> Volver al inicio
+                                        </a> 
+                                        <a href="{{ route('producto.edit', $producto) }}" class="btn btn-warning mx-2" title="Editar producto">
+                                            <span class="bi bi-pencil"></span> Editar
+                                        </a>
+                                        <form action="{{ route('producto.destroy', $producto) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" title="Borrar producto">
+                                                <span class="bi bi-trash"></span> Borrar
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
