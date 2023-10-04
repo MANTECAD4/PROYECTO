@@ -18,16 +18,10 @@ use App\Http\Controllers\ProductoController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', function () {
+Route::get('/uwu', function () {
     return view('login');
 });
-Route::resource('empleado',EmpleadoController::class);
 Route::resource('producto',ProductoController::class);
-
-//Route::post('/empleado', [EmpleadoController::class, 'store']);
-
-
-
 
 Route::middleware([
     'auth:sanctum',
