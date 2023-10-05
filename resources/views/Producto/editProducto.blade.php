@@ -4,7 +4,7 @@
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Inventario</a></li>
+            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
             <li class="breadcrumb-item ">Modificar producto</li>
             <li class="breadcrumb-item active">Editar {{$producto->nombre}}</li>
         </ol>
@@ -73,10 +73,9 @@
                         </div>
                         </div>
                         <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        <button type="reset" class="btn btn-secondary">Limpiar</button>
-                        <a href="{{ route('producto.index') }}" class="btn btn-light">
-                            <i class="bi bi-house me-1"></i> Volver al inicio
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
+                        <a href="{{ route('producto.index') }}" class="btn btn-secondary">
+                            <i class="bi bi-house me-2"></i>Volver al inicio
                         </a> 
                         </div>
                     </form><!-- End floating Labels Form -->

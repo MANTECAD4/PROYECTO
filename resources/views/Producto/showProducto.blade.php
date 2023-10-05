@@ -4,7 +4,7 @@
         <nav>
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Inventario</a></li>
+            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
             <li class="breadcrumb-item">Inspeccionar producto</li>
             <li class="breadcrumb-item active">{{$producto->nombre}}</li>
             </ol>

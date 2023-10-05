@@ -4,7 +4,7 @@
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Inventario</a></li>
+            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
             <li class="breadcrumb-item active">Dar de alta producto</li>
         </ol>
         </nav>
@@ -14,8 +14,8 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Example Card</h5>
-                    <p>This is an examle page with no contrnt. You can use it as a starter for your custom pages.</p>
+                    <h5 class="card-title">Agregar producto</h5>
+                    <p>Aqui puedes añadir nuevos registros de productos al inventario!</p>
                     <!-- Floating Labels Form -->
                     <!-- /resources/views/post/create.blade.php -->
                         
@@ -59,7 +59,7 @@
                         <div class="col-md-6">
                         
                             <div class="form-floating">
-                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" value="{{old('precio')}}" required>
+                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" step="0.01" value="{{old('precio')}}" required>
                             <label for="precio">Precio</label>
                             </div>
                         
@@ -70,8 +70,9 @@
                             <label for="unidades">Unidades</label>
                         </div>
                         </div>
+                        
                         <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                         <button type="reset" class="btn btn-secondary">Limpiar</button>
                         </div>
                     </form><!-- End floating Labels Form -->

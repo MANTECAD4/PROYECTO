@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/uwu', function () {
     return view('login');
 });
+Route::get('/contacto', function () {
+    return view('contacto');
+});
 Route::resource('producto',ProductoController::class);
 
 Route::middleware([

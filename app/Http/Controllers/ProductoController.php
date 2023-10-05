@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class ProductoController extends Controller
 {
@@ -47,7 +49,16 @@ class ProductoController extends Controller
         $producto->marca = $request->marca;
         $producto->categoria = $request->categoria;
     
-        $producto->save();
+        $insercionExitosa =$producto->save();
+        
+        if ($insercionExitosa) {
+            // La inserción fue exitosa, puedes definir la sesión flash aquí
+            Session::flash('success', 'El registro se ha creado exitosamente en la base de datos.');
+        } else {
+            // La inserción falló, puedes manejar el error de otra manera
+            Session::flash('error', 'Hubo un problema al crear el registro en la base de datos.');
+        }
+
 
         return redirect('/producto');
     }
@@ -93,6 +104,7 @@ class ProductoController extends Controller
         $producto->categoria = $request->categoria;
     
         $producto->save();
+        
 
         return redirect()->route('producto.index');
     }
