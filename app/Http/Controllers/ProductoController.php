@@ -49,7 +49,7 @@ class ProductoController extends Controller
         $producto->marca = $request->marca;
         $producto->categoria = $request->categoria;
     
-        $insercionExitosa =$producto->save();
+        $insercionExitosa=$producto->save();
         
         if ($insercionExitosa) {
             // La inserción fue exitosa, puedes definir la sesión flash aquí

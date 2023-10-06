@@ -153,7 +153,7 @@
                 </li><!-- End Login Page Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link " href="/contacto">
+                    <a class="nav-link collapsed" href="/contacto">
                       <i class="bx bx-support"></i>
                       <span>Soporte</span>
                     </a>
