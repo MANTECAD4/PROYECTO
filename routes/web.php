@@ -16,8 +16,9 @@ use App\Http\Controllers\ProductoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
+
 Route::get('/uwu', function () {
     return view('login');
 });
