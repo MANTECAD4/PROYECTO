@@ -75,7 +75,7 @@
                         <div class="text-center">
                         <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                         <a href="{{ route('producto.index') }}" class="btn btn-secondary">
-                            <i class="bi bi-house me-2"></i>Volver al inicio
+                            <i class="bi bi-tag me-2"></i>Volver al inicio
                         </a> 
                         </div>
                     </form><!-- End floating Labels Form -->

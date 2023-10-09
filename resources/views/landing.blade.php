@@ -35,9 +35,9 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
             
-            @if (Route::has('login'))
+              @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                    <a href="{{ url('/inicio') }}" class="nav-link">Entrar</a>
                 @else
                     <a href="{{ route('login') }}" class="nav-link">Iniciar Sesión</a>
 

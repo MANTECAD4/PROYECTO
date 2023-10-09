@@ -118,6 +118,15 @@
         <!-- ======= Sidebar ======= -->
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/inicio">
+                        <i class="bi bi-house"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li><!-- End Profile Page Nav -->
+
+                <li class="nav-heading">Gestión</li>
                 <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-tag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -136,7 +145,7 @@
                 </ul>
                 </li><!-- End Productos Nav -->
 
-                <li class="nav-heading">Pages</li>
+                <li class="nav-heading">Páginas</li>
 
                 <li class="nav-item">
                 <a class="nav-link collapsed" href="#">

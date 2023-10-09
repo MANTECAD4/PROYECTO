@@ -19,12 +19,14 @@ Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/uwu', function () {
-    return view('login');
+Route::get('/inicio', function () {
+    return view('inicio');
 });
+
 Route::get('/contacto', function () {
     return view('contacto');
 });
+
 Route::resource('producto',ProductoController::class);
 
 Route::middleware([
