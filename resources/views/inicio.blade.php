@@ -1,6 +1,6 @@
 <x-mi-layout> 
         <div class="h-100 w-100 d-flex justify-content-center align-items-center mt-5">
-            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="height: 60%; width:60%">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="height: 65%; width:65%">
                 <div class="carousel-inner ">
                     <div class="carousel-item active  ">
                         <img src="{{asset('assets/img/logo1.png')}}" class="d-block w-100" alt="...">
@@ -28,5 +28,4 @@
                 </button>
             </div>
         </div>    
-    
 </x-mi-layout>
