@@ -128,21 +128,39 @@
 
                 <li class="nav-heading">Gestión</li>
                 <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-tag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                    <a href="{{route('producto.index')}}">
-                        <i class="bi bi-circle"></i><span>Ver productos</span>
+                    <a class="nav-link collapsed" data-bs-target="#productos-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-bag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    </li>
-                    <li>
-                    <a href="{{route('producto.create')}}">
-                        <i class="bi bi-circle"></i><span>Dar de alta productos</span>
+                    <ul id="productos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="{{route('producto.index')}}">
+                            <i class="bi bi-circle"></i><span>Ver productos</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a href="{{route('producto.create')}}">
+                            <i class="bi bi-circle"></i><span>Dar de alta productos</span>
+                        </a>
+                        </li>
+                    </ul>
+                </li><!-- End Productos Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#categorias-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-tag"></i><span>Categorías</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    </li>
-                </ul>
+                    <ul id="categorias-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="{{route('categoria.index')}}">
+                            <i class="bi bi-circle"></i><span>Ver categorías</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a href="{{route('categoria.create')}}">
+                            <i class="bi bi-circle"></i><span>Dar de alta categorías</span>
+                        </a>
+                        </li>
+                    </ul>
                 </li><!-- End Productos Nav -->
 
                 <li class="nav-heading">Páginas</li>

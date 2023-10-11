@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProductoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::get('/contacto', function () {
 });
 
 Route::resource('producto',ProductoController::class);
+Route::resource('categoria',CategoriaController::class);
 
 Route::middleware([
     'auth:sanctum',
