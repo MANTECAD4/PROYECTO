@@ -13,7 +13,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = categoria::all();
+        $categorias = Categoria::all();
         return view('categoria/indexcategoria', compact('categorias'));
     }
 
@@ -44,9 +44,10 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        
+        return view('categoria/showCategoria', compact('categoria'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -69,5 +70,7 @@ class CategoriaController extends Controller
     public function destroy(Categoria $categoria)
     {
         //
+        $categoria->delete();
+        return redirect()->route('categoria.index');
     }
 }

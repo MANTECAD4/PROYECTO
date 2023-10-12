@@ -33,16 +33,17 @@
                       <tr>
                           <td scope="row">{{ $categoria->id }}</td>
                           <td>
-                              <a href="#" title="Inspeccionar producto">
+                              <a href="{{route('categoria.show',$categoria)}}" title="Inspeccionar producto">
                                   {{ $categoria->nombre }}
                               </a>
                           </td>
                           <td>{{ $categoria->descripcion }}</td>
                           
-                          <td><a href="#" class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>
+                          <td><a href="{{route('categoria.destroy',$categoria)}}" class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>
                           <td>
-                            <form action="#" method="POST">
+                            <form action="" method="POST">
                               @csrf
+                              @method('DELETE')
                               <button type="submit" class="btn btn-danger" title="Borrar producto">
                                 <span class="bi bi-trash"></span>
                               </button>
