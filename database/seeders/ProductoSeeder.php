@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categoria;
+use App\Models\Producto;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CategoriaSeeder extends Seeder
+class ProductoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Categoria::factory()->count(4)->create();
+        Producto::factory()->count(15)->create();
     }
 }

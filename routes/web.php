@@ -29,7 +29,9 @@ Route::get('/contacto', function () {
 });
 
 Route::resource('producto',ProductoController::class);
-Route::resource('categoria',CategoriaController::class);
+Route::resource('categoria', CategoriaController::class)->parameters([
+    'categoria' => 'categoria'
+]);
 
 Route::middleware([
     'auth:sanctum',

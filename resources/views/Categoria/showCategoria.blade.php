@@ -30,10 +30,6 @@
                                     <th scope="col">UNIDADES</th>
                                     <th scope="col">MARCA</th>
                                     <th scope="col">CATEGORÍA</th>
-                                    <th scope="col">CREATED_AT</th>
-                                    <th scope="col">UPDATED_AT</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -44,24 +40,11 @@
                                             <a href="{{route('producto.show',$producto)}}" title="Inspeccionar producto">
                                                 {{ $producto->nombre }}
                                             </a>
-                                            <small class="d-block">{{ $producto->descripcion }}</small>
                                         </td>
                                         <td>${{ $producto->precio }}</td>
                                         <td>{{ $producto->unidades }}</td>
                                         <td>{{ $producto->marca }}</td>                        
                                         <td>{{ $producto->categoria->nombre}}</td>
-                                        <td>{{ $producto->created_at }}</td>
-                                        <td>{{ $producto->updated_at }}</td>
-                                        <td><a href="{{route('producto.edit',$producto)}} " class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>
-                                        <td>
-                                          <form action="{{route('producto.destroy',$producto)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger" title="Borrar producto">
-                                              <span class="bi bi-trash"></span>
-                                            </button>
-                                          </form>
-                                        </td>
                                     </tr>
                                   @endforeach
                                 </tbody>
@@ -72,7 +55,7 @@
                             <div class="portfolio-info">
                                 <h3>Información de categoría</h3>
                                 <ul>
-                                    <li><strong>#</strong>: {{ $categoria->id }}</li>
+                                    <li><strong>ID</strong>: {{ $categoria->id }}</li>
                                     <li><strong>Nombre</strong>: {{$categoria->nombre}}</li>
                                 </ul>
                             </div>
@@ -83,14 +66,14 @@
                                 </p>
                             </div> 
                         </div>
-                        <div style="display: flex; justify-content: flex-start;">
+                        <div class="text-center ">
                             <a href="{{ route('categoria.index') }}" class="btn btn-info">
                                 <i class="bi bi-tag me-1"></i> Volver al inicio
                             </a> 
                             <a href="#" class="btn btn-warning mx-2" title="Editar producto">
                                 <span class="bi bi-pencil"></span> Editar
                             </a>
-                            <form action="#" method="POST">
+                            <form action="#" method="POST"class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" title="Borrar producto">
@@ -98,6 +81,7 @@
                                 </button>
                             </form>
                         </div>
+                        
                     </div>
                 </div>
             </div>
