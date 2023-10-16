@@ -33,7 +33,7 @@ class ProductoController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:60',
-            'descripcion' => 'nullable|string',
+            'descripcion' => 'nullable|string|max:255',
             'precio' => 'required|numeric|min:0.01',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required|string|max:60',
@@ -78,7 +78,7 @@ class ProductoController extends Controller
         //
         $request->validate([
             'nombre' => 'required|string|max:60',
-            'descripcion' => 'nullable|string',
+            'descripcion' => 'nullable|string|max:255',
             'precio' => 'required|numeric|min:0.01',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required|string|max:60',
