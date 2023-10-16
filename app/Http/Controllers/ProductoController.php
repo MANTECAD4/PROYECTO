@@ -15,8 +15,7 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all();
-        return view('producto/indexproducto', compact('productos'))->with('css', asset('/css/EmpleadoEstilos/style.css'));
-
+        return view('producto/indexproducto', compact('productos'));
     }
 
     /**
@@ -33,12 +32,12 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'precio' => 'required|numeric|min:1',
-            'descripcion' => 'max:164',
+            'nombre' => 'required|string|max:60',
+            'descripcion' => 'nullable|string',
+            'precio' => 'required|numeric|min:0.01',
             'unidades' => 'required|integer|min:1',
-            'marca' => 'required',
-            'categoria' => 'required',
+            'marca' => 'required|string|max:60',
+            'categoria' => 'required|string|max:60',
         ]);
     
         $producto = new Producto();
@@ -49,18 +48,8 @@ class ProductoController extends Controller
         $producto->marca = $request->marca;
         $producto->categoria = $request->categoria;
     
-        $insercionExitosa=$producto->save();
-        
-        if ($insercionExitosa) {
-            // La inserción fue exitosa, puedes definir la sesión flash aquí
-            Session::flash('success', 'El registro se ha creado exitosamente en la base de datos.');
-        } else {
-            // La inserción falló, puedes manejar el error de otra manera
-            Session::flash('error', 'Hubo un problema al crear el registro en la base de datos.');
-        }
-
-
-        return redirect('/producto');
+        $producto->save();
+        return redirect()->route('producto.index');
     }
 
     /**
@@ -88,12 +77,12 @@ class ProductoController extends Controller
     {
         //
         $request->validate([
-            'nombre' => 'required',
-            'descripcion' => 'max:164',
-            'precio' => 'required|numeric|min:1',
+            'nombre' => 'required|string|max:60',
+            'descripcion' => 'nullable|string',
+            'precio' => 'required|numeric|min:0.01',
             'unidades' => 'required|integer|min:1',
-            'marca' => 'required',
-            'categoria' => 'required',
+            'marca' => 'required|string|max:60',
+            'categoria' => 'required|string|max:60',
         ]);
     
         $producto->nombre = $request->nombre;
@@ -106,7 +95,7 @@ class ProductoController extends Controller
         $producto->save();
         
 
-        return redirect()->route('producto.index');
+        return view('producto/showProducto', compact('producto'));
     }
 
     /**

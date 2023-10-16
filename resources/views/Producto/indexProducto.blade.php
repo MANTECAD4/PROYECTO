@@ -3,7 +3,7 @@
     <h1>Inventario de productos</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Gestión</a></li>
         <li class="breadcrumb-item active">Productos</li>
       </ol>
     </nav>
@@ -14,7 +14,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title">Datatables</h3>
+            <h3 class="card-title">Inventario</h3>
             <p>Información de todos los productos registrados en la tienda. Haz click sobre el nombre un producto para inspeccionarlo!</p>
             <!-- Table with stripped rows -->
             <div class="tabla-contenedor">

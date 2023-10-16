@@ -55,12 +55,13 @@
                             <div class="portfolio-description">
                                 <h2>Descripción</h2>
                                 <p>
-                                    {{$producto->descripcion}}
+                                    {{ $producto->descripcion ? $producto->descripcion : 'Sin descripción' }}
                                 </p>
+                                
                             </div>
                             <div style="display: flex; justify-content: flex-start;">
-                                <a href="{{ route('producto.index') }}" class="btn btn-info">
-                                    <i class="bi bi-tag me-1"></i> Volver al inicio
+                                <a href="{{ route('producto.index') }}" class="btn btn-secondary">
+                                    <i class="bi bi-bag me-2"></i>Volver al inicio
                                 </a> 
                                 <a href="{{ route('producto.edit', $producto) }}" class="btn btn-warning mx-2" title="Editar producto">
                                     <span class="bi bi-pencil"></span> Editar

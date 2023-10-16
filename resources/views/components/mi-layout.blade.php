@@ -71,7 +71,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="#">
                         <i class="bi bi-person"></i>
                         <span>Mi Perfil</span>
                         </a>
@@ -81,7 +81,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="#">
                         <i class="bi bi-gear"></i>
                         <span>Ajustes de cuenta</span>
                         </a>
@@ -91,7 +91,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                        <a class="dropdown-item d-flex align-items-center" href="#">
                         <i class="bi bi-question-circle"></i>
                         <span>Ayuda</span>
                         </a>
@@ -129,7 +129,7 @@
                 <li class="nav-heading">Gestión</li>
                 <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-tag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-bag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -153,9 +153,9 @@
                     <span>Perfil</span>
                 </a>
                 </li><!-- End Profile Page Nav -->
-
+               
                 <li class="nav-item">
-                <a class="nav-link collapsed" href="/uwu">
+                <a class="nav-link collapsed" href="#">
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Login</span>
                 </a>
