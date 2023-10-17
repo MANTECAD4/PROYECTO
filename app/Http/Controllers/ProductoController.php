@@ -37,11 +37,14 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'precio' => 'required|numeric|min:1',
-            'descripcion' => 'max:164',
+            'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
         ]);
+
+        Producto::create($request->all());
     
+        /*
         $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->descripcion = $request->descripcion;
@@ -49,8 +52,7 @@ class ProductoController extends Controller
         $producto->unidades = $request->unidades;
         $producto->marca = $request->marca;
         $producto->categoria_id = $request->categoria_id;
-    
-        $producto->save();
+        $producto->save();*/
 
         return redirect('/producto');
     }

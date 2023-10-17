@@ -28,7 +28,7 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
-Route::resource('producto',ProductoController::class);
+Route::resource('producto',ProductoController::class);  
 Route::resource('categoria', CategoriaController::class)->parameters([
     'categoria' => 'categoria'
 ]);

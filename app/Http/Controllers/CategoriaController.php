@@ -31,11 +31,12 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
 
-        $categoria = new Categoria();
+        Categoria::create($request->all());
+        /*$categoria = new Categoria();
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
     
-        $categoria->save();
+        $categoria->save();*/
 
         return redirect('categoria');
     }
@@ -53,6 +54,7 @@ class CategoriaController extends Controller
     public function edit(Categoria $categoria)
     {
         //
+        
     }
 
     /**
@@ -61,6 +63,7 @@ class CategoriaController extends Controller
     public function update(Request $request, Categoria $categoria)
     {
         //
+        Categoria::where('id',$categoria->id)->update($request->except('_token','_method'));
     }
 
     /**
