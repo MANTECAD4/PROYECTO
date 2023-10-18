@@ -16,22 +16,22 @@ use App\Http\Controllers\ProductoController;
 |
 */
 
+Route::middleware('auth')->group(function() {
+    Route::resource('producto',ProductoController::class);  
+    Route::resource('categoria', CategoriaController::class)->parameters([
+        'categoria' => 'categoria'
+    ]);
+    Route::get('/inicio', function () {
+        return view('inicio');
+    });
+    Route::get('/contacto', function () {
+        return view('contacto');
+    });    
+});
+
 Route::get('/', function () {
     return view('landing');
 });
-
-Route::get('/inicio', function () {
-    return view('inicio');
-});
-
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-
-Route::resource('producto',ProductoController::class);  
-Route::resource('categoria', CategoriaController::class)->parameters([
-    'categoria' => 'categoria'
-]);
 
 Route::middleware([
     'auth:sanctum',
