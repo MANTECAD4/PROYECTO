@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class CategoriaFactory extends Factory
         return [
             'nombre'=>fake()->unique()->word(),
             'descripcion'=>fake()->sentence(),
+            'user_id' => User::factory()
         ];
     }
 }

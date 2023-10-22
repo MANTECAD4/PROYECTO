@@ -16,7 +16,7 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all();
-        return view('producto/indexproducto', compact('productos'))->with('css', asset('/css/EmpleadoEstilos/style.css'));
+        return view('producto/indexproducto', compact('productos'));
 
     }
 
@@ -72,7 +72,8 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         //
-        return view('producto/editProducto', compact('producto'));
+        $categorias = Categoria::all();
+        return view('producto/editProducto', compact('producto', 'categorias'));
     }
 
     /**
@@ -87,19 +88,10 @@ class ProductoController extends Controller
             'precio' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
-            'categoria' => 'required',
         ]);
     
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->unidades = $request->unidades;
-        $producto->marca = $request->marca;
-        $producto->categoria = $request->categoria;
-    
-        $producto->save();
-        
-
+        Producto::where('id', $producto->id)
+            ->update($request->except('_token', '_method'));
         return redirect()->route('producto.index');
     }
 

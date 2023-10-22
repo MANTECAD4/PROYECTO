@@ -9,10 +9,15 @@ class Categoria extends Model
 {
     public $timestamps = false;
     use HasFactory;
-    protected $fillable = ['nombre', 'descripcion'];
+    protected $fillable = ['nombre', 'descripcion','user_id'];
 
     public function productos()
     {
         return $this->hasMany(Producto::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

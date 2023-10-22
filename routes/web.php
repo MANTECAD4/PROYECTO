@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function() {
 Route::get('/', function () {
     return view('landing');
 });
+Route::get('/perfil', function () {
+    return view('editarPerfil');
+});
 
 Route::middleware([
     'auth:sanctum',

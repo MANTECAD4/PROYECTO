@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
@@ -31,12 +32,16 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
 
+        $request->merge(['user_id' => Auth::id()]);
         Categoria::create($request->all());
-        /*$categoria = new Categoria();
-        $categoria->nombre = $request->nombre;
-        $categoria->descripcion = $request->descripcion;
-    
-        $categoria->save();*/
+
+        //$categoria = new Categoria();
+        //$categoria->nombre = $request->nombre;
+        //$categoria->descripcion = $request->descripcion;
+        //$categoria->user_id = Auth::id();
+        //$categoria->save();
+        //$user = Auth::user();
+        //$user->categorias()->save($categoria);
 
         return redirect('categoria');
     }
