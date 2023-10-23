@@ -43,16 +43,6 @@ class ProductoController extends Controller
         ]);
 
         Producto::create($request->all());
-    
-        /*
-        $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->unidades = $request->unidades;
-        $producto->marca = $request->marca;
-        $producto->categoria_id = $request->categoria_id;
-        $producto->save();*/
 
         return redirect('/producto');
     }
