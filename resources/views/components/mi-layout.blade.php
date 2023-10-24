@@ -23,8 +23,7 @@
         <link href="{{ asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
         <!-- Template Main CSS File -->
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-        @livewireScripts
+        <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
 
     </head>
 
@@ -72,19 +71,11 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                        <i class="bi bi-person"></i>
-                        <span>
-                            Perfil
-                        </span>
-                        </a>
-                    </li>
-                    <li>
                         <hr class="dropdown-divider">
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="http://proyecto.test/user/profile">
+                        <a class="dropdown-item d-flex align-items-center" href="/perfil">
                         <i class="bi bi-gear"></i>
                         <span>Ajustes de cuenta</span>
                         </a>
@@ -173,10 +164,11 @@
 
                 <li class="nav-heading">Páginas</li>
 
+                
                 <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-person"></i>
-                    <span>Perfil</span>
+                <a class="nav-link collapsed" href="/perfil">
+                    <i class="bi bi-gear"></i>
+                    <span>Ajustes de cuenta</span>
                 </a>
                 </li><!-- End Profile Page Nav -->
 
