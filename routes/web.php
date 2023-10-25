@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/contacto', function () {
         return view('contacto');
     });    
+    Route::get('/logproducto', [ProductoController::class, 'log']);
+
 });
 
 Route::get('/', function () {

@@ -24,7 +24,8 @@
 
         <!-- Template Main CSS File -->
         <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
-
+        <!--No quitar-->
+        @livewireScripts
     </head>
 
     <body>
@@ -97,7 +98,7 @@
                     <li>
                         <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"@click.prevent="$root.submit();">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" @click.prevent="$root.submit();">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>
                                     Cerrar sesión
@@ -160,11 +161,23 @@
                         </a>
                         </li>
                     </ul>
-                </li><!-- End Productos Nav -->
+                </li><!-- End categorias Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#logs-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-card-list"></i><span>Logs</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="logs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="/logproducto">
+                            <i class="bi bi-circle"></i><span>Historial gestión de productos</span>
+                        </a>
+                        </li>
+                    </ul>
+                </li><!-- End logs Nav -->
 
                 <li class="nav-heading">Páginas</li>
 
-                
                 <li class="nav-item">
                 <a class="nav-link collapsed" href="/perfil">
                     <i class="bi bi-gear"></i>
@@ -172,26 +185,6 @@
                 </a>
                 </li><!-- End Profile Page Nav -->
 
-                <li class="nav-item">
-                <a class="nav-link collapsed" href="/uwu">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-                </li><!-- End Login Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="/contacto">
-                      <i class="bx bx-support"></i>
-                      <span>Soporte</span>
-                    </a>
-                </li><!-- End Contact Page Nav -->
-
-                <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-                </li><!-- End Error 404 Page Nav -->
             </ul>
         </aside><!-- End Sidebar-->
         <main id="main" class="main">

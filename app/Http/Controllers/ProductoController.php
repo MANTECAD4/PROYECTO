@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\ProductoUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 
@@ -79,10 +83,20 @@ class ProductoController extends Controller
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
         ]);
-    
+        $request->merge(['user_id' => Auth::id()]);
+        $producto->usuarios()->attach($request->user_id);
+
         Producto::where('id', $producto->id)
-            ->update($request->except('_token', '_method'));
+            ->update($request->except('_token', '_method','user_id'));
+
+        
         return redirect()->route('producto.index');
+    }
+
+    public function log()
+    {
+        $registros = ProductoUser::all();
+        return view('producto/productos_log',compact('registros'));
     }
 
     /**
