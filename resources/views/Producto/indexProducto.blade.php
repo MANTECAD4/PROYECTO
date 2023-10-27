@@ -46,7 +46,7 @@
                         <td>${{ $producto->precio }}</td>
                         <td>{{ $producto->unidades }}</td>
                         <td>{{ $producto->marca }}</td>                        
-                        <td>{{ $producto->categoria }}</td>
+                        <td>{{ $producto->categoria->nombre}}</td>
                         <td>{{ $producto->created_at }}</td>
                         <td>{{ $producto->updated_at }}</td>
                         <td><a href="{{route('producto.edit',$producto)}} " class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>

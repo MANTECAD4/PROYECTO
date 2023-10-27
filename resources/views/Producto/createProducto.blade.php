@@ -45,10 +45,18 @@
                         </div>
                         </div>
                         <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Categoría" value="{{old('categoria')}}" required>
-                            <label for="categoria">Categoría</label>
-                        </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Categoría</label>
+                                <div class="col-sm-10">
+                                  <select class="form-select" aria-label="Default select example" name="categoria_id" id="categoria_id">
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}">
+                                            {{ $categoria->nombre }}
+                                        </option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">

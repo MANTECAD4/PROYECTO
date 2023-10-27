@@ -47,10 +47,18 @@
                         </div>
                         </div>
                         <div class="col-md-6">
-                        <div class="form-floating">
-                            <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Categoría" value="{{old('categoria') ?? $producto->categoria}}" required>
-                            <label for="categoria">Categoría</label>
-                        </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Categoría</label>
+                                <div class="col-sm-10">
+                                  <select class="form-select" aria-label="Default select example" name="categoria_id" id="categoria_id">
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id }}" @if ($categoria->id == $producto->categoria_id) selected @endif>
+                                            {{ $categoria->nombre }}
+                                        </option>
+                                    @endforeach
+                                  </select>
+                                </div>
+                              </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
@@ -75,7 +83,7 @@
                         <div class="text-center">
                         <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                         <a href="{{ route('producto.index') }}" class="btn btn-secondary">
-                            <i class="bi bi-house me-2"></i>Volver al inicio
+                            <i class="bi bi-tag me-2"></i>Volver al inicio
                         </a> 
                         </div>
                     </form><!-- End floating Labels Form -->

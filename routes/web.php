@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProductoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,27 @@ use App\Http\Controllers\ProductoController;
 |
 */
 
+Route::middleware('auth')->group(function() {
+    Route::resource('producto',ProductoController::class);  
+    Route::resource('categoria', CategoriaController::class)->parameters([
+        'categoria' => 'categoria'
+    ]);
+    Route::get('/inicio', function () {
+        return view('inicio');
+    });
+    Route::get('/contacto', function () {
+        return view('contacto');
+    });    
+    Route::get('/logproducto', [ProductoController::class, 'log']);
+
+});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing');
 });
-Route::get('/uwu', function () {
-    return view('login');
+Route::get('/perfil', function () {
+    return view('editarPerfil');
 });
-Route::get('/contacto', function () {
-    return view('contacto');
-});
-Route::resource('producto',ProductoController::class);
 
 Route::middleware([
     'auth:sanctum',

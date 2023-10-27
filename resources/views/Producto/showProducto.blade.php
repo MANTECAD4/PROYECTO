@@ -48,7 +48,7 @@
                                 <ul>
                                 <li><strong>Precio</strong>: ${{$producto->precio}}</li>
                                 <li><strong>Marca</strong>: {{$producto->marca}}</li>
-                                <li><strong>Categoría</strong>: {{$producto->categoria}}</li>
+                                <li><strong>Categoría</strong>: {{$producto->categoria->nombre}}</li>
                                 <li><strong>Unidades</strong>: {{$producto->unidades}}</li>
                                 </ul>
                             </div>
@@ -60,7 +60,7 @@
                             </div>
                             <div style="display: flex; justify-content: flex-start;">
                                 <a href="{{ route('producto.index') }}" class="btn btn-info">
-                                    <i class="bi bi-house me-1"></i> Volver al inicio
+                                    <i class="bi bi-tag me-1"></i> Volver al inicio
                                 </a> 
                                 <a href="{{ route('producto.edit', $producto) }}" class="btn btn-warning mx-2" title="Editar producto">
                                     <span class="bi bi-pencil"></span> Editar

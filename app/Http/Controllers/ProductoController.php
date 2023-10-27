@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Producto;
+use App\Models\ProductoUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 
@@ -15,7 +20,7 @@ class ProductoController extends Controller
     public function index()
     {
         $productos = Producto::all();
-        return view('producto/indexproducto', compact('productos'))->with('css', asset('/css/EmpleadoEstilos/style.css'));
+        return view('producto/indexproducto', compact('productos'));
 
     }
 
@@ -24,7 +29,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto/createProducto');
+        $categorias = Categoria::all();
+        return view('producto/createProducto', compact('categorias'));
     }
 
     /**
@@ -35,30 +41,12 @@ class ProductoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'precio' => 'required|numeric|min:1',
-            'descripcion' => 'max:164',
+            'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
-            'categoria' => 'required',
         ]);
-    
-        $producto = new Producto();
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->unidades = $request->unidades;
-        $producto->marca = $request->marca;
-        $producto->categoria = $request->categoria;
-    
-        $insercionExitosa =$producto->save();
-        
-        if ($insercionExitosa) {
-            // La inserción fue exitosa, puedes definir la sesión flash aquí
-            Session::flash('success', 'El registro se ha creado exitosamente en la base de datos.');
-        } else {
-            // La inserción falló, puedes manejar el error de otra manera
-            Session::flash('error', 'Hubo un problema al crear el registro en la base de datos.');
-        }
 
+        Producto::create($request->all());
 
         return redirect('/producto');
     }
@@ -78,7 +66,8 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         //
-        return view('producto/editProducto', compact('producto'));
+        $categorias = Categoria::all();
+        return view('producto/editProducto', compact('producto', 'categorias'));
     }
 
     /**
@@ -93,20 +82,21 @@ class ProductoController extends Controller
             'precio' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
-            'categoria' => 'required',
         ]);
-    
-        $producto->nombre = $request->nombre;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->unidades = $request->unidades;
-        $producto->marca = $request->marca;
-        $producto->categoria = $request->categoria;
-    
-        $producto->save();
-        
+        $request->merge(['user_id' => Auth::id()]);
+        $producto->usuarios()->attach($request->user_id);
 
+        Producto::where('id', $producto->id)
+            ->update($request->except('_token', '_method','user_id'));
+
+        
         return redirect()->route('producto.index');
+    }
+
+    public function log()
+    {
+        $registros = ProductoUser::all();
+        return view('producto/productos_log',compact('registros'));
     }
 
     /**

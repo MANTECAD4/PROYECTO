@@ -23,8 +23,9 @@
         <link href="{{ asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
         <!-- Template Main CSS File -->
-        <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
+        <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
+        <!--No quitar-->
+        @livewireScripts
     </head>
 
     <body>
@@ -58,12 +59,12 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="{{asset('assets/img/gato.jpg')}}" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">Ñ. Martínez</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Ñañel Martínez</h6>
+                        <h6>{{ auth()->user()->name }}</h6>
                         <span>Web Designer</span>
                     </li>
                     <li>
@@ -71,17 +72,11 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                        <i class="bi bi-person"></i>
-                        <span>Mi Perfil</span>
-                        </a>
-                    </li>
-                    <li>
                         <hr class="dropdown-divider">
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="/perfil">
                         <i class="bi bi-gear"></i>
                         <span>Ajustes de cuenta</span>
                         </a>
@@ -101,10 +96,15 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Cerrar Sesión</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>
+                                    Cerrar sesión
+                                </span>
+                            </a>
+                        </form>
                     </li>
 
                     </ul><!-- End Profile Dropdown Items -->
@@ -118,53 +118,73 @@
         <!-- ======= Sidebar ======= -->
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
+
                 <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-tag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                    <a href="{{route('producto.index')}}">
-                        <i class="bi bi-circle"></i><span>Ver productos</span>
+                    <a class="nav-link collapsed" href="/inicio">
+                        <i class="bi bi-house"></i>
+                        <span>Inicio</span>
                     </a>
-                    </li>
-                    <li>
-                    <a href="{{route('producto.create')}}">
-                        <i class="bi bi-circle"></i><span>Dar de alta productos</span>
+                </li><!-- End Profile Page Nav -->
+
+                <li class="nav-heading">Gestión</li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#productos-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-bag"></i><span>Productos</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    </li>
-                </ul>
+                    <ul id="productos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="{{route('producto.index')}}">
+                            <i class="bi bi-circle"></i><span>Ver productos</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a href="{{route('producto.create')}}">
+                            <i class="bi bi-circle"></i><span>Dar de alta productos</span>
+                        </a>
+                        </li>
+                    </ul>
                 </li><!-- End Productos Nav -->
 
-                <li class="nav-heading">Pages</li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#categorias-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-tag"></i><span>Categorías</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="categorias-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="{{route('categoria.index')}}">
+                            <i class="bi bi-circle"></i><span>Ver categorías</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a href="{{route('categoria.create')}}">
+                            <i class="bi bi-circle"></i><span>Dar de alta categorías</span>
+                        </a>
+                        </li>
+                    </ul>
+                </li><!-- End categorias Nav -->
 
                 <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-person"></i>
-                    <span>Perfil</span>
+                    <a class="nav-link collapsed" data-bs-target="#logs-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-card-list"></i><span>Logs</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="logs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="/logproducto">
+                            <i class="bi bi-circle"></i><span>Historial gestión de productos</span>
+                        </a>
+                        </li>
+                    </ul>
+                </li><!-- End logs Nav -->
+
+                <li class="nav-heading">Páginas</li>
+
+                <li class="nav-item">
+                <a class="nav-link collapsed" href="/perfil">
+                    <i class="bi bi-gear"></i>
+                    <span>Ajustes de cuenta</span>
                 </a>
                 </li><!-- End Profile Page Nav -->
 
-                <li class="nav-item">
-                <a class="nav-link collapsed" href="/uwu">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-                </li><!-- End Login Page Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="/contacto">
-                      <i class="bx bx-support"></i>
-                      <span>Soporte</span>
-                    </a>
-                </li><!-- End Contact Page Nav -->
-
-                <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-                </li><!-- End Error 404 Page Nav -->
             </ul>
         </aside><!-- End Sidebar-->
         <main id="main" class="main">
