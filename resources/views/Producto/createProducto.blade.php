@@ -34,8 +34,8 @@
                         @csrf <!-- Agrega el token CSRF -->
                         <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{old('nombre')}}" required>
-                            <label for="nombre">Nombre</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="{{old('name')}}" required>
+                            <label for="name">Nombre</label>
                         </div>
                         </div>
                         <div class="col-md-6">
@@ -67,8 +67,8 @@
                         <div class="col-md-6">
                         
                             <div class="form-floating">
-                            <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" step="0.01" value="{{old('precio')}}" required>
-                            <label for="precio">Precio</label>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="Precio" step="0.01" value="{{old('price')}}" required>
+                            <label for="price">Precio</label>
                             </div>
                         
                         </div>

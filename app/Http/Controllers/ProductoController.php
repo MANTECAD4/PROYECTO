@@ -39,8 +39,8 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'precio' => 'required|numeric|min:1',
+            'name' => 'required',
+            'price' => 'required|numeric|min:1',
             'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
@@ -77,9 +77,9 @@ class ProductoController extends Controller
     {
         //
         $request->validate([
-            'nombre' => 'required',
+            'name' => 'required',
             'descripcion' => 'max:164',
-            'precio' => 'required|numeric|min:1',
+            'price' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
         ]);

@@ -29,7 +29,6 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
                 'image' => $request->img,
-                'slug' => $request->slug
             )
         ));
         return redirect()->route('cart.index');

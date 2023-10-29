@@ -6,7 +6,7 @@
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
             <li class="breadcrumb-item">Inspeccionar producto</li>
-            <li class="breadcrumb-item active">{{$producto->nombre}}</li>
+            <li class="breadcrumb-item active">{{$producto->name}}</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -15,7 +15,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">{{$producto->nombre}}</h2>
+                    <h2 class="card-title">{{$producto->name}}</h2>
                     <p>Información de un producto en específico.</p>
                     <!-- Table with stripped rows -->
                     <div class="row">
@@ -46,9 +46,9 @@
                             <div class="portfolio-info">
                                 <h3>Información de producto</h3>
                                 <ul>
-                                <li><strong>Precio</strong>: ${{$producto->precio}}</li>
+                                <li><strong>price</strong>: ${{$producto->price}}</li>
                                 <li><strong>Marca</strong>: {{$producto->marca}}</li>
-                                <li><strong>Categoría</strong>: {{$producto->categoria->nombre}}</li>
+                                <li><strong>Categoría</strong>: {{$producto->categoria->name}}</li>
                                 <li><strong>Unidades</strong>: {{$producto->unidades}}</li>
                                 </ul>
                             </div>
