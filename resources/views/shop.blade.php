@@ -31,6 +31,7 @@
                                         <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
                                         <input type="hidden" value="{{ $pro->price }}" id="price" name="price">
                                         <input type="hidden" value="{{ $pro->image_path }}" id="img" name="img">
+                                        <input type="hidden" value="{{ $pro->unidades }}" id="unidades" name="unidades">
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <div class="card-footer" style="background-color: white;">
                                               <div class="row">

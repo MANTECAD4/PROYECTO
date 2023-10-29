@@ -42,6 +42,7 @@
                 @endif
 
                 @foreach($cartCollection as $item)
+                    
                     <div class="row">
                         <div class="col-lg-3">
                             <img src="/images/{{ $item->attributes->image }}" class="img-thumbnail" width="200" height="200">
@@ -51,6 +52,7 @@
                                 <b>{{ $item->name }}</b><br>
                                 <b>Precio: </b>${{ $item->price }}<br>
                                 <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
+
                             </p>
                         </div>
                         <div class="col-lg-4">
@@ -60,7 +62,7 @@
                                         {{ csrf_field() }}
                                             <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                             <input type="number" class="form-control form-control-sm d-inline" value="{{ $item->quantity }}"
-                                                id="quantity" name="quantity" style="width: 70px;">
+                                                id="quantity" name="quantity" min="1" max="{{$item->attributes->unidades}}" style="width: 70px;">
                                             <button class="btn btn-secondary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i></button>
                                     </form>
                                     <form action="{{ route('cart.remove') }}" method="POST">

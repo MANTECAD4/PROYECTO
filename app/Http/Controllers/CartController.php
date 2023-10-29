@@ -14,7 +14,8 @@ class CartController extends Controller
 
     public function cart()  {
         $cartCollection = \Cart::getContent();
-        return view('cart')->with(['cartCollection' => $cartCollection]);;
+
+        return view('cart')->with(['cartCollection' => $cartCollection]);
     }
     public function remove(Request $request){
         \Cart::remove($request->id);
@@ -29,6 +30,7 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'attributes' => array(
                 'image' => $request->img,
+                'unidades' => $request->unidades,
             )
         ));
         return redirect()->route('cart.index');
