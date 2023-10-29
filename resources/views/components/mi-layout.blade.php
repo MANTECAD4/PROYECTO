@@ -176,6 +176,24 @@
                     </ul>
                 </li><!-- End logs Nav -->
 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#ventas-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-cart"></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="ventas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="/shop">
+                            <i class="bi bi-circle"></i><span>Ver productos</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a href="/cart">
+                            <i class="bi bi-circle"></i><span>Ver carrito</span>
+                        </a>
+                        </li>
+                    </ul>
+                </li><!-- End categorias Nav -->
+
                 <li class="nav-heading">Páginas</li>
 
                 <li class="nav-item">
@@ -183,8 +201,6 @@
                     <i class="bi bi-gear"></i>
                     <span>Ajustes de cuenta</span>
                 </a>
-                </li><!-- End Profile Page Nav -->
-
             </ul>
         </aside><!-- End Sidebar-->
         <main id="main" class="main">

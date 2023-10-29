@@ -39,11 +39,11 @@
                         <td scope="row">{{ $producto->id }}</td>
                         <td>
                             <a href="{{route('producto.show',$producto)}}" title="Inspeccionar producto">
-                                {{ $producto->nombre }}
+                                {{ $producto->name }}
                             </a>
                             <small class="d-block">{{ $producto->descripcion }}</small>
                         </td>
-                        <td>${{ $producto->precio }}</td>
+                        <td>${{ $producto->price }}</td>
                         <td>{{ $producto->unidades }}</td>
                         <td>{{ $producto->marca }}</td>                        
                         <td>{{ $producto->categoria->nombre}}</td>

@@ -1,5 +1,4 @@
 <x-mi-layout>
-    <div class="container" style="margin-top: 80px">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Tienda</a></li>
@@ -38,7 +37,7 @@
                 @if(\Cart::getTotalQuantity()>0)
                     <h4>{{ \Cart::getTotalQuantity()}} Producto(s) en el carrito</h4><br>
                 @else
-                    <h4>No Product(s) In Your Cart</h4><br>
+                    <h4>No hay producto(s) en tu carrito</h4><br>
                     <a href="/shop" class="btn btn-dark">Continue en la tienda</a>
                 @endif
 
@@ -50,29 +49,29 @@
                         <div class="col-lg-5">
                             <p>
                                 <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
-                                <b>Price: </b>${{ $item->price }}<br>
+                                <b>Precio: </b>${{ $item->price }}<br>
                                 <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
-                                {{--                                <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }}--}}
                             </p>
                         </div>
                         <div class="col-lg-4">
-                            <div class="row">
-                                <form action="{{ route('cart.update') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <div class="form-group row">
-                                        <input type="hidden" value="{{ $item->id}}" id="id" name="id">
-                                        <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
-                                               id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
-                                        <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i class="fa fa-edit"></i></button>
-                                    </div>
-                                </form>
-                                <form action="{{ route('cart.remove') }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn btn-dark btn-sm" style="margin-right: 10px;"><i class="fa fa-trash"></i></button>
-                                </form>
+                            <div style="display:flex" >
+                                
+                                    <form action="{{ route('cart.update') }}" method="POST">
+                                        {{ csrf_field() }}
+                                            <input type="hidden" value="{{ $item->id}}" id="id" name="id">
+                                            <input type="number" class="form-control form-control-sm d-inline" value="{{ $item->quantity }}"
+                                                id="quantity" name="quantity" style="width: 70px;">
+                                            <button class="btn btn-secondary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i></button>
+                                    </form>
+                                    <form action="{{ route('cart.remove') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" value="{{ $item->id }}" id="id" name="id">
+                                        <button class="btn btn-dark btn-sm"><i class="fa fa-trash "></i></button>
+                                    </form> 
+                            
                             </div>
                         </div>
+                            
                     </div>
                     <hr>
                 @endforeach
@@ -90,7 +89,7 @@
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
-                    <br><a href="/shop" class="btn btn-dark">Continue en la tienda</a>
+                    <a href="/shop" class="btn btn-dark">Continue en la tienda</a>
                     <a href="/checkout" class="btn btn-success">Proceder al Checkout</a>
                 </div>
             @endif
@@ -100,6 +99,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    </div>
 </x-mi-layout>
 
