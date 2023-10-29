@@ -18,11 +18,13 @@ class ProductoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre'=>fake()->unique()->word(),
+            'name'=>fake()->unique()->word(),
+            'slug'=>fake()->word(),
             'descripcion'=>fake()->sentence(),
-            'precio'=>fake()->randomFloat(2, 0.01, 1000.00),
+            'price'=>fake()->randomFloat(2, 0.01, 1000.00),
             'unidades'=>fake()->randomNumber(3),
             'marca'=>fake()->unique()->word(),
+            'image_path'=>fake()->randomElement(['macbook-pro.png','iphone-11-pro.png']),
             'categoria_id'=> Categoria::inRandomOrder()->first()->id
         ];
     }

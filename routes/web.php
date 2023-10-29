@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CartController;
+
 
 
 /*
@@ -29,7 +31,16 @@ Route::middleware('auth')->group(function() {
     });    
     Route::get('/logproducto', [ProductoController::class, 'log']);
 
+    Route::get('/shop', [CartController::class, 'shop'])->name('shop');
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart.index');
+    Route::post('/add', [CartController::class, 'add'])->name('cart.store');
+    Route::post('/update', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
+
 });
+
+
 
 Route::get('/', function () {
     return view('landing');
