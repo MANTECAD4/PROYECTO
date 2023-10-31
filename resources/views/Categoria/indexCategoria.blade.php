@@ -24,7 +24,6 @@
                       <th scope="col">#</th>
                       <th scope="col">NOMBRE</th>
                       <th scope="col">DESCRIPCIÓN</th>
-                      <th scope="col">USUARIO</th>
                       <th scope="col"></th>
                       <th scope="col"></th>
                     </tr>
@@ -39,7 +38,6 @@
                               </a>
                           </td>
                           <td>{{ $categoria->descripcion }}</td>
-                          <td>{{ $categoria->user->name}}</td>
                           <td><a href="{{route('categoria.destroy',$categoria)}}" class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>
                           <td>
                             <form action="" method="POST">

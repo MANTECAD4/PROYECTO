@@ -63,7 +63,7 @@
                                         {{ csrf_field() }}
                                             <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                             <input type="number" class="form-control form-control-sm d-inline" value="{{ $item->quantity }}"
-                                                id="quantity" name="quantity" min="1" max="{{$item->attributes->unidades}}" style="width: 70px;">
+                                                id="quantity" name="quantity" min="1" max="{{$item->attributes->unidades-1}}" style="width: 70px;">
                                             <button class="btn btn-secondary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i></button>
                                     </form>
                                     <form action="{{ route('cart.remove') }}" method="POST">
@@ -95,7 +95,7 @@
                         </div>
                     <div style="display:flex" >    
                         <a href="/shop" class="btn btn-dark"><i class="bi bi-shop me-1"></i>Continue en la tienda</a>
-                        <form action="{{ route('venta.checkout') }}" method="POST">
+                        <form action="{{ route('venta.store') }}" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" value="{{ \Cart::getTotal() }}" id="total" name="total">
                             <button class="btn btn-success mx-2"><i class="bx bx-credit-card me-1"></i>Confirmar compra</button>

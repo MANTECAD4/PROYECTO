@@ -31,7 +31,7 @@
                     @foreach ($ventas as $venta)   
                       <tr>
                           <td>
-                              <a href="#" title="Inspeccionar venta">
+                              <a href="{{route('venta.show',$venta)}}" title="Inspeccionar venta">
                                   {{ $venta->id }}
                               </a>
                           </td>

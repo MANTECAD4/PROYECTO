@@ -25,6 +25,12 @@
                                 <div class="card-body">
                                     <a href=""><h6 class="card-title">{{ $pro->name }}</h6></a>
                                     <p>${{ $pro->price }}</p>
+                                    @if ($pro->unidades <=1)
+                                    <div class="card-footer text-center" style="background-color: white;"> 
+                                        <i class="bx bx-x mx-1"></i>
+                                        <p class="d-inline"> Sin inventario</p>
+                                    </div>
+                                    @elseif (!\Cart::get($pro->id))
                                     <form action="{{ route('cart.store') }}" method="POST">
                                         {{ csrf_field() }}
                                         <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
@@ -34,13 +40,20 @@
                                         <input type="hidden" value="{{ $pro->unidades }}" id="unidades" name="unidades">
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <div class="card-footer" style="background-color: white;">
-                                              <div class="row">
+                                            <div class="row">
                                                 <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
                                                     <i class="fa fa-shopping-cart"></i> Agregar al carrito
                                                 </button>
                                             </div>
                                         </div>
                                     </form>
+                                
+                                    @else
+                                        <div class="card-footer text-center" style="background-color: white;"> 
+                                            <i class="bx bx-check mx-1"></i>
+                                            <p class="d-inline"> Item ya añadido</p>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

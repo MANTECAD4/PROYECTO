@@ -29,7 +29,6 @@
                                     <th scope="col">PRECIO</th>
                                     <th scope="col">UNIDADES</th>
                                     <th scope="col">MARCA</th>
-                                    <th scope="col">CATEGORÍA</th>
                                   </tr>
                                 </thead>
                                 <tbody>
@@ -38,13 +37,12 @@
                                         <td scope="row">{{ $producto->id }}</td>
                                         <td>
                                             <a href="{{route('producto.show',$producto)}}" title="Inspeccionar producto">
-                                                {{ $producto->nombre }}
+                                                {{ $producto->name }}
                                             </a>
                                         </td>
-                                        <td>${{ $producto->precio }}</td>
+                                        <td>${{ $producto->price }}</td>
                                         <td>{{ $producto->unidades }}</td>
                                         <td>{{ $producto->marca }}</td>                        
-                                        <td>{{ $producto->categoria->nombre}}</td>
                                     </tr>
                                   @endforeach
                                 </tbody>

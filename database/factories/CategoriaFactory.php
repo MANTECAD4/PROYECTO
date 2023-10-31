@@ -20,7 +20,6 @@ class CategoriaFactory extends Factory
         return [
             'nombre'=>fake()->unique()->word(),
             'descripcion'=>fake()->sentence(),
-            'user_id' => User::factory()
         ];
     }
 }

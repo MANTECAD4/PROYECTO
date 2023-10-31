@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('categorias', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->after('id');
+        Schema::create('producto_venta', function (Blueprint $table) {
+            $table->foreignId('producto_id')->constrained('productos');
+            $table->foreignId('venta_id')->constrained('ventas');
+            $table->integer('cantidad');
+            $table->decimal('subtotal', 10, 2);
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('categorias', function (Blueprint $table) {
-            $table->dropColumn('user_id');
-        });
+        Schema::dropIfExists('producto_venta');
     }
 };

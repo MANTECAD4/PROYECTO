@@ -36,8 +36,9 @@ Route::middleware('auth')->group(function() {
     Route::post('/update', [CartController::class, 'update'])->name('cart.update');
     Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
-    Route::post('/checkout', [VentaController::class, 'checkout'])->name('venta.checkout');
+    Route::post('/store', [VentaController::class, 'store'])->name('venta.store');
     Route::get('/ventas', [VentaController::class, 'index'])->name('venta.index');
+    Route::get('/ventas/{venta}', [VentaController::class, 'show'])->name('venta.show');
 
 });
 
