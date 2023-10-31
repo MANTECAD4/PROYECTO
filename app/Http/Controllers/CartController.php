@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 
+
 class CartController extends Controller
 {
     public function shop()
@@ -51,4 +52,5 @@ class CartController extends Controller
         \Cart::clear();
         return redirect()->route('cart.index');
     }
+
 }

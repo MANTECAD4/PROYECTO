@@ -4,8 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CartController;
-
-
+use App\Http\Controllers\VentaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +36,8 @@ Route::middleware('auth')->group(function() {
     Route::post('/update', [CartController::class, 'update'])->name('cart.update');
     Route::post('/remove', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/clear', [CartController::class, 'clear'])->name('cart.clear');
+    Route::post('/checkout', [VentaController::class, 'checkout'])->name('venta.checkout');
+    Route::get('/ventas', [VentaController::class, 'index'])->name('venta.index');
 
 });
 

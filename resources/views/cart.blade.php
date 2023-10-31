@@ -1,7 +1,7 @@
 <x-mi-layout>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Tienda</a></li>
+                <li class="breadcrumb-item"><a href="/shop">Tienda</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Cart</li>
             </ol>
         </nav>
@@ -45,7 +45,8 @@
                     
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="/images/{{ $item->attributes->image }}" class="img-thumbnail" width="200" height="200">
+                            <img src="/images/{{ $item->attributes->image ? $item->attributes->image : 'default.png' }}" class="img-thumbnail" width="200" height="200">
+
                         </div>
                         <div class="col-lg-5">
                             <p>
@@ -80,19 +81,26 @@
                 @if(count($cartCollection)>0)
                     <form action="{{ route('cart.clear') }}" method="POST">
                         {{ csrf_field() }}
-                        <button class="btn btn-secondary btn-md">Borrar Carrito</button> 
+                        <button class="btn btn-secondary btn-md"><i class="ri-delete-bin-line mx-1"></i>Borrar Carrito</button> 
                     </form>
                 @endif
             </div>
             @if(count($cartCollection)>0)
                 <div class="col-lg-5">
-                    <div class="card">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
-                        </ul>
+                    
+                        <div class="card">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
+                            </ul>
+                        </div>
+                    <div style="display:flex" >    
+                        <a href="/shop" class="btn btn-dark"><i class="bi bi-shop me-1"></i>Continue en la tienda</a>
+                        <form action="{{ route('venta.checkout') }}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="hidden" value="{{ \Cart::getTotal() }}" id="total" name="total">
+                            <button class="btn btn-success mx-2"><i class="bx bx-credit-card me-1"></i>Confirmar compra</button>
+                        </form> 
                     </div>
-                    <a href="/shop" class="btn btn-dark">Continue en la tienda</a>
-                    <a href="/checkout" class="btn btn-success">Proceder al Checkout</a>
                 </div>
             @endif
         </div>

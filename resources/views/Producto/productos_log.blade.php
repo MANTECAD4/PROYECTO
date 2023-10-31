@@ -32,7 +32,7 @@
                         <tr>
                             <td scope="row">{{ $registro->user->name}}</td>
                             <td scope="row">{{ $registro->updated_at }}</td>
-                            <td scope="row">{{ $registro->producto->nombre }}</td>
+                            <td scope="row">{{ $registro->producto->name }}</td>
                         </tr>
                       @endforeach
                     </tbody>

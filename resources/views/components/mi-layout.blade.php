@@ -190,6 +190,9 @@
                         <a href="/cart">
                             <i class="bi bi-circle"></i><span>Ver carrito</span>
                         </a>
+                        <a href="/ventas">
+                            <i class="bi bi-circle"></i><span>Ver historial de ventas</span>
+                        </a>
                         </li>
                     </ul>
                 </li><!-- End categorias Nav -->
