@@ -30,13 +30,13 @@
                     @endif
                     
                     <!-- Create Post Form -->
-                    <form action="/empleado" method="POST" class="row g-3">
+                    <form action="{{route('empleado.store')}}" method="POST" class="row g-3">
                         @csrf <!-- Agrega el token CSRF -->
 
                         <div class="col-md-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="{{old('name')}}" required>
-                                <label for="name">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{old('nombre')}}" required>
+                                <label for="nombre">Nombre</label>
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <label for="fecha_nac" class="col-sm-3  col-form-label">Fecha de nacimiento</label>
                                 <div class="col">
-                                    <input type="date" id="fecha_nac" name="fecha_nac" class="form-control">
+                                    <input type="date" id="fecha_nac" name="fecha_nac" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Género</label>
                                 <div class="col">
-                                    <select class="form-select" id="genero" name="genero" aria-label="Default select example">
+                                    <select class="form-select" id="genero" name="genero" aria-label="Default select example" required>
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
                                     </select>
@@ -87,8 +87,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="password1" name="password1" placeholder="Contraseña"  required>
-                                <label for="password1">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña"  required>
+                                <label for="password">Contraseña</label>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -14,7 +16,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleado::all();
-        return view('empleado/indexempleado', compact('empleados'));
+        return view('empleado/indexEmpleado', compact('empleados'));
     }
 
     /**
@@ -30,13 +32,32 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            
+        $errores = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'nullable|string|max:20',
+            'correo' => 'required|email|max:255|unique:users,email',
+            'sueldo' => 'numeric|min:1',
+            'fecha_nac' => 'required|date',
+            'direccion' => 'required|string|max:255',
+            'password' => 'required|min:8',
+            'password2' => 'required|same:password',
         ]);
-        User::create($request->all());
-        Empleado::create($request->all());
+        try
+        {
+            DB::beginTransaction();
+            $usuario = User::create(['name' => $request->nombre,'email' => $request->correo,'password' => Hash::make($request->password),'type_user' => 'vendedor']);
+            $request->merge(['user_id' => $usuario->id]); 
+            Empleado::create($request->except(['nombre', 'correo', 'password', 'password2','_token', '_method']));
+            
+            DB::commit(); 
+            return redirect()->route('empleado.index'); 
+        } 
+        catch (\Exception $e) 
+        {
+            DB::rollBack(); 
+            return redirect()->route('empleado.create')->withErrors($errores)->withInput();
+        }
 
-        return redirect('/producto');
     }
 
     /**
