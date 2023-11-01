@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+
+use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VentaController;
 
@@ -19,6 +21,7 @@ use App\Http\Controllers\VentaController;
 
 Route::middleware('auth')->group(function() {
     Route::resource('producto',ProductoController::class);  
+    Route::resource('empleado',EmpleadoController::class);  
     Route::resource('categoria', CategoriaController::class)->parameters([
         'categoria' => 'categoria'
     ]);

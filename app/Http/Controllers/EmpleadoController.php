@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -12,7 +13,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        $empleados = Empleado::all();
+        return view('empleado/indexempleado', compact('empleados'));
     }
 
     /**
@@ -20,7 +22,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('empleado/createEmpleado');
     }
 
     /**
@@ -28,7 +30,13 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            
+        ]);
+        User::create($request->all());
+        Empleado::create($request->all());
+
+        return redirect('/producto');
     }
 
     /**
@@ -37,6 +45,7 @@ class EmpleadoController extends Controller
     public function show(Empleado $empleado)
     {
         //
+        return view('empleado/showEmpleado', compact('empleado'));
     }
 
     /**
@@ -45,6 +54,8 @@ class EmpleadoController extends Controller
     public function edit(Empleado $empleado)
     {
         //
+        return view('empleado/editEmpleado', compact('empleado'));
+
     }
 
     /**
@@ -52,7 +63,7 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+    
     }
 
     /**
@@ -60,6 +71,7 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        $empleado->delete();
+        return redirect()->route('empleado.index');
     }
 }
