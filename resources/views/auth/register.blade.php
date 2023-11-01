@@ -8,7 +8,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <x-input  type="hidden" value="administrador" id="type_user" name="type_user"/>
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />

@@ -32,7 +32,6 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
 
-        $request->merge(['user_id' => Auth::id()]);
         Categoria::create($request->all());
 
         //$categoria = new Categoria();

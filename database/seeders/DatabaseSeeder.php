@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Daniel Martínez',
             'email' => 'ejemplo@gmail.com',
             'password' => bcrypt('password'),
+            'type_user' => 'administrador'
             // Otros campos del usuario si son necesarios
         ]);
     }
