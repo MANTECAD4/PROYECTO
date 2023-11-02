@@ -20,10 +20,24 @@ class DatabaseSeeder extends Seeder
             ProductoSeeder::class,
         ]);
         User::create([
-            'name' => 'Daniel Martínez',
-            'email' => 'ejemplo@gmail.com',
+            'name' => 'Administrador Default',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
             'type_user' => 'administrador'
+            // Otros campos del usuario si son necesarios
+        ]);
+        User::create([
+            'name' => 'Vendedor Default',
+            'email' => 'vendedor@gmail.com',
+            'password' => bcrypt('password'),
+            'type_user' => 'vendedor'
+            // Otros campos del usuario si son necesarios
+        ]);
+        User::create([
+            'name' => 'Cliente Default',
+            'email' => 'cliente@gmail.com',
+            'password' => bcrypt('password'),
+            'type_user' => 'cliente'
             // Otros campos del usuario si son necesarios
         ]);
     }

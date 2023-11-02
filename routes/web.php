@@ -45,10 +45,15 @@ Route::middleware('auth')->group(function() {
 
 });
 
-
+Route::get('/uwu', function () {
+    return view('uwu');
+});
+Route::get('/iniciocliente', function () {
+    return view('landing');
+});
 
 Route::get('/', function () {
-    return view('landing');
+    return view('landing_page');
 });
 Route::get('/perfil', function () {
     return view('editarPerfil');
