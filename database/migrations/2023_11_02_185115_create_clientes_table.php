@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('fecha_nac');
             $table->string('telefono');
             $table->string('direccion');
-            $table->string('datos_banco');
         });
     }
 

@@ -64,7 +64,7 @@
                     <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
 
                     @if (Route::has('register'))
-                        <a href="#" class="btn-get-started animate__animated animate__fadeInUp scrollto">Registrate</a>
+                        <a href="/cliente/create" class="btn-get-started animate__animated animate__fadeInUp scrollto">Registrate</a>
                     @endif
                 @endauth
               @endif

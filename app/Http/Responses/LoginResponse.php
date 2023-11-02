@@ -8,8 +8,8 @@ class LoginResponse implements ContractsLoginResponse
         if (auth()->user()->type_user == 'administrador') {
             return redirect('/inicio');
         }
-        else{
-            return redirect('/uwu');
+        else if (auth()->user()->type_user == 'cliente'){
+            return redirect()->route('cliente.index');
         }   
     }
 }
