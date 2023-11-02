@@ -3,7 +3,7 @@
         <h1>Inventario de productos</h1>
         <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="/inicio">Inicio</a></li>
             <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
             <li class="breadcrumb-item ">Modificar producto</li>
             <li class="breadcrumb-item active">Editar {{$producto->nombre}}</li>

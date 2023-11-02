@@ -84,7 +84,43 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
+        $errores = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'nullable|string|max:20',
+            'correo' => 'required|email|max:255|unique:users,email,' . $empleado->user_id,
+            'sueldo' => 'numeric|min:1',
+            'fecha_nac' => 'required|date',
+            'direccion' => 'required|string|max:255',
+            'password' => 'nullable|min:8',
+            'password2' => 'same:password',
+        ]);
+        try
+        {
+            DB::beginTransaction();
+            $user = User::find($empleado->user_id);
+            $user->name = $request->nombre;
+            $user->email = $request->correo;
+            if ($request->filled('password')) 
+            {
+                $user->password = Hash::make($request->password);
+            }            
+            $user->save();
     
+            $empleado->telefono = $request->telefono;
+            $empleado->sueldo = $request->sueldo;
+            $empleado->fecha_nac = $request->fecha_nac;
+            $empleado->genero = $request->genero;
+            $empleado->direccion = $request->direccion;
+            $empleado->save();
+            DB::commit(); 
+            return redirect()->route('empleado.index'); 
+        } 
+        catch (\Exception $e) 
+        {
+            DB::rollBack(); 
+            return redirect()->route('empleado.edit')->withErrors($errores)->withInput();
+        }
+        return redirect()->route('empleado.index');
     }
 
     /**

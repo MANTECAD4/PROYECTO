@@ -74,7 +74,6 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="/perfil">
                         <i class="bi bi-gear"></i>
@@ -144,6 +143,24 @@
                         </li>
                     </ul>
                 </li><!-- End Productos Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#empleados-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-file-earmark-person"></i><span>Empleados</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="empleados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                        <a href="{{route('empleado.index')}}">
+                            <i class="bi bi-circle"></i><span>Ver empleados</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a href="{{route('empleado.create')}}">
+                            <i class="bi bi-circle"></i><span>Dar de alta empleados</span>
+                        </a>
+                        </li>
+                    </ul>
+                </li><!-- End categorias Nav -->
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#categorias-nav" data-bs-toggle="collapse" href="#">
