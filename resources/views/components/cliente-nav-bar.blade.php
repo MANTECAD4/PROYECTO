@@ -23,13 +23,6 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/vendor2/style.css') }}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: VendiMarket
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/VendiMarket-bootstrap-business-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
   <!--No quitar-->
   @livewireScripts
 </head>
@@ -40,83 +33,48 @@
       <div class="container d-flex align-items-center">
 
         <div class="logo me-auto">
-          <h1><a href="index.html">VendiMarket</a></h1>
+          <h1>VendiMarket</h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
-        <nav id="navbar" class="navbar order-last order-lg-0">
-          <ul>
-            <li><a class="nav-link scrollto active" href="/cliente#inicio">Inicio</a></li>
-            <li><a class="nav-link scrollto" href="/cliente#about">About</a></li>
-            <li><a class="nav-link scrollto" href="/cliente#servicios">Servicios</a></li>
-            <li><a class="nav-link scrollto " href="/cliente#portfolio">Catálogo</a></li>
-            <li><a class="nav-link scrollto" href="/cliente#testimonials">Testimonios</a></li>
-            <li><a class="nav-link scrollto" href="/cliente#contact">Contacto</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="nav-link scrollto active" href="/cliente#inicio">Inicio</a></li>
+              <li><a class="nav-link scrollto" href="/cliente#about">About</a></li>
+              <li><a class="nav-link scrollto" href="/cliente#servicios">Servicios</a></li>
+              <li><a class="nav-link scrollto " href="/cliente#portfolio">Catálogo</a></li>
+              <li><a class="nav-link scrollto" href="/cliente#testimonials">Testimonios</a></li>
+              <li><a class="nav-link scrollto" href="/cliente#contact">Contacto</a></li>
+              <li class="dropdown"><a href="#"><span>Mi perfil</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li>
+                    
+                    <a  class="text-center" href="{{ route('cliente.edit',$cliente->id) }}">
+                      <span>Ajustes de cuenta</span>
+                    </a>
+                  </li>
+                  <li>
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                      @csrf
+                      <a  class="text-center" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                          <span>Cerrar sesión</span>
+                      </a>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
 
-        <div class="header-social-links d-flex align-items-center">
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="linkedin"><i class="bi bi-tiktok"></i></i></a>
+          <div class="header-social-links d-flex align-items-center">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-tiktok"></i></i></a>
+          </div>
         </div>
-        <li class="nav-item dropdown pe-3">
-
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">Mi Perfil</span>
-                    </a><!-- End Profile Iamge Icon -->
-
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <li class="dropdown-header">
-                        <h6>{{ auth()->user()->name }}</h6>
-                        <span>{{ auth()->user()->type_user }}</span>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="/perfil">
-                        <i class="bi bi-gear"></i>
-                        <span>Ajustes de cuenta</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                        <i class="bi bi-question-circle"></i>
-                        <span>Ayuda</span>
-                        </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}" x-data>
-                            @csrf
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>
-                                    Cerrar sesión
-                                </span>
-                            </a>
-                        </form>
-                    </li>
-
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
-
-      </div>
     </header><!-- End Header -->
         <main id="main" class="main">
             {{$slot}}

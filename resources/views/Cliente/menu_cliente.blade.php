@@ -3,7 +3,7 @@
     <!-- ======= inicio Section ======= -->
   <section id="inicio" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1>Bienvenido a <span>VendiMarket</span></h1>
+      <h1>Bienvenido, <span>{{auth()->user()->name}}</span></h1>
       <h2>Bienvenido a VendiMarket, donde la frescura y la variedad se encuentran en cada pasillo. Descubre tus sabores favoritos y abastece tu vida con lo mejor en abarrotes.
          ¡Satisfacemos tu gusto por la calidad!</h2>
       <a href="#about" class="btn-get-started scrollto">¡Empecemos!</a>

@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Empleado;
 use App\Models\User;
+use App\Models\Cliente;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,19 +28,37 @@ class DatabaseSeeder extends Seeder
             'type_user' => 'administrador'
             // Otros campos del usuario si son necesarios
         ]);
-        User::create([
+        $vendedor = User::create([
             'name' => 'Vendedor Default',
             'email' => 'vendedor@gmail.com',
             'password' => bcrypt('password'),
             'type_user' => 'vendedor'
             // Otros campos del usuario si son necesarios
         ]);
-        User::create([
+        $cliente = User::create([
             'name' => 'Cliente Default',
             'email' => 'cliente@gmail.com',
             'password' => bcrypt('password'),
             'type_user' => 'cliente'
             // Otros campos del usuario si son necesarios
         ]);
+
+        Empleado::create([
+            'user_id' => $vendedor->id,
+            'genero' => 'M',
+            'fecha_nac' => '1989-12-13',
+            'telefono' => '5555555555',
+            'direccion' => 'Av Default 123',
+            'sueldo' => 100,
+        ]);
+
+        Cliente::create([
+            'user_id' => $cliente->id,
+            'genero' => 'M',
+            'fecha_nac' => '1989-12-13',
+            'direccion' => 'Av Default 123',
+            'telefono' => '5555555555',
+        ]);
     }
 }
+ 

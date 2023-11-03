@@ -22,7 +22,8 @@ use App\Http\Controllers\VentaController;
 Route::middleware('auth')->group(function() {
     Route::resource('producto',ProductoController::class);  
     Route::resource('empleado',EmpleadoController::class);  
-
+    
+ 
     Route::resource('categoria', CategoriaController::class)->parameters([
         'categoria' => 'categoria'
     ]);
@@ -45,12 +46,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/ventas/{venta}', [VentaController::class, 'show'])->name('venta.show');
 
 });
-Route::get('/cliente/create', [ClienteController::class, 'create'])->name('cliente.create');
-Route::post('/cliente', [ClienteController::class, 'store'])->name('cliente.store');
-Route::get('/cliente', [ClienteController::class, 'index'])->name('cliente.index');
-
-
-
+Route::resource('cliente', ClienteController::class);
 
 Route::get('/uwu', function () {
     return view('uwu');
