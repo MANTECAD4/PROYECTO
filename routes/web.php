@@ -45,21 +45,16 @@ Route::middleware('auth')->group(function() {
     Route::get('/ventas', [VentaController::class, 'index'])->name('venta.index');
     Route::get('/ventas/{venta}', [VentaController::class, 'show'])->name('venta.show');
 
+    Route::get('/perfil', function () {
+        return view('editarPerfil');
+    });
+
 });
 Route::resource('cliente', ClienteController::class);
 
-Route::get('/uwu', function () {
-    return view('uwu');
-});
-Route::get('/iniciocliente', function () {
-    return view('landing');
-});
 
 Route::get('/', function () {
     return view('landing_page');
-});
-Route::get('/perfil', function () {
-    return view('editarPerfil');
 });
 
 Route::middleware([

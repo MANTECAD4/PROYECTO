@@ -31,23 +31,22 @@
                                         <p class="d-inline"> Sin inventario</p>
                                     </div>
                                     @elseif (!\Cart::get($pro->id))
-                                    <form action="{{ route('cart.store') }}" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
-                                        <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
-                                        <input type="hidden" value="{{ $pro->price }}" id="price" name="price">
-                                        <input type="hidden" value="{{ $pro->image_path }}" id="img" name="img">
-                                        <input type="hidden" value="{{ $pro->unidades }}" id="unidades" name="unidades">
-                                        <input type="hidden" value="1" id="quantity" name="quantity">
-                                        <div class="card-footer" style="background-color: white;">
-                                            <div class="row">
-                                                <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
-                                                    <i class="fa fa-shopping-cart"></i> Agregar al carrito
-                                                </button>
+                                        <form action="{{ route('cart.store') }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" value="{{ $pro->id }}" id="id" name="id">
+                                            <input type="hidden" value="{{ $pro->name }}" id="name" name="name">
+                                            <input type="hidden" value="{{ $pro->price }}" id="price" name="price">
+                                            <input type="hidden" value="{{ $pro->image_path }}" id="img" name="img">
+                                            <input type="hidden" value="{{ $pro->unidades }}" id="unidades" name="unidades">
+                                            <input type="hidden" value="1" id="quantity" name="quantity">
+                                            <div class="card-footer" style="background-color: white;">
+                                                <div class="row">
+                                                    <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
+                                                        <i class="fa fa-shopping-cart"></i> Agregar al carrito
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                
+                                        </form>
                                     @else
                                         <div class="card-footer text-center" style="background-color: white;"> 
                                             <i class="bx bx-check mx-1"></i>

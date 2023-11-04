@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
-
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -15,8 +15,15 @@ class CartController extends Controller
 
     public function cart()  {
         $cartCollection = \Cart::getContent();
-
-        return view('cart')->with(['cartCollection' => $cartCollection]);
+        if(Auth::user()->type_user == 'cliente')
+        {
+            return view('cartCliente')->with(['cartCollection' => $cartCollection]);
+        }
+        else
+        {
+            return view('cart')->with(['cartCollection' => $cartCollection]);
+        }
+        
     }
     public function remove(Request $request){
         \Cart::remove($request->id);

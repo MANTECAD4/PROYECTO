@@ -257,9 +257,30 @@
             <div class="col-lg-4 col-md-6 portfolio-item filter-{{$producto->categoria->nombre}} wow fadeInUp">
                 <div class="portfolio-wrap">
                 <figure>
-                    <img src="/images/{{$producto->image_path}}" class="img-fluid" alt="">
-                    <a href="/images/{{$producto->image_path}}" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Nombre del producto: {{$producto->name}}"><i class="bx bx-plus"></i></a>
-                    <a href="{{route('producto.show',$producto)}}" class="link-details" title="Más Detalles"><i class="bx bx-link"></i></a>
+                  <img src="/images/{{$producto->image_path}}" class="img-fluid" alt="">
+                  @if ($producto->unidades <=1)
+                    <div class="link-preview" title="No hay unidades de este producto por el momento"><i class="bi bi-x-lg"></i></div>
+                  @elseif (!\Cart::get($producto->id))
+                      <form action="{{ route('cart.store') }}" method="POST">
+                        {{ csrf_field() }}
+                          <input type="hidden" value="{{ $producto->id }}" id="id" name="id">
+                          <input type="hidden" value="{{ $producto->name }}" id="name" name="name">
+                          <input type="hidden" value="{{ $producto->price }}" id="price" name="price">
+                          <input type="hidden" value="{{ $producto->image_path }}" id="img" name="img">
+                          <input type="hidden" value="{{ $producto->unidades }}" id="unidades" name="unidades">
+                          <input type="hidden" value="1" id="quantity" name="quantity">
+                          <div class="card-footer" style="background-color: white;">
+                              <div class="row">
+                                  <button class="link-preview " class="tooltip-test" title="Añadir a carrito">
+                                      <i class="bx bx-cart"></i></a>
+                                  </button>
+                              </div>
+                          </div>
+                      </form>
+                    @else
+                      <a href="/images/{{$producto->image_path}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Ya agregaste este producto a tu carrito"><i class="bx bx-check"></i></a>
+                    @endif
+                  <a href="{{route('producto.show',$producto)}}" class="link-details" title="Más Detalles"><i class="bx bx-link"></i></a>
                 </figure>
 
                 <div class="portfolio-info">
@@ -351,7 +372,7 @@
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
+    <section id="contact" class="contact section-bg" style="background-color: white">
       <div class="container">
 
         <div class="section-title">
@@ -391,5 +412,70 @@
 
       </div>
     </section><!-- End Contact Section -->
+
+    <footer id="footer">
+
+      <div class="footer-top ">
+        <div class="container">
+          <div class="row">
+  
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>VendiMarket</h3>
+              <p>
+                Blvd. Gral. Marcelino García Barragán 1421<br>
+                44430 Guadalajara, Jal.<br>
+                México <br><br>
+                <strong>Télefono:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+            </div>
+  
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Links</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a class="nav-link scrollto active" href="#inicio">Inicio</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a class="nav-link scrollto active" href="#about">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a class="nav-link scrollto active" href="#servicios">Servicios</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Términos de servicio</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidad</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Servicios relacionados</h4>
+              <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Diseño Web</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Administración</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Venta al por mayor</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>BoostrapMade</h4>
+              <p>Este proyecto fue estilizado usando los recursos del sitio web BootstrapMade. Checa el resto de sus plantillas!</p>
+              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container d-md-flex py-4">
+  
+        <div class="me-md-auto text-center text-md-start">
+          <div class="copyright">
+            &copy; Copyright <strong><span>VendiMarket</span></strong>. All Rights Reserved
+          </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 </x-cliente-nav-bar>

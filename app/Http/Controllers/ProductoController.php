@@ -55,7 +55,15 @@ class ProductoController extends Controller
     public function show(Producto $producto)
     {
         //
-        return view('producto/showProducto', compact('producto'));
+        if(Auth::user()->type_user == 'cliente')
+        {
+            return view('producto/showProductoCliente', compact('producto'));
+        }
+        else
+        {
+            return view('producto/showProducto', compact('producto'));
+        }
+        
     }
 
     /**
