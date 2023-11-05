@@ -136,6 +136,7 @@ class EmpleadoController extends Controller
     public function destroy(Empleado $empleado)
     {
         $this->authorize('delete', $empleado);
+        // FALTA ELIMINAR EL EMPLEADO DE USERS
         $empleado->delete();
         return redirect()->route('empleado.index');
     }
