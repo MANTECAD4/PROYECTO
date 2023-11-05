@@ -31,62 +31,63 @@
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
+        @if (Route::has('login'))
 
-          <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>ADMINISTRADOR</span></h2>
-                <p class="animate__animated animate__fadeInUp">Inicia sesión como administrador te dará acceso a la página administrativa donde se gestionan todos los procesos internos del negocio!</p>
-                @if (Route::has('login'))
-                @auth
-                @else
-                    <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Registrate</a>
-                    @endif
-                @endauth
-              @endif
+          @auth
+            <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
+              <div class="carousel-container">
+                <div class="carousel-content">
+                  <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>{{auth()->user()->name}}</span></h2>
+                  <p class="animate__animated animate__fadeInUp">Sesión de {{auth()->user()->type_user}} abierta.</p>
+                     @if(auth()->user()->type_user == 'administrador' or auth()->user()->type_user == 'vendedor')
+                        <a href="{{ url('/inicio') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Entrar al sistema</a>
+                      @else
+                        <a href="{{ url('/cliente') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Entrar al sistema</a>
+                      @endif 
+                </div>
               </div>
             </div>
-          </div>
+            
+          @else
+              <!-- Slide 1 -->
+              <div class="carousel-item active" style="background-image: url(assets/img/slide/admin.jpg);">
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>ADMINISTRADOR</span></h2>
+                    <p class="animate__animated animate__fadeInUp">Inicia sesión como administrador te dará acceso a la página administrativa donde se gestionan todos los procesos internos del negocio!</p>
+                      <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
+                      <a href="{{ route('register') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Registrate</a>
+                  </div>
+                </div>
+              </div>
 
-          <!-- Slide 2 -->
-          <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-2.jpg);">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>CLIENTE</span></h2>
-                <p class="animate__animated animate__fadeInUp">Inicia sesión como cliente te dará acceso a la página donde los clientes ven los productos!</p>
-                @if (Route::has('login'))
-                @auth
-                @else
-                    <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
+              <!-- Slide 2 -->
+              <div class="carousel-item active" style="background-image: url(assets/img/slide/cliente.jpg);">
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>CLIENTE</span></h2>
+                    <p class="animate__animated animate__fadeInUp">Inicia sesión como cliente te dará acceso a la página donde los clientes ven los productos!</p>
+                        <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
 
-                    @if (Route::has('register'))
                         <a href="{{route('cliente.create')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Registrate</a>
-                    @endif
-                @endauth
-              @endif
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <!-- Slide 3 -->
-          <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-3.jpg);">
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>VENDEDOR</span></h2>
-                <p class="animate__animated animate__fadeInUp">Inicia sesión como vendedor te dará acceso a la página administrativa donde se gestionan los principales procesos internos del negocio!</p>
-                @if (Route::has('login'))
-                @auth
-                @else
-                    <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
-                @endauth
-              @endif
+              <!-- Slide 3 -->
+              <div class="carousel-item active" style="background-image: url(assets/img/slide/vendedor.jpg);">
+                <div class="carousel-container">
+                  <div class="carousel-content">
+                    <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>VENDEDOR</span></h2>
+                    <p class="animate__animated animate__fadeInUp">Inicia sesión como vendedor te dará acceso a la página administrativa donde se gestionan los principales procesos internos del negocio!</p>
+                        <a href="{{ route('login') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Iniciar sesión</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+          @endauth 
+        @endif
+
+          
 
 
         </div>
