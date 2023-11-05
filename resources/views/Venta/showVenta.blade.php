@@ -24,7 +24,6 @@
                             <table class="table datatable">
                                 <thead>
                                   <tr>
-                                    <th scope="col">ID VENTA</th>
                                     <th scope="col">NOMBRE</th>
                                     <th scope="col">PRECIO</th>
                                     <th scope="col">CANTIDAD</th>
@@ -34,7 +33,6 @@
                                 <tbody>
                                   @foreach ($productos_venta as $producto_venta)   
                                     <tr>
-                                        <td scope="row">{{ $producto_venta->venta_id }}</td>
                                         <td scope="row">{{ $producto_venta->producto->name }}</td>
                                         <td scope="row">{{ $producto_venta->producto->price }}</td>
                                         <td scope="row">{{ $producto_venta->cantidad }}</td>

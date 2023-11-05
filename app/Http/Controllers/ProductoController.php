@@ -58,7 +58,7 @@ class ProductoController extends Controller
     public function show(Producto $producto)
     {
         //
-        $this->authorize('view', Producto::class);
+        $this->authorize('view', $producto);
         if(Auth::user()->type_user == 'cliente')
         {
             return view('producto/showProductoCliente', compact('producto'));
@@ -76,7 +76,7 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         //
-        $this->authorize('update', Producto::class);
+        $this->authorize('update', $producto);
         $categorias = Categoria::all();
         return view('producto/editProducto', compact('producto', 'categorias'));
     }
@@ -87,9 +87,9 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         //
-        $this->authorize('update', Producto::class);
+        $this->authorize('update', $producto);
         $request->validate([
-            'name' => 'required|unique:productos,name,'. $producto->name,
+            'name' => 'required|unique:productos,name,'. $producto->id . ',id',
             'descripcion' => 'max:164',
             'price' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
@@ -116,7 +116,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        $this->authorize('delete', $producto);
         $producto->delete();
         return redirect()->route('producto.index');
     }

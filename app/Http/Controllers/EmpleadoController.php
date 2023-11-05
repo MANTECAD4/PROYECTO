@@ -70,7 +70,7 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        $this->authorize('view', Empleado::class);
+        $this->authorize('view', $empleado);
         return view('empleado/showEmpleado', compact('empleado'));
     }
 
@@ -80,7 +80,7 @@ class EmpleadoController extends Controller
     public function edit(Empleado $empleado)
     {
         //
-        $this->authorize('update', Empleado::class);
+        $this->authorize('update', $empleado);
         return view('empleado/editEmpleado', compact('empleado'));
 
     }
@@ -90,7 +90,7 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        $this->authorize('update', Empleado::class);
+        $this->authorize('update', $empleado);
         $errores = $request->validate([
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
@@ -135,7 +135,7 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        $this->authorize('delete', Empleado::class);
+        $this->authorize('delete', $empleado);
         $empleado->delete();
         return redirect()->route('empleado.index');
     }
