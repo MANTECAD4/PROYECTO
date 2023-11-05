@@ -15,7 +15,10 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        $this->authorize('viewAny', Empleado::class);
+        $empleados = Empleado::whereHas('user', function ($query) {
+            $query->where('name', '!=', 'Vendedor Default');
+        })->get();
         return view('empleado/indexEmpleado', compact('empleados'));
     }
 
@@ -24,6 +27,7 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Empleado::class);
         return view('empleado/createEmpleado');
     }
 
@@ -32,6 +36,7 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Empleado::class);
         $errores = $request->validate([
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
@@ -65,6 +70,7 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
+        $this->authorize('view', Empleado::class);
         return view('empleado/showEmpleado', compact('empleado'));
     }
 
@@ -74,6 +80,7 @@ class EmpleadoController extends Controller
     public function edit(Empleado $empleado)
     {
         //
+        $this->authorize('update', Empleado::class);
         return view('empleado/editEmpleado', compact('empleado'));
 
     }
@@ -83,6 +90,7 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
+        $this->authorize('update', Empleado::class);
         $errores = $request->validate([
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
@@ -127,6 +135,7 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
+        $this->authorize('delete', Empleado::class);
         $empleado->delete();
         return redirect()->route('empleado.index');
     }

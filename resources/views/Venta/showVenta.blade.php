@@ -33,7 +33,6 @@
                                 </thead>
                                 <tbody>
                                   @foreach ($productos_venta as $producto_venta)   
-                                 
                                     <tr>
                                         <td scope="row">{{ $producto_venta->venta_id }}</td>
                                         <td scope="row">{{ $producto_venta->producto->name }}</td>
@@ -51,7 +50,8 @@
                                 <h3>Información de la venta</h3>
                                 <ul>
                                     <li><strong>ID</strong>: {{ $venta->id }}</li>
-                                    <li><strong>Venta realizada por: </strong>{{$venta->user->name}}</li>
+                                    <li><strong>Venta realizada por: </strong>{{$venta->empleado->name}}</li>
+                                    <li><strong>Cliente: </strong>{{$venta->cliente->name}}</li>
                                     <li><strong>Total de la venta: </strong>$ {{$venta->total}}</li>
                                 </ul>
                             </div>

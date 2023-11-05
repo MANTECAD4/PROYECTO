@@ -23,7 +23,17 @@ class ClienteController extends Controller
     {
         $productos = Producto::all();
         $categorias = Categoria::all();
-        return view('cliente/menu_cliente', compact('productos', 'categorias'));
+        $clientes = Cliente::whereHas('user', function ($query) {
+            $query->where('name', '!=', 'Cliente Default');
+        })->get();
+        if(Auth::user()->type_user == 'cliente')
+        {
+            return view('cliente/menu_cliente', compact('productos', 'categorias')); 
+        }
+        else
+        {
+            return view('cliente/indexCliente', compact('clientes')); 
+        }
     }
 
     /**
@@ -43,7 +53,7 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
             'correo' => 'required|email|max:255|unique:users,email',
-            'fecha_nac' => 'required|date',
+            'fecha_nac' => 'required|date|',
             'direccion' => 'required|string|max:255',
             'password' => 'required|min:8',
             'password2' => 'required|same:password',

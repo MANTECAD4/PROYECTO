@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('empleado_id')->constrained('users');
+            $table->foreignId('cliente_id')->constrained('users');
             $table->timestamp('fecha')->useCurrent();
             $table->decimal('total', 10, 2);
         });

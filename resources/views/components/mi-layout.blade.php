@@ -146,7 +146,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#empleados-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-file-earmark-person"></i><span>Empleados</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <i class="bi bi-person-badge"></i><span>Empleados</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="empleados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
@@ -215,12 +215,20 @@
                 </li><!-- End categorias Nav -->
 
                 <li class="nav-heading">Páginas</li>
-
                 <li class="nav-item">
-                <a class="nav-link collapsed" href="/perfil">
-                    <i class="bi bi-gear"></i>
-                    <span>Ajustes de cuenta</span>
-                </a>
+                    <a class="nav-link collapsed" href="/cliente">
+                        <i class="bi bi-person"></i>
+                        <span>Ver clientes</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/perfil">
+                        <i class="bi bi-gear"></i>
+                        <span>Ajustes de cuenta</span>
+                    </a>
+                </li>
+                
             </ul>
         </aside><!-- End Sidebar-->
         <main id="main" class="main">

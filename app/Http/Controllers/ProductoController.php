@@ -17,6 +17,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Producto::class);
         $productos = Producto::all();
         return view('producto/indexproducto', compact('productos'));
 
@@ -27,6 +28,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Producto::class);
         $categorias = Categoria::all();
         return view('producto/createProducto', compact('categorias'));
     }
@@ -36,8 +38,9 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Producto::class);
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:productos,name',
             'price' => 'required|numeric|min:1',
             'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
@@ -55,6 +58,7 @@ class ProductoController extends Controller
     public function show(Producto $producto)
     {
         //
+        $this->authorize('view', Producto::class);
         if(Auth::user()->type_user == 'cliente')
         {
             return view('producto/showProductoCliente', compact('producto'));
@@ -72,6 +76,7 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         //
+        $this->authorize('update', Producto::class);
         $categorias = Categoria::all();
         return view('producto/editProducto', compact('producto', 'categorias'));
     }
@@ -82,8 +87,9 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         //
+        $this->authorize('update', Producto::class);
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:productos,name,'. $producto->name,
             'descripcion' => 'max:164',
             'price' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
@@ -94,13 +100,13 @@ class ProductoController extends Controller
 
         Producto::where('id', $producto->id)
             ->update($request->except('_token', '_method','user_id'));
-
         
         return redirect()->route('producto.index');
     }
 
     public function log()
     {
+        $this->authorize('log', Producto::class);
         $registros = ProductoUser::all();
         return view('producto/productos_log',compact('registros'));
     }

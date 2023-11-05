@@ -7,6 +7,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VentaController;
+use App\Http\Middleware\AdminOnly;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,10 +45,9 @@ Route::middleware('auth')->group(function() {
     Route::post('/store', [VentaController::class, 'store'])->name('venta.store');
     Route::get('/ventas', [VentaController::class, 'index'])->name('venta.index');
     Route::get('/ventas/{venta}', [VentaController::class, 'show'])->name('venta.show');
-
     Route::get('/perfil', function () {
         return view('editarPerfil');
-    });
+    })->middleware('auth')->middleware(AdminOnly::class);
 
 });
 Route::resource('cliente', ClienteController::class);

@@ -22,7 +22,8 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">HECHA POR</th>
+                      <th scope="col">ENCARGADO</th>
+                      <th scope="col">CLIENTE</th>
                       <th scope="col">MONTO TOTAL</th>
                       <th scope="col">FECHA</th>
                     </tr>
@@ -35,7 +36,8 @@
                                   {{ $venta->id }}
                               </a>
                           </td>
-                          <td>{{ $venta->user->name }}</td>
+                          <td>{{ $venta->empleado->name }}</td>
+                          <td>{{ $venta->cliente->name }}</td>
                           <td>$ {{ $venta->total }}</td>
                           <td>{{ $venta->fecha }}</td>
                       </tr>

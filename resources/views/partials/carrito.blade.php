@@ -72,12 +72,12 @@
                                         <input type="hidden" value="{{ $item->id}}" id="id" name="id">
                                         <input type="number" class="form-control form-control-sm d-inline" value="{{ $item->quantity }}"
                                             id="quantity" name="quantity" min="1" max="{{$item->attributes->unidades-1}}" style="width: 70px;">
-                                        <button class="btn btn-secondary btn-sm " style="margin-right: 5px;"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-secondary btn-sm " style="margin-right: 5px;"><i class="bi bi-pencil"></i></button>
                                 </form>
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{ $item->id }}" id="id" name="id">
-                                    <button class="btn btn-dark btn-sm"><i class="fa fa-trash "></i></button>
+                                    <button class="btn btn-dark btn-sm"><i class="bi bi-trash "></i></button>
                                 </form> 
                         
                         </div>
@@ -94,14 +94,15 @@
             @endif
         </div>
         @if(count($cartCollection)>0)
-            <div class="col-lg-5">
-                
+            <div class="col">
+                <div class="row">
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
-                <div style="display:flex" >    
+                </div>
+                <div style="display:flex" class="my-2">    
                     <a 
                     @if(auth()->user()->type_user != 'cliente') 
                         href="/shop" 
