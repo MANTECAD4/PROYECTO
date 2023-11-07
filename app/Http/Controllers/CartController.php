@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
@@ -9,8 +10,17 @@ class CartController extends Controller
 {
     public function shop()
     {
-        $products = Producto::all();
-        return view('shop')->with(['products' => $products]);
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+        if(Auth::user()->type_user == 'cliente')
+        {
+            return view('cliente/menu_cliente', compact('productos', 'categorias')); 
+        }
+        else
+        {
+            return view('shop')->with(['productos' => $productos]);
+        }
+        
     }
 
     public function cart()  {

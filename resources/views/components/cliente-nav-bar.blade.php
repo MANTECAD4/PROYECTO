@@ -38,12 +38,12 @@
 
           <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-              <li><a class="nav-link scrollto active" href="/cliente#inicio">Inicio</a></li>
-              <li><a class="nav-link scrollto" href="/cliente#about">About</a></li>
-              <li><a class="nav-link scrollto" href="/cliente#servicios">Servicios</a></li>
-              <li><a class="nav-link scrollto " href="/cliente#portfolio">Catálogo</a></li>
-              <li><a class="nav-link scrollto" href="/cliente#testimonials">Testimonios</a></li>
-              <li><a class="nav-link scrollto" href="/cliente#contact">Contacto</a></li>
+              <li><a class="nav-link scrollto active" href="/shop">Inicio</a></li>
+              <li><a class="nav-link scrollto" href="/shop#about">About</a></li>
+              <li><a class="nav-link scrollto" href="/shop#servicios">Servicios</a></li>
+              <li><a class="nav-link scrollto " href="/shop#portfolio">Catálogo</a></li>
+              <li><a class="nav-link scrollto" href="/shop#testimonials">Testimonios</a></li>
+              <li><a class="nav-link scrollto" href="/shop#contact">Contacto</a></li>
               <li class="dropdown"><a href="#"><span>Mi perfil</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li>

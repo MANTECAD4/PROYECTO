@@ -45,7 +45,7 @@
                     @if(auth()->user()->type_user != 'cliente') 
                         href="/shop" 
                     @else
-                        href="/cliente#portfolio"
+                        href="/shop#portfolio"
                     @endif class="btn btn-dark">Continue en la tienda</a>
             @endif
 

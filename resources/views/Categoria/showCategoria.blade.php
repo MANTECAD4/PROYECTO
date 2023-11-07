@@ -64,10 +64,10 @@
                             <a href="{{ route('categoria.index') }}" class="btn btn-info">
                                 <i class="bi bi-tag me-1"></i> Volver al inicio
                             </a> 
-                            <a href="#" class="btn btn-warning mx-2" title="Editar producto">
+                            <a href="{{ route('categoria.edit',$categoria) }}" class="btn btn-warning mx-2" title="Editar producto">
                                 <span class="bi bi-pencil"></span> Editar
                             </a>
-                            <form action="#" method="POST"class="d-inline">
+                            <form action="{{ route('categoria.destroy',$categoria) }}" method="POST"class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" title="Borrar producto">

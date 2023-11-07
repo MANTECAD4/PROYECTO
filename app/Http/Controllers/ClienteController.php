@@ -21,19 +21,12 @@ class ClienteController extends Controller
 
     public function index()
     {
-        $productos = Producto::all();
-        $categorias = Categoria::all();
-        $clientes = Cliente::whereHas('user', function ($query) {
-            $query->where('name', '!=', 'Cliente Default');
-        })->get();
-        if(Auth::user()->type_user == 'cliente')
-        {
-            return view('cliente/menu_cliente', compact('productos', 'categorias')); 
-        }
-        else
-        {
-            return view('cliente/indexCliente', compact('clientes')); 
-        }
+        $clientes = Cliente::with('user')->get()->reject(function ($cliente) {
+            return $cliente->user->name === 'Cliente Default';
+        });
+
+        return view('cliente/indexCliente', compact('clientes')); 
+        
     }
 
     /**

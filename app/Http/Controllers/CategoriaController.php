@@ -14,6 +14,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Categoria::class);
         $categorias = Categoria::all();
         return view('categoria/indexcategoria', compact('categorias'));
     }
@@ -23,6 +24,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Categoria::class);
         return view('categoria/createCategoria');
     }
 
@@ -47,6 +49,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
+        $this->authorize('view', $categoria);
         return view('categoria/showCategoria', compact('categoria'));
     }
     
@@ -55,8 +58,8 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
-        
+        $this->authorize('update', $categoria);
+        return view('categoria/editCategoria', compact('categoria'));
     }
 
     /**
@@ -65,7 +68,13 @@ class CategoriaController extends Controller
     public function update(Request $request, Categoria $categoria)
     {
         //
+        $this->authorize('update', $categoria);
+        $request->validate([
+            'nombre' => 'required|unique:categorias,nombre,'. $categoria->id . ',id',
+            'descripcion' => 'nullable|max:164',
+        ]);
         Categoria::where('id',$categoria->id)->update($request->except('_token','_method'));
+        return redirect()->route('categoria.index');
     }
 
     /**
@@ -73,7 +82,7 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $this->authorize('delete', $categoria);
         $categoria->delete();
         return redirect()->route('categoria.index');
     }
