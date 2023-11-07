@@ -123,6 +123,7 @@
                                 <div class="text-center my-4">
                                     <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                                     <button type="reset" class="btn btn-secondary">Limpiar</button>
+                                    <a href="/" class="btn btn-light">Volver</a>
                                 </div>
                             </form><!-- End floating Labels Form -->
                                 

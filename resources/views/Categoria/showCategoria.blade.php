@@ -35,11 +35,7 @@
                                   @foreach ($categoria->productos as $producto)   
                                     <tr>
                                         <td scope="row">{{ $producto->id }}</td>
-                                        <td>
-                                            <a href="{{route('producto.show',$producto)}}" title="Inspeccionar producto">
-                                                {{ $producto->name }}
-                                            </a>
-                                        </td>
+                                        <td>{{ $producto->name }}</td>
                                         <td>${{ $producto->price }}</td>
                                         <td>{{ $producto->unidades }}</td>
                                         <td>{{ $producto->marca }}</td>                        

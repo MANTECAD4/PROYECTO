@@ -63,7 +63,7 @@
                           <div class="card-footer" style="background-color: white;">
                               <div class="row">
                                   <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
-                                      <i class="fa fa-shopping-cart"></i> Agregar al carrito
+                                      <i class="bi bi-cart"></i> Agregar al carrito
                                   </button>
                               </div>
                           </div>
@@ -92,7 +92,7 @@
             <div class="row">
     
               <div class="col-lg-3 col-md-6 footer-contact">
-                <h3>VendiMarket</h3>
+                <h3>Tianguis Digital</h3>
                 <p>
                   Blvd. Gral. Marcelino García Barragán 1421<br>
                   44430 Guadalajara, Jal.<br>
@@ -137,13 +137,13 @@
     
           <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
-              &copy; Copyright <strong><span>VendiMarket</span></strong>. All Rights Reserved
+              &copy; Copyright <strong><span>Tianguis Digital</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
               <!-- All the links in the footer should remain intact. -->
               <!-- You can delete the links only if you purchased the pro version. -->
               <!-- Licensing information: https://bootstrapmade.com/license/ -->
-              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/VendiMarket-bootstrap-business-template/ -->
+              <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/Tianguis Digital-bootstrap-business-template/ -->
               Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
           </div>

@@ -4,7 +4,7 @@
   <section id="inicio" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center text-md-left" data-aos="fade-up">
       <h1>Bienvenido, <span>{{auth()->user()->name}}</span></h1>
-      <h2>Bienvenido a VendiMarket, donde la frescura y la variedad se encuentran en cada pasillo. Descubre tus sabores favoritos y abastece tu vida con lo mejor en abarrotes.
+      <h2>Bienvenido a Tianguis Digital, donde la frescura y la variedad se encuentran en cada pasillo. Descubre tus sabores favoritos y abastece tu vida con lo mejor en abarrotes.
          ¡Satisfacemos tu gusto por la calidad!</h2>
       <a href="#about" class="btn-get-started scrollto">¡Empecemos!</a>
     </div>
@@ -54,12 +54,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
-            <img src="assets/img/market.jpg" class="img-fluid" alt="">
+            <img src="{{asset('assets/vendor2/img/market.jpg')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <h3>Sobre Nosotros</h3>
             <p>
-              ¡Bienvenido a VendiMarket! Nuestro rincón de abarrotes fusiona la frescura y calidad de los productos gourmet con la esencia de lo natural. Descubre una experiencia de compra única, donde lo auténtico se encuentra con lo contemporáneo.
+              ¡Bienvenido a Tianguis Digital! Nuestro rincón de abarrotes fusiona la frescura y calidad de los productos gourmet con la esencia de lo natural. Descubre una experiencia de compra única, donde lo auténtico se encuentra con lo contemporáneo.
             </p>
             <ul>
               <li><i class="bx bx-check-double"></i>Cientos de hogares confían en nosotros para llevar lo mejor a sus mesas en Guadalajara y más allá.</li>
@@ -69,7 +69,7 @@
               <div class="col-md-6 mt-4 mt-md-0">
                 <i class="bx bx-check-circle"></i>
                 <h4>Garantías</h4>
-                <p>En VendiMarket, tu satisfacción es lo más importante. Hemos establecido un sólido sistema de garantías para respaldar cada una de tus compras.</p>
+                <p>En Tianguis Digital, tu satisfacción es lo más importante. Hemos establecido un sólido sistema de garantías para respaldar cada una de tus compras.</p>
               </div>
               <div class="col-md-6">
                 <i class="bx bx-certification"></i>
@@ -180,7 +180,7 @@
 
         <div class="section-title">
           <h2>Servicios</h2>
-          <p>En VendiMarket contamos con los mejores servicios para consentir a nuestros clientes...</p>
+          <p>En Tianguis Digital contamos con los mejores servicios para consentir a nuestros clientes...</p>
         </div>
 
         <div class="row">
@@ -420,7 +420,7 @@
           <div class="row">
   
             <div class="col-lg-3 col-md-6 footer-contact">
-              <h3>VendiMarket</h3>
+              <h3>Tianguis Digital</h3>
               <p>
                 Blvd. Gral. Marcelino García Barragán 1421<br>
                 44430 Guadalajara, Jal.<br>
@@ -464,7 +464,7 @@
   
         <div class="me-md-auto text-center text-md-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>VendiMarket</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Tianguis Digital</span></strong>. All Rights Reserved
           </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">

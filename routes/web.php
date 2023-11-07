@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\VentaController;
 use App\Http\Middleware\AdminOnly;
+use App\Http\Middleware\Inicio;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,13 +25,12 @@ Route::middleware('auth')->group(function() {
     Route::resource('producto',ProductoController::class);  
     Route::resource('empleado',EmpleadoController::class);  
     
- 
     Route::resource('categoria', CategoriaController::class)->parameters([
         'categoria' => 'categoria'
     ]);
     Route::get('/inicio', function () {
         return view('inicio');
-    });
+    })->middleware(Inicio::class);
     Route::get('/contacto', function () {
         return view('contacto');
     });    
@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/ventas/{venta}', [VentaController::class, 'show'])->name('venta.show');
     Route::get('/perfil', function () {
         return view('editarPerfil');
-    })->middleware('auth')->middleware(AdminOnly::class);
+    })->middleware(AdminOnly::class);
 
 });
 Route::resource('cliente', ClienteController::class);

@@ -48,6 +48,7 @@
                                     <li><strong>ID</strong>: {{ $empleado->id }}</li>
                                     <li><strong>Nombre</strong>: {{$empleado->user->name}}</li>
                                     <li><strong>Télefono</strong>: {{ $empleado->telefono }}</li>
+                                    <li><strong>Dirección</strong>: {{ $empleado->direccion }}</li>
                                     <li><strong>Fecha de nacimiento: </strong>: {{ $empleado->fecha_nac }}</li>
                                     <li><strong>Correo</strong>: {{ $empleado->user->email }}</li>
                                     <li><strong>Sueldo</strong>: ${{ $empleado->sueldo }}</li>

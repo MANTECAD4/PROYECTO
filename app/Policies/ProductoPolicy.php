@@ -13,7 +13,7 @@ class ProductoPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->type_user == 'administrador' or $user->type_user == 'vendedor' or $user->type_user == 'cliente';
+        return $user->type_user == 'administrador' or $user->type_user == 'vendedor';
     }
 
     /**

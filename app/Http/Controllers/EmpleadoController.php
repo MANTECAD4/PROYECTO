@@ -16,9 +16,9 @@ class EmpleadoController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Empleado::class);
-        $empleados = Empleado::whereHas('user', function ($query) {
-            $query->where('name', '!=', 'Vendedor Default');
-        })->get();
+        $empleados = Empleado::with('user')->get()->reject(function ($empleado) {
+            return $empleado->user->name === 'Vendedor Default';
+        });
         return view('empleado/indexEmpleado', compact('empleados'));
     }
 
@@ -137,6 +137,7 @@ class EmpleadoController extends Controller
     {
         $this->authorize('delete', $empleado);
         // FALTA ELIMINAR EL EMPLEADO DE USERS
+        
         $empleado->delete();
         return redirect()->route('empleado.index');
     }

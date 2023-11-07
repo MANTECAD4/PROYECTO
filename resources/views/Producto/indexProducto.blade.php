@@ -28,7 +28,7 @@
                     <th scope="col">MARCA</th>
                     <th scope="col">CATEGORÍA</th>
                     <th scope="col">CREATED_AT</th>
-                    <th scope="col">UPDATED_AT</th>
+                    <th scope="col">LAST_UPDATE</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                   </tr>

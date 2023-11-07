@@ -32,17 +32,15 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
 
-        Categoria::create($request->all());
+        $this->authorize('create', Categoria::class);
+        $request->validate([
+            'nombre' => 'required|unique:categorias,nombre',
+            'descripcion' => 'nullable|max:164',
+        ]);
 
-        //$categoria = new Categoria();
-        //$categoria->nombre = $request->nombre;
-        //$categoria->descripcion = $request->descripcion;
-        //$categoria->user_id = Auth::id();
-        //$categoria->save();
-        //$user = Auth::user();
-        //$user->categorias()->save($categoria);
+        Producto::create($request->all());
 
-        return redirect('categoria');
+        return redirect()->route('categoria.index');
     }
     /**
      * Display the specified resource.

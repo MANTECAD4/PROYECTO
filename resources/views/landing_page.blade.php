@@ -34,7 +34,7 @@
         @if (Route::has('login'))
 
           @auth
-            <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
+            <div class="carousel-item active" style="background-image: url(assets/img/slide/sesion.jpg);">
               <div class="carousel-container">
                 <div class="carousel-content">
                   <h2 class="animate__animated animate__fadeInDown">Bienvenido, <span>{{auth()->user()->name}}</span></h2>

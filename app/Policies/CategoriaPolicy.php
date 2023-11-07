@@ -2,26 +2,26 @@
 
 namespace App\Policies;
 
-use App\Models\Empleado;
+use App\Models\Categoria;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class EmpleadoPolicy
+class CategoriaPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return $user->type_user == 'administrador' or $user->type_user == 'vendedor';
+        return $user->type_user == 'administrador';
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Empleado $empleado): bool
+    public function view(User $user, Categoria $categoria): bool
     {
-        return $user->type_user == 'administrador'; 
+        return $user->type_user == 'administrador';
     }
 
     /**
@@ -35,23 +35,23 @@ class EmpleadoPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Empleado $empleado): bool
+    public function update(User $user, Categoria $categoria): bool
     {
-        return $user->type_user == 'administrador' and $empleado->user->name != 'Vendedor Default';
+        return $user->type_user == 'administrador' and $categoria->nombre != 'Categoria Default';
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Empleado $empleado): bool
+    public function delete(User $user, Categoria $categoria): bool
     {
-        return $user->type_user == 'administrador' and $empleado->user->name != 'Vendedor Default';
+        return $user->type_user == 'administrador'  and $categoria->nombre != 'Categoria Default';
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Empleado $empleado): bool
+    public function restore(User $user, Categoria $categoria): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class EmpleadoPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Empleado $empleado): bool
+    public function forceDelete(User $user, Categoria $categoria): bool
     {
         //
     }

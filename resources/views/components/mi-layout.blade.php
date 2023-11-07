@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>VendiMarket</title>
+        <title>Tianguis Digital</title>
         <!-- Favicons -->
         <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
         <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
@@ -27,7 +27,6 @@
         <!--No quitar-->
         @livewireScripts
     </head>
-
     <body>
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
@@ -35,7 +34,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <a href="index.html" class="logo d-flex align-items-center">
                 <img src="{{asset('assets/img/logo.png')}}" alt="">
-                <span class="d-none d-lg-block">VendiMarket</span>
+                <span class="d-none d-lg-block">Tianguis Digital</span>
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div><!-- End Logo -->
@@ -74,21 +73,17 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="/perfil">
-                        <i class="bi bi-gear"></i>
-                        <span>Ajustes de cuenta</span>
-                        </a>
-                    </li>
+                    @if(auth()->user()->type_user == 'administrador')
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/perfil">
+                            <i class="bi bi-gear"></i>
+                            <span>Ajustes de cuenta</span>
+                            </a>
+                        </li>
+                    @endif
+                    
                     <li>
                         <hr class="dropdown-divider">
-                    </li>
-
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                        <i class="bi bi-question-circle"></i>
-                        <span>Ayuda</span>
-                        </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -143,25 +138,24 @@
                         </li>
                     </ul>
                 </li><!-- End Productos Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#empleados-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-person-badge"></i><span>Empleados</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="empleados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                        <a href="{{route('empleado.index')}}">
-                            <i class="bi bi-circle"></i><span>Ver empleados</span>
+                @if(auth()->user()->type_user == 'administrador')
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-target="#empleados-nav" data-bs-toggle="collapse" href="#">
+                            <i class="bi bi-person-badge"></i><span>Empleados</span><i class="bi bi-chevron-down ms-auto"></i>
                         </a>
-                        </li>
-                        <li>
-                        <a href="{{route('empleado.create')}}">
-                            <i class="bi bi-circle"></i><span>Dar de alta empleados</span>
-                        </a>
-                        </li>
-                    </ul>
-                </li><!-- End categorias Nav -->
-
+                        <ul id="empleados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                            <li>
+                            <a href="{{route('empleado.index')}}">
+                                <i class="bi bi-circle"></i><span>Ver empleados</span>
+                            </a>
+                            </li>
+                            <li>
+                            <a href="{{route('empleado.create')}}">
+                                <i class="bi bi-circle"></i><span>Dar de alta empleados</span>
+                            </a>
+                            </li>
+                        </ul>
+                    </li><!-- End categorias Nav -->
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#categorias-nav" data-bs-toggle="collapse" href="#">
                         <i class="bi bi-tag"></i><span>Categorías</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -179,19 +173,20 @@
                         </li>
                     </ul>
                 </li><!-- End categorias Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#logs-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-card-list"></i><span>Logs</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="logs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                        <li>
-                        <a href="/logproducto">
-                            <i class="bi bi-circle"></i><span>Historial gestión de productos</span>
+                
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-target="#logs-nav" data-bs-toggle="collapse" href="#">
+                            <i class="bi bi-card-list"></i><span>Logs</span><i class="bi bi-chevron-down ms-auto"></i>
                         </a>
-                        </li>
-                    </ul>
-                </li><!-- End logs Nav -->
+                        <ul id="logs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                            <li>
+                            <a href="/logproducto">
+                                <i class="bi bi-circle"></i><span>Historial gestión de productos</span>
+                            </a>
+                            </li>
+                        </ul>
+                    </li><!-- End logs Nav -->
+                @endif
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#ventas-nav" data-bs-toggle="collapse" href="#">
@@ -221,14 +216,22 @@
                         <span>Ver clientes</span>
                     </a>
                 </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="/perfil">
-                        <i class="bi bi-gear"></i>
-                        <span>Ajustes de cuenta</span>
-                    </a>
-                </li>
-                
+                @if(auth()->user()->type_user == 'vendedor')
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="{{route('empleado.index')}}">
+                            <i class="bi bi-person-badge"></i>
+                            <span>Ver empleados</span>
+                        </a>
+                    </li>
+                @endif
+                @if(auth()->user()->type_user == 'administrador')
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="/perfil">
+                            <i class="bi bi-gear"></i>
+                            <span>Ajustes de cuenta</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </aside><!-- End Sidebar-->
         <main id="main" class="main">
