@@ -62,7 +62,7 @@ class ClienteController extends Controller
             
             Auth::login($usuario);
             if (Auth::check()) {
-                return redirect()->route('cliente.index'); 
+                return redirect('/shop'); 
             }
         } 
         catch (\Exception $e) 
@@ -121,7 +121,7 @@ class ClienteController extends Controller
             $cliente->direccion = $request->direccion;
             $cliente->save();
             DB::commit(); 
-            return redirect()->route('cliente.index'); 
+            return redirect('/shop'); 
         } 
         catch (\Exception $e) 
         {

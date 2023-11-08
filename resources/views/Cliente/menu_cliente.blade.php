@@ -252,8 +252,9 @@
           </div>
         </div>
 
-        <div class="row portfolio-container">
+        
         @foreach ($productos as $producto)
+        <div class="row portfolio-container">
             <div class="col-lg-4 col-md-6 portfolio-item filter-{{$producto->categoria->nombre}} wow fadeInUp">
                 <div class="portfolio-wrap">
                 <figure>
@@ -287,11 +288,9 @@
                     <h4><a href="#">{{$producto->name}}</a></h4>
                     <p>{{$producto->categoria->nombre}}</p>
                 </div>
-                </div>
+              </div>
             </div>
         @endforeach
-
-        </div>
       </div>
     </section><!-- End Portfolio Section -->
 

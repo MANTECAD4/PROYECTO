@@ -8,7 +8,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <h2>Detalles del producto</h2>
               <ol>
-                <li><a href="/cliente#portfolio">Inicio</a></li>
+                <li><a href="/shop#portfolio">Inicio</a></li>
                 <li>{{$producto->name}}</li>
               </ol>
             </div>

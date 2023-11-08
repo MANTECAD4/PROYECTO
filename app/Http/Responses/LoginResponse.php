@@ -9,7 +9,7 @@ class LoginResponse implements ContractsLoginResponse
             return redirect('/inicio');
         }
         else if (auth()->user()->type_user == 'cliente'){
-            return redirect()->route('cliente.index');
+            return redirect('/shop');
         }   
     }
 }

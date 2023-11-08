@@ -18,7 +18,7 @@ class ProductoController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Producto::class);
-        $productos = Producto::all();
+        $productos = Producto::with('categoria')->get();
         return view('producto/indexproducto', compact('productos'));
 
     }
@@ -39,18 +39,37 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create', Producto::class);
+        
         $request->validate([
             'name' => 'required|unique:productos,name',
             'price' => 'required|numeric|min:1',
             'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validación para la imagen
         ]);
 
-        Producto::create($request->all());
+        $imageName = null; // Inicializar la variable
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $imageName);
+        }
+
+        $producto = Producto::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'descripcion' => $request->descripcion,
+            'unidades' => $request->unidades,
+            'marca' => $request->marca,
+            'categoria_id' => $request->categoria_id,
+            'image_path' => $imageName // Guarda el nombre de la imagen en la base de datos
+        ]);
 
         return redirect('/producto');
     }
+
 
     /**
      * Display the specified resource.

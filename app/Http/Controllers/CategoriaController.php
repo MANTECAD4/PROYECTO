@@ -36,7 +36,7 @@ class CategoriaController extends Controller
 
         $this->authorize('create', Categoria::class);
         $request->validate([
-            'nombre' => 'required|unique:categorias,nombre',
+            'nombre' => 'required|alpha|unique:categorias,nombre',
             'descripcion' => 'nullable|max:164',
         ]);
 
@@ -70,7 +70,7 @@ class CategoriaController extends Controller
         //
         $this->authorize('update', $categoria);
         $request->validate([
-            'nombre' => 'required|unique:categorias,nombre,'. $categoria->id . ',id',
+            'nombre' => 'required|alpha|unique:categorias,nombre,'. $categoria->id . ',id',
             'descripcion' => 'nullable|max:164',
         ]);
         Categoria::where('id',$categoria->id)->update($request->except('_token','_method'));

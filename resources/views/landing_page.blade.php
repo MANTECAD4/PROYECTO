@@ -42,7 +42,7 @@
                      @if(auth()->user()->type_user == 'administrador' or auth()->user()->type_user == 'vendedor')
                         <a href="{{ url('/inicio') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Entrar al sistema</a>
                       @else
-                        <a href="{{ url('/cliente') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Entrar al sistema</a>
+                        <a href="{{ url('/shop') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Entrar al sistema</a>
                       @endif 
                 </div>
               </div>
