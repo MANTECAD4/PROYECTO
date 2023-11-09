@@ -64,16 +64,19 @@
                             <a href="{{ route('categoria.index') }}" class="btn btn-info">
                                 <i class="bi bi-tag me-1"></i> Volver al inicio
                             </a> 
-                            <a href="{{ route('categoria.edit',$categoria) }}" class="btn btn-warning mx-2" title="Editar producto">
-                                <span class="bi bi-pencil"></span> Editar
-                            </a>
-                            <form action="{{ route('categoria.destroy',$categoria) }}" method="POST"class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" title="Borrar producto">
-                                    <span class="bi bi-trash"></span> Borrar
-                                </button>
-                            </form>
+                            @if ($categoria->nombre != 'Varios')
+                                <a href="{{ route('categoria.edit',$categoria) }}" class="btn btn-warning mx-2" title="Editar producto">
+                                    <span class="bi bi-pencil"></span> Editar
+                                </a>
+                                <form action="{{ route('categoria.destroy',$categoria) }}" method="POST"class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" title="Borrar producto">
+                                        <span class="bi bi-trash"></span> Borrar
+                                    </button>
+                                </form>
+                            @endif
+                            
                         </div>
                         
                     </div>

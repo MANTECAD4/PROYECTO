@@ -38,16 +38,21 @@
                               </a>
                           </td>
                           <td>{{ $categoria->descripcion }}</td>
-                          <td><a href="{{route('categoria.edit',$categoria)}}" class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>
-                          <td>
-                            <form action="{{route('categoria.destroy',$categoria)}}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger" title="Borrar categoria">
-                                <span class="bi bi-trash"></span>
-                              </button>
-                            </form>
-                          </td>
+                          @if ($categoria->nombre == 'Varios')
+                            <td><span class="bi bi-x btn btn-warning" title="No es posible editar esta categoria"></span></td>
+                            <td><span class="bi bi-x btn btn-danger" title="No es posible borrar esta categoria"></span></td>
+                          @else
+                            <td><a href="{{route('categoria.edit',$categoria)}}" class="btn btn-warning" title="Editar categoría"><span class="bi bi-pencil"></span></a></td>
+                            <td>
+                              <form action="{{route('categoria.destroy',$categoria)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" title="Borrar categoria">
+                                  <span class="bi bi-trash"></span>
+                                </button>
+                              </form>
+                            </td>
+                          @endif
                       </tr>
                     @endforeach
                   </tbody>
