@@ -57,8 +57,8 @@ class DatabaseSeeder extends Seeder
             'telefono' => '5555555555',
         ]);
         $cat = Categoria::create([
-            'nombre' => 'Categoria Default',
-            'descripcion' => 'default'
+            'nombre' => 'Varios',
+            'descripcion' => 'Aqui van los productos cuya categoría fue borrada.'
         ]);
         Producto::create([
             'name' => 'Producto Default',

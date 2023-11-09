@@ -37,7 +37,7 @@ class CategoriaPolicy
      */
     public function update(User $user, Categoria $categoria): bool
     {
-        return $user->type_user == 'administrador' and $categoria->nombre != 'Categoria Default';
+        return $user->type_user == 'administrador' and $categoria->nombre != 'Varios';
     }
 
     /**
@@ -45,7 +45,7 @@ class CategoriaPolicy
      */
     public function delete(User $user, Categoria $categoria): bool
     {
-        return $user->type_user == 'administrador'  and $categoria->nombre != 'Categoria Default';
+        return $user->type_user == 'administrador'  and $categoria->nombre != 'Varios';
     }
 
     /**

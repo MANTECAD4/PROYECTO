@@ -11,7 +11,7 @@ class CartController extends Controller
     public function shop()
     {
         $productos = Producto::where('name', '!=', 'Producto Default')->get();
-        $categorias = categoria::where('nombre', '!=', 'Categoria Default')->get();
+        $categorias = categoria::all();
         if(Auth::user()->type_user == 'cliente')
         {
             return view('cliente/menu_cliente', compact('productos', 'categorias')); 

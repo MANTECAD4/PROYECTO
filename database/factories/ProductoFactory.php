@@ -17,7 +17,7 @@ class ProductoFactory extends Factory
      */
     public function definition(): array
     {
-        $categoria = Categoria::where('nombre', '!=', 'Categoria Default')
+        $categoria = Categoria::where('nombre', '!=', 'Varios')
         ->inRandomOrder()
         ->first();
         return [

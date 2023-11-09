@@ -15,7 +15,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Categoria::class);
-        $categorias = Categoria::where('nombre', '!=', 'Categoria Default')->get();
+        $categorias = Categoria::all();
         return view('categoria/indexcategoria', compact('categorias'));
     }
 
@@ -85,7 +85,7 @@ class CategoriaController extends Controller
         $this->authorize('delete', $categoria);
         $productos_dependientes = $categoria->productos;
         
-        $default = Categoria::where('nombre','Categoria Default')->get()->first();
+        $default = Categoria::where('nombre','Varios')->get()->first();
         
         foreach ($productos_dependientes as $dependencia)
         {

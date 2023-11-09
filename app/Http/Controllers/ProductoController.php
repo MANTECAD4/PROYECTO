@@ -29,7 +29,7 @@ class ProductoController extends Controller
     public function create()
     {
         $this->authorize('create', Producto::class);
-        $categorias = Categoria::where('nombre', '!=', 'Categoria Default')->get();
+        $categorias = Categoria::where('nombre', '!=', 'Varios')->get();
         return view('producto/createProducto', compact('categorias'));
     }
 
@@ -96,7 +96,7 @@ class ProductoController extends Controller
     {
         //
         $this->authorize('update', $producto);
-        $categorias = Categoria::where('nombre', '!=', 'Categoria Default')->get();
+        $categorias = Categoria::where('nombre', '!=', 'Varios')->get();
         return view('producto/editProducto', compact('producto', 'categorias'));
     }
 
