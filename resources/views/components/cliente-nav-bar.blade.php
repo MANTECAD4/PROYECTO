@@ -83,6 +83,7 @@
     <script src="{{ asset('assets/vendor2/php-email-form/validate.js') }}"></script>
 
     <script src="{{ asset('assets/vendor2/main.js') }}"></script>
+    <script src="{{ asset('assets/js/notificaciones.js') }}"></script>
 
     </body>
 </html>

@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CategoriaController extends Controller
 {
@@ -40,8 +41,8 @@ class CategoriaController extends Controller
             'descripcion' => 'nullable|max:164',
         ]);
 
-        Producto::create($request->all());
-
+        Categoria::create($request->all());
+        Session::flash('success', 'Categoría '. $request->nombre .' registrada con éxito!');
         return redirect()->route('categoria.index');
     }
     /**
@@ -74,6 +75,7 @@ class CategoriaController extends Controller
             'descripcion' => 'nullable|max:164',
         ]);
         Categoria::where('id',$categoria->id)->update($request->except('_token','_method'));
+        Session::flash('warning', 'Categoría '. $categoria->nombre .' modificada con éxito!');
         return redirect()->route('categoria.index');
     }
 
@@ -92,7 +94,9 @@ class CategoriaController extends Controller
             $dependencia->categoria_id = $default->id;
             $dependencia->save();
         }
+        $nombre = $categoria->nombre;
         $categoria->delete();
+        Session::flash('error', 'Categoría '. $nombre .' eliminada con éxito!');
         return redirect()->route('categoria.index');
     }
 }

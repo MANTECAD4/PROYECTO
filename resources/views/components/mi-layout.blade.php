@@ -42,17 +42,9 @@
 
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-                <a class="nav-link nav-icon" href="https://facebook.com/" target="_blank">
-                    <i class="bi bi-facebook"></i>
-                </a><!-- End Notification Icon -->
-                <a class="nav-link nav-icon" href="https://twitter.com/" target="_blank">
-                    <i class="bi bi-twitter"></i>
-                </a><!-- End Notification Icon -->
-                <a class="nav-link nav-icon" href="https://www.instagram.com/" target="_blank">
-                    <i class="bi bi-instagram"></i>
-                </a><!-- End Notification Icon -->
-                <a class="nav-link nav-icon" href="https://github.com/MANTECAD4" target="_blank">
-                    <i class="bi bi-github"></i>
+                <a class="nav-link nav-icon" href="/cart">
+                    <i class="bi bi-cart"></i>
+                    <span class="badge bg-success badge-number">{{\Cart::getTotalQuantity()}}</span>
                 </a><!-- End Notification Icon -->
                 <li class="nav-item dropdown pe-3">
 
@@ -246,8 +238,8 @@
         <script src="{{ asset('assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
         <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
 
-        <!-- Template Main JS File -->
         <script src="{{ asset('assets/js/main.js') }}"></script>
+        <script src="{{ asset('assets/js/notificaciones.js') }}"></script>
 
     </body>
 </html>
