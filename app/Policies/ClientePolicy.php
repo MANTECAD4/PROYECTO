@@ -13,8 +13,8 @@ class ClientePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
-    }
+        return $user->type_user == 'administrador' or $user->type_user == 'vendedor';
+    } 
 
     /**
      * Determine whether the user can view the model.
@@ -27,9 +27,15 @@ class ClientePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(?User $user): bool
     {
-        //
+        if (auth()->check()) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     /**
@@ -37,7 +43,7 @@ class ClientePolicy
      */
     public function update(User $user, Cliente $cliente): bool
     {
-        //
+        return $user->id === $cliente->user_id and $user->type_user == 'cliente' and $cliente->user->email != 'cliente@gmail.com';
     }
 
     /**

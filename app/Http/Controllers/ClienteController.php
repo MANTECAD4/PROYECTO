@@ -21,6 +21,7 @@ class ClienteController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Cliente::class);
         $clientes = Cliente::with('user')->get()->reject(function ($cliente) {
             return $cliente->user->name === 'Cliente Default';
         });
@@ -34,6 +35,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Cliente::class);
         return view('cliente/createCliente');
     }
 
@@ -42,6 +44,7 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Cliente::class);
         $errors = $request->validate([
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
@@ -85,7 +88,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        $this->authorize('update', $cliente);
         return view('cliente/editCliente', compact('cliente'));
     }
 
@@ -94,6 +97,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
+        $this->authorize('update', $cliente);
         $errors = $request->validate([
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
