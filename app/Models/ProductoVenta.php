@@ -12,6 +12,7 @@ class ProductoVenta extends Model
     public $timestamps = false;
     protected $fillable = ['cantidad', 'subtotal', 'producto_id', 'venta_id'];
 
+    //Retorna la instancia de uno de los productos que componen a una venta
     public function producto()
     {
         return $this->belongsTo(Producto::class,'producto_id');

@@ -83,6 +83,15 @@ class CategoriaController extends Controller
     public function destroy(Categoria $categoria)
     {
         $this->authorize('delete', $categoria);
+        $productos_dependientes = $categoria->productos;
+        
+        $default = Categoria::where('nombre','Categoria Default')->get()->first();
+        
+        foreach ($productos_dependientes as $dependencia)
+        {
+            $dependencia->categoria_id = $default->id;
+            $dependencia->save();
+        }
         $categoria->delete();
         return redirect()->route('categoria.index');
     }
