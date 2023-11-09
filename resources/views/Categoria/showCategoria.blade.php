@@ -3,9 +3,9 @@
         <h1>Detalles de categoría</h1>
         <nav>
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
-            <li class="breadcrumb-item">Inspeccionar producto</li>
+            <li class="breadcrumb-item"><a href="/inicio">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="{{route('categoria.index')}}">Categorias</a></li>
+            <li class="breadcrumb-item">Inspeccionar categoría</li>
             <li class="breadcrumb-item active">{{$categoria->nombre}}</li>
             </ol>
         </nav>

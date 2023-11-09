@@ -52,7 +52,7 @@ class VentaController extends Controller
     public function show(Venta $venta)
     {
         $this->authorize('view', $venta);
-        $productos_venta = ProductoVenta::where('venta_id', $venta->id)->get();
+        $productos_venta = $venta->productos;
         return view('venta/showventa', compact('venta', 'productos_venta'));
     }
 

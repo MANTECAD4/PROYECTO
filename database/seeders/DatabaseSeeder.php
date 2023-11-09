@@ -4,9 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Categoria;
 use App\Models\Empleado;
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Producto;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,11 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
-        $this->call([
-            CategoriaSeeder::class,
-            ProductoSeeder::class,
-        ]);
         User::create([
             'name' => 'Administrador Default',
             'email' => 'admin@gmail.com',
@@ -58,6 +55,22 @@ class DatabaseSeeder extends Seeder
             'fecha_nac' => '1989-12-13',
             'direccion' => 'Av Default 123',
             'telefono' => '5555555555',
+        ]);
+        $cat = Categoria::create([
+            'nombre' => 'Categoria Default',
+            'descripcion' => 'default'
+        ]);
+        Producto::create([
+            'name' => 'Producto Default',
+            'price' => 0,
+            'unidades' => 0,
+            'marca' => 'dflt',
+            'categoria_id' => $cat->id
+        ]);
+
+        $this->call([
+            CategoriaSeeder::class,
+            ProductoSeeder::class,
         ]);
     }
 }

@@ -15,7 +15,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Categoria::class);
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('nombre', '!=', 'Categoria Default')->get();
         return view('categoria/indexcategoria', compact('categorias'));
     }
 

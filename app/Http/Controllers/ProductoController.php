@@ -29,7 +29,7 @@ class ProductoController extends Controller
     public function create()
     {
         $this->authorize('create', Producto::class);
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('nombre', '!=', 'Categoria Default')->get();
         return view('producto/createProducto', compact('categorias'));
     }
 
@@ -46,10 +46,10 @@ class ProductoController extends Controller
             'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Validación para la imagen
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' 
         ]);
 
-        $imageName = null; // Inicializar la variable
+        $imageName = null; 
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -64,7 +64,7 @@ class ProductoController extends Controller
             'unidades' => $request->unidades,
             'marca' => $request->marca,
             'categoria_id' => $request->categoria_id,
-            'image_path' => $imageName // Guarda el nombre de la imagen en la base de datos
+            'image_path' => $imageName 
         ]);
 
         return redirect('/producto');
@@ -96,7 +96,7 @@ class ProductoController extends Controller
     {
         //
         $this->authorize('update', $producto);
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('nombre', '!=', 'Categoria Default')->get();
         return view('producto/editProducto', compact('producto', 'categorias'));
     }
 

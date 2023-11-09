@@ -17,6 +17,9 @@ class ProductoFactory extends Factory
      */
     public function definition(): array
     {
+        $categoria = Categoria::where('nombre', '!=', 'Categoria Default')
+        ->inRandomOrder()
+        ->first();
         return [
             'name'=>fake()->unique()->word(),
             'descripcion'=>fake()->sentence(),
@@ -24,7 +27,7 @@ class ProductoFactory extends Factory
             'unidades'=>fake()->numberBetween(1,20),
             'marca'=>fake()->unique()->word(),
             'image_path'=>fake()->randomElement(['macbook-pro.png','iphone-11-pro.png']),
-            'categoria_id'=> Categoria::inRandomOrder()->first()->id
+            'categoria_id'=> $categoria->id
         ];
     }
 }
