@@ -9,6 +9,7 @@
       </nav>
     </div><!-- End Page Title -->
   
+    <!--Notificaciones de CRUD-->
     @include('partials.notificaciones');
 
     <section class="section">
