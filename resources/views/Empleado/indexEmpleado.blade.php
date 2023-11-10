@@ -9,6 +9,8 @@
       </nav>
     </div><!-- End Page Title -->
   
+    @include('partials.notificaciones');
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -27,8 +29,8 @@
                       <th scope="col">FECHA_NAC</th>
                       <th scope="col">GENERO</th>
                       <th scope="col">CORREO</th>
-                      <th scope="col">SUELDO</th>
                       @if(auth()->user()->type_user == 'administrador')
+                        <th scope="col">SUELDO</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                       @endif
@@ -51,18 +53,24 @@
                           <td>{{ $empleado->fecha_nac }}</td>
                           <td>{{ $empleado->genero }}</td>                        
                           <td>{{ $empleado->user->email}}</td>
-                          <td>${{ $empleado->sueldo}}</td>
+                          
                           @if(auth()->user()->type_user == 'administrador')
-                            <td><a href="{{route('empleado.edit',$empleado)}} " class="btn btn-warning" title="Editar empleado"><span class="bi bi-pencil"></span></a></td>
-                            <td>
-                              <form action="{{route('empleado.destroy',$empleado)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" title="Borrar empleado">
-                                  <span class="bi bi-trash"></span>
-                                </button>
-                              </form>
-                            </td>
+                            <td>${{ $empleado->sueldo}}</td>
+                            @if ($empleado->user->email == 'vendedor@gmail.com')
+                              <td><span class="bi bi-x btn btn-warning" title="No es posible editar a este empleado"></span></td>
+                              <td><span class="bi bi-x btn btn-danger" title="No es posible borrar este empleado"></span></td>
+                            @else
+                              <td><a href="{{route('empleado.edit',$empleado)}} " class="btn btn-warning" title="Editar empleado"><span class="bi bi-pencil"></span></a></td>
+                              <td>
+                                <form action="{{route('empleado.destroy',$empleado)}}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger" title="Borrar empleado">
+                                    <span class="bi bi-trash"></span>
+                                  </button>
+                                </form>
+                              </td>
+                            @endif
                           @endif
                       </tr>
                     @endforeach

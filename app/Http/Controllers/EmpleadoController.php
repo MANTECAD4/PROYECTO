@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class EmpleadoController extends Controller
 {
@@ -16,9 +17,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Empleado::class);
-        $empleados = Empleado::with('user')->get()->reject(function ($empleado) {
-            return $empleado->user->name === 'Vendedor Default';
-        });
+        $empleados = Empleado::all();
         return view('empleado/indexEmpleado', compact('empleados'));
     }
 
@@ -55,6 +54,7 @@ class EmpleadoController extends Controller
             Empleado::create($request->except(['nombre', 'correo', 'password', 'password2','_token', '_method']));
             
             DB::commit(); 
+            Session::flash('success', 'Empleado '. $request->nombre .' registrado con éxito!');
             return redirect()->route('empleado.index'); 
         } 
         catch (\Exception $e) 
@@ -120,6 +120,7 @@ class EmpleadoController extends Controller
             $empleado->direccion = $request->direccion;
             $empleado->save();
             DB::commit(); 
+            Session::flash('warning', 'Empleado '. $empleado->user->name .' modificado con éxito!');
             return redirect()->route('empleado.index'); 
         } 
         catch (\Exception $e) 
@@ -137,8 +138,9 @@ class EmpleadoController extends Controller
     {
         $this->authorize('delete', $empleado);
         // FALTA ELIMINAR EL EMPLEADO DE USERS
-        
+        $nombre = $empleado->user->name;
         $empleado->delete();
+        Session::flash('error', 'Empleado '. $nombre .' eliminado con éxito!');
         return redirect()->route('empleado.index');
     }
 }

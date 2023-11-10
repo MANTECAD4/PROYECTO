@@ -42,7 +42,7 @@ class CategoriaController extends Controller
         ]);
 
         Categoria::create($request->all());
-        Session::flash('success', 'Categoría '. $request->nombre .' registrada con éxito!');
+        Session::flash('success', 'La categoría '. $request->nombre .' ha sido registrada con éxito!');
         return redirect()->route('categoria.index');
     }
     /**

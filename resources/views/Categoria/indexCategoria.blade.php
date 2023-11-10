@@ -9,26 +9,8 @@
       </nav>
     </div><!-- End Page Title -->
 
-    @if(Session::has('success'))
-        <div class="alert alert-success alert-dismissible">
-            {{ Session::get('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-    @if(Session::has('warning'))
-        <div class="alert alert-warning alert-dismissible">
-            {{ Session::get('warning') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-    @if(Session::has('error'))
-        <div class="alert alert-danger alert-dismissible">
-            {{ Session::get('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+    <!--Notificaciones de CRUD-->
+    @include('partials.notificaciones');
   
     <section class="section">
       <div class="row">
@@ -65,10 +47,10 @@
                           @else
                             <td><a href="{{route('categoria.edit',$categoria)}}" class="btn btn-warning" title="Editar categoría"><span class="bi bi-pencil"></span></a></td>
                             <td>
-                              <form action="{{route('categoria.destroy',$categoria)}}" method="POST">
+                              <form id="deleteForm" action="{{route('categoria.destroy',$categoria)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" title="Borrar categoria">
+                                <button type="submit" class="btn btn-danger" title="Borrar categoria" id="deleteButton">
                                   <span class="bi bi-trash"></span>
                                 </button>
                               </form>
@@ -90,4 +72,5 @@
       </div>
     </section>
   </x-mi-layout>
+  
       

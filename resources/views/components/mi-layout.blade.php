@@ -24,6 +24,7 @@
 
         <!-- Template Main CSS File -->
         <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!--No quitar-->
         @livewireScripts
     </head>
@@ -240,6 +241,8 @@
 
         <script src="{{ asset('assets/js/main.js') }}"></script>
         <script src="{{ asset('assets/js/notificaciones.js') }}"></script>
+        <script src="{{ asset('assets/js/app.js') }}"></script>
+
 
     </body>
 </html>

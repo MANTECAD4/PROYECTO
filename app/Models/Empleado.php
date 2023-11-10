@@ -15,11 +15,10 @@ class Empleado extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+    // Trae los registros de la tabla de ventas cuyo campo de identificador de empleado coincide con el de usuario del empleado
     public function ventas()
     {
         return $this->hasMany(Venta::class,'empleado_id', 'user_id');
     }
     
-
 }

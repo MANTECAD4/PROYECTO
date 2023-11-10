@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('producto_user', function (Blueprint $table) {
-            $table->foreignId('producto_id')->constrained();
-            $table->timestamp('updated_at')->useCurrent();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('producto_id')->constrained('productos');
+            $table->timestamp('fecha')->useCurrent();
+            $table->string('operacion');
+            $table->foreignId('user_id')->contsrained('users');
         });
     }
 
