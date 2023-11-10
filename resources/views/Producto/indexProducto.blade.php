@@ -54,7 +54,7 @@
                         <td>{{ $producto->updated_at }}</td>
                         <td><a href="{{route('producto.edit',$producto)}} " class="btn btn-warning" title="Editar producto"><span class="bi bi-pencil"></span></a></td>
                         <td>
-                          <form action="{{route('producto.destroy',$producto)}}" method="POST">
+                          <form class="deleteForm" action="{{route('producto.destroy',$producto)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" title="Borrar producto">
@@ -78,4 +78,25 @@
     </div>
   </section>
 </x-mi-layout>
-    
+<script>
+  document.querySelectorAll('.deleteForm').forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          Swal.fire({
+              title: "¿Estás seguro?",
+              text: "No podrás revertir la eliminación de este registro.",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              cancelButtontext: "Cancelar",
+              confirmButtonText: "Sí, eliminar"
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  form.submit();
+              }
+          });
+      });
+  });
+</script>    
