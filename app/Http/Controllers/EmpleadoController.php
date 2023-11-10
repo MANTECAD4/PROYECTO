@@ -128,7 +128,6 @@ class EmpleadoController extends Controller
             DB::rollBack(); 
             return redirect()->route('empleado.edit')->withErrors($errores)->withInput();
         }
-        return redirect()->route('empleado.index');
     }
 
     /**
@@ -137,10 +136,27 @@ class EmpleadoController extends Controller
     public function destroy(Empleado $empleado)
     {
         $this->authorize('delete', $empleado);
-        // FALTA ELIMINAR EL EMPLEADO DE USERS
-        $nombre = $empleado->user->name;
-        $empleado->delete();
-        Session::flash('error', 'Empleado '. $nombre .' eliminado con éxito!');
-        return redirect()->route('empleado.index');
+        try
+        {
+            DB::beginTransaction();
+            $usuario = $empleado->user;
+            $default = User::where('email', 'vendedor@gmail.com')->get()->first();
+            $dependencia_ventas = $empleado->ventas;
+            
+            foreach ($dependencia_ventas as $dependencia)
+            {
+                $dependencia->empleado_id = $default->id;
+                $dependencia->save();
+            }
+            $empleado->delete();
+            $usuario->delete();
+            DB::commit(); 
+            Session::flash('error', 'Empleado '. $usuario->name .' eliminado con éxito!');
+            return redirect()->route('empleado.index');
+        } 
+        catch (\Exception $e) 
+        {
+            DB::rollBack(); 
+        }
     }
 }

@@ -114,8 +114,10 @@ class ProductoController extends Controller
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
         ]);
-        $request->merge(['user_id' => Auth::id()]);
-        $producto->usuarios()->attach($request->user_id);
+
+        // REHACER LOGS
+        //$request->merge(['user_id' => Auth::id()]);
+        //$producto->usuarios()->attach($request->user_id);
 
         Producto::where('id', $producto->id)
             ->update($request->except('_token', '_method','user_id'));
