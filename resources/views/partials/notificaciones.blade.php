@@ -1,5 +1,5 @@
 <div>
-        @if(Session::has('success'))
+    @if(Session::has('success'))
       <script>
         Swal.fire({
           title: "Registro exitoso!",

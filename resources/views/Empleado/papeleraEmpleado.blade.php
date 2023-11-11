@@ -10,7 +10,16 @@
         </nav>
       </div><!-- End Page Title -->
 
-
+      @if(Session::has('success'))
+        <script>
+          Swal.fire({
+            title: "Restauración exitosa!",
+            text: "{{ Session::get('success') }}",
+            icon: "success",
+            timer: 3000,
+          });
+        </script>
+      @endif
     
       <section class="section">
         <div class="row">

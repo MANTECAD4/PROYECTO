@@ -69,7 +69,7 @@ class ProductoController extends Controller
             'categoria_id' => $request->categoria_id,
             'image_path' => $imageName 
         ]);
-
+        Session::flash('success', 'El producto '. $request->name .' ha sido registrado con éxito!');
         return redirect('/producto');
     }
 
@@ -124,7 +124,7 @@ class ProductoController extends Controller
 
         Producto::where('id', $producto->id)
             ->update($request->except('_token', '_method','user_id'));
-        
+        Session::flash('warning', 'Producto '. $producto->name .' modificado con éxito!');
         return redirect()->route('producto.index');
     }
 
@@ -141,7 +141,9 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         $this->authorize('delete', $producto);
+        $nombre = $producto->name;
         $producto->delete();
+        Session::flash('error', 'Producto '. $nombre .' eliminado con éxito!');
         return redirect()->route('producto.index');
     }
 
