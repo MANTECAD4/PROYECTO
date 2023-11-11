@@ -31,7 +31,7 @@
                     @endif
                     
                     <!-- Create Post Form -->
-                    <form action="{{route('producto.update',$producto)}}" method="POST" class="row g-3">
+                    <form action="{{route('producto.update',$producto)}}" method="POST" class="row g-3" enctype="multipart/form-data">
                         @csrf <!-- Agrega el token CSRF -->
                         @method('PATCH')
                         <div class="col-md-12">
@@ -85,9 +85,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row mb-3">
-                                    <label for="formFile" class="col-sm-2 col-form-label">Subir imagen</label>
+                                    <label for="image" class="col-sm-2 col-form-label">Subir imagen</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="file" id="formFile" name="image" accept="image/jpeg, image/png, image/jpg, image/gif">
+                                        <input class="form-control" type="file" id="image" name="image" accept="image/jpeg, image/png, image/jpg, image/gif">
                                     </div>
                                 </div>
                             </div> 
@@ -95,7 +95,7 @@
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                             <a href="{{ route('producto.index') }}" class="btn btn-secondary">
-                                <i class="bi bi-tag me-2"></i>Volver al inicio
+                                <i class="bi bi-bag me-2"></i>Volver al inicio
                             </a> 
                         </div>
                     </form><!-- End floating Labels Form -->

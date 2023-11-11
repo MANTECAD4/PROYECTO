@@ -25,6 +25,7 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th></th>
                     <th scope="col">NOMBRE</th>
                     <th scope="col">PRECIO</th>
                     <th scope="col">UNIDADES</th>
@@ -41,10 +42,14 @@
                     <tr>
                         <td scope="row">{{ $producto->id }}</td>
                         <td>
+                          <div style="width: 50px; height: 50px; overflow: hidden;">
+                              <img src="/images/{{ $producto->image_path }}" alt="{{ $producto->name }}" style="width: 100%;">
+                          </div>
+                        </td>
+                        <td>
                             <a href="{{route('producto.show',$producto)}}" title="Inspeccionar producto">
                                 {{ $producto->name }}
                             </a>
-                            <small class="d-block">{{ $producto->descripcion }}</small>
                         </td>
                         <td>${{ $producto->price }}</td>
                         <td>{{ $producto->unidades }}</td>

@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\ProductoUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class ProductoController extends Controller
@@ -110,27 +111,51 @@ class ProductoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Producto $producto)
-    {
-        //
-        $this->authorize('update', $producto);
-        $request->validate([
-            'name' => 'required|unique:productos,name,'. $producto->id . ',id|string|max:255',
-            'descripcion' => 'max:255',
-            'price' => 'required|numeric|min:1',
-            'unidades' => 'required|integer|min:1',
-            'marca' => 'required',
-            'image' => 'nullable'
+{
+    $this->authorize('update', $producto);
+    //dd($request);
+    $request->validate([
+        'name' => 'required|unique:productos,name,' . $producto->id . ',id|string|max:255',
+        'price' => 'required|numeric|min:1',
+        'descripcion' => 'nullable|max:164',
+        'unidades' => 'required|integer|min:1',
+        'marca' => 'required',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' 
+    ]);
+    $imageName = null; 
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('images'), $imageName);
+
+        if ($producto->image_path) {
+            $oldImagePath = public_path('images') . '/' . $producto->image_path;
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
+        }
+
+        $producto->update([
+            'image_path' => $imageName,
+            'name' => $request->name,
+            'price' => $request->price,
+            'descripcion' => $request->descripcion,
+            'unidades' => $request->unidades,
+            'marca' => $request->marca,
+            'categoria_id' => $request->categoria_id,
         ]);
-
-        // REHACER LOGS
-        //$request->merge(['user_id' => Auth::id()]);
-        //$producto->usuarios()->attach($request->user_id);
-
-        Producto::where('id', $producto->id)
-            ->update($request->except('_token', '_method','user_id'));
-        Session::flash('warning', 'Producto '. $producto->name .' modificado con éxito!');
-        return redirect()->route('producto.index');
+    } else {
+        $producto->update($request->except('_token', '_method', 'image'));
     }
+
+    ProductoUser::create([
+        'operacion' => 'Modificación',
+        'producto_id' => $producto->id,
+        'user_id' => Auth::id(),
+    ]);    Session::flash('warning', 'Producto ' . $producto->name . ' modificado con éxito!');
+    return redirect()->route('producto.index');
+}
+
 
     public function log()
     {
