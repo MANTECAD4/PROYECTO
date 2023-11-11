@@ -28,6 +28,11 @@ Route::middleware('auth')->group(function() {
     Route::resource('categoria', CategoriaController::class)->parameters([
         'categoria' => 'categoria'
     ]);
+    Route::get('/papelera_categoria', [CategoriaController::class, 'papelera']);
+
+    Route::post('categoria/{id}/restore', [CategoriaController::class, 'restore'])->name('categoria.restore');
+
+
     Route::get('/inicio', function () {
         return view('inicio');
     })->middleware(Inicio::class);

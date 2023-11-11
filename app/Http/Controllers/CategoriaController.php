@@ -86,8 +86,35 @@ class CategoriaController extends Controller
     {
         $this->authorize('delete', $categoria);
         $nombre = $categoria->nombre;
+        $productos_dependientes = $categoria->productos;
+        
+        $default = Categoria::where('nombre','Varios')->get()->first();
+        
+        foreach ($productos_dependientes as $dependencia)
+        {
+            $dependencia->categoria_id = $default->id;
+            $dependencia->save();
+        }
         $categoria->delete();
         Session::flash('error', 'Categoría '. $nombre .' eliminada con éxito!');
         return redirect()->route('categoria.index');
     }
+
+    public function papelera()
+    {
+        $this->authorize('restore', Categoria::class);
+        $categorias_borradas = Categoria::onlyTrashed()->get();
+        
+        return view('categoria/papeleraCategoria', compact('categorias_borradas'));
+    }
+
+    public function restore($id)
+    {
+        $this->authorize('restore', Categoria::class);
+        $categoria = Categoria::onlyTrashed()->find($id);
+        $categoria->restore();
+        Session::flash('succes', 'Categoría '. $categoria->nombre .' restaurada con éxito!');
+        return redirect('/papelera_categoria');
+    }
+
 }
