@@ -113,7 +113,7 @@ class CategoriaController extends Controller
         $this->authorize('restore', Categoria::class);
         $categoria = Categoria::onlyTrashed()->find($id);
         $categoria->restore();
-        Session::flash('succes', 'Categoría '. $categoria->nombre .' restaurada con éxito!');
+        Session::flash('success', 'Categoría '. $categoria->nombre .' restaurada con éxito!');
         return redirect('/papelera_categoria');
     }
 

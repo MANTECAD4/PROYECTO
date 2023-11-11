@@ -7,8 +7,7 @@ use App\Models\Producto;
 use App\Models\ProductoUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Support\Facades\Session;
 
 class ProductoController extends Controller
 {
@@ -144,5 +143,22 @@ class ProductoController extends Controller
         $this->authorize('delete', $producto);
         $producto->delete();
         return redirect()->route('producto.index');
+    }
+
+    public function papelera()
+    {
+        $this->authorize('restore', Producto::class);
+        $productos_borrados = Producto::onlyTrashed()->get();
+        
+        return view('producto/papeleraproducto', compact('productos_borrados'));
+    }
+
+    public function restore($id)
+    {
+        $this->authorize('restore', Producto::class);
+        $producto = Producto::onlyTrashed()->find($id);
+        $producto->restore();
+        Session::flash('success', 'Producto '. $producto->name .' restaurado con éxito!');
+        return redirect('/papelera_producto');
     }
 }

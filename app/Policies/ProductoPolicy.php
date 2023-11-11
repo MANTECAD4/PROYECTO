@@ -37,7 +37,7 @@ class ProductoPolicy
      */
     public function update(User $user, Producto $producto): bool
     {
-        return ($user->type_user == 'administrador' or $user->type_user == 'vendedor') and ($producto->name !='Producto Default');
+        return ($user->type_user == 'administrador' or $user->type_user == 'vendedor') ;
     }
 
     /**
@@ -45,12 +45,17 @@ class ProductoPolicy
      */
     public function delete(User $user, Producto $producto): bool
     {
-        return ($user->type_user == 'administrador' or $user->type_user == 'vendedor') and ($producto->name !='Producto Default');
+        return ($user->type_user == 'administrador' or $user->type_user == 'vendedor');
     }
 
     public function log(User $user): bool
     {
         return $user->type_user == 'administrador';
+    }
+
+    public function restore(User $user): bool
+    {
+        return $user->type_user == 'administrador' or $user->type_user == 'vendedor';
     }
 
 }

@@ -159,4 +159,23 @@ class EmpleadoController extends Controller
             DB::rollBack(); 
         }
     }
+
+    public function papelera()
+    {
+        $this->authorize('restore', Empleado::class);
+        $empleados_borrados = Empleado::onlyTrashed()->get();
+        
+        return view('empleado/papeleraEmpleado', compact('empleados_borrados'));
+    }
+
+    public function restore($id)
+    {
+        $this->authorize('restore', Empleado::class);
+        $empleado = Empleado::onlyTrashed()->find($id);
+        $empleado->restore();
+        $usuario = $empleado->user;
+        $usuario->restore();
+        Session::flash('success', 'Empleado '. $usuario->name .' restaurado con éxito!');
+        return redirect('/papelera_categoria');
+    }
 }

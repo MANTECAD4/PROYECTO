@@ -51,9 +51,9 @@ class EmpleadoPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Empleado $empleado): bool
+    public function restore(User $user): bool
     {
-        //
+        return $user->type_user == 'administrador';
     }
 
     /**

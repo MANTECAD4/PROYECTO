@@ -120,14 +120,19 @@
                     </a>
                     <ul id="productos-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                        <a href="{{route('producto.index')}}">
-                            <i class="bi bi-circle"></i><span>Ver productos</span>
-                        </a>
+                            <a href="{{route('producto.index')}}">
+                                <i class="bi bi-circle"></i><span>Ver productos</span>
+                            </a>
                         </li>
                         <li>
-                        <a href="{{route('producto.create')}}">
-                            <i class="bi bi-circle"></i><span>Dar de alta productos</span>
-                        </a>
+                            <a href="{{route('producto.create')}}">
+                                <i class="bi bi-circle"></i><span>Dar de alta productos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/papelera_producto">
+                                <i class="bi bi-circle"></i><span>Ver papelera</span>
+                            </a>
                         </li>
                     </ul>
                 </li><!-- End Productos Nav -->
@@ -138,14 +143,19 @@
                         </a>
                         <ul id="empleados-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                             <li>
-                            <a href="{{route('empleado.index')}}">
-                                <i class="bi bi-circle"></i><span>Ver empleados</span>
-                            </a>
+                                <a href="{{route('empleado.index')}}">
+                                    <i class="bi bi-circle"></i><span>Ver empleados</span>
+                                </a>
                             </li>
                             <li>
-                            <a href="{{route('empleado.create')}}">
-                                <i class="bi bi-circle"></i><span>Dar de alta empleados</span>
-                            </a>
+                                <a href="{{route('empleado.create')}}">
+                                    <i class="bi bi-circle"></i><span>Dar de alta empleados</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/papelera_empleado">
+                                    <i class="bi bi-circle"></i><span>Ver papelera</span>
+                                </a>
                             </li>
                         </ul>
                     </li><!-- End categorias Nav -->
@@ -155,9 +165,9 @@
                     </a>
                     <ul id="categorias-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                        <a href="{{route('categoria.index')}}">
-                            <i class="bi bi-circle"></i><span>Ver categorías</span>
-                        </a>
+                            <a href="{{route('categoria.index')}}">
+                                <i class="bi bi-circle"></i><span>Ver categorías</span>
+                            </a>
                         </li>
                         <li>
                             <a href="{{route('categoria.create')}}">

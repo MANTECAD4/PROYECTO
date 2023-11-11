@@ -29,8 +29,13 @@ Route::middleware('auth')->group(function() {
         'categoria' => 'categoria'
     ]);
     Route::get('/papelera_categoria', [CategoriaController::class, 'papelera']);
-
     Route::post('categoria/{id}/restore', [CategoriaController::class, 'restore'])->name('categoria.restore');
+
+    Route::get('/papelera_empleado', [EmpleadoController::class, 'papelera']);
+    Route::post('empleado/{id}/restore', [EmpleadoController::class, 'restore'])->name('empleado.restore');
+
+    Route::get('/papelera_producto', [ProductoController::class, 'papelera']);
+    Route::post('producto/{id}/restore', [ProductoController::class, 'restore'])->name('producto.restore');
 
 
     Route::get('/inicio', function () {
