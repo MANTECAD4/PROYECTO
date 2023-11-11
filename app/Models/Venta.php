@@ -13,17 +13,17 @@ class Venta extends Model
 
     public function empleado()
     {
-        return $this->belongsTo(User::class, 'empleado_id');
+        return $this->belongsTo(User::class, 'empleado_id')->withTrashed();
     }
     // Retorna la instancia del usuario del cliente que participo en una venta en especifico 1:1
     public function cliente()
     {
-        return $this->belongsTo(User::class, 'cliente_id');
+        return $this->belongsTo(User::class, 'cliente_id')->withTrashed();
     }
     // ¿?
     public function producto()
     {
-        return $this->belongsTo(Producto::class);
+        return $this->belongsTo(Producto::class)->withTrashed();
     }
     // Retorna los registros de la tabla pivote Producto-Venta cuyo id de venta coincida 1:N
     public function productos()

@@ -19,6 +19,10 @@ class ProductoController extends Controller
     {
         $this->authorize('viewAny', Producto::class);
         $productos = Producto::with('categoria')->get();
+
+        $productosFiltrados = $productos->reject(function ($producto) {
+            return $producto->name === 'producto default';
+        });
         return view('producto/indexproducto', compact('productos'));
 
     }

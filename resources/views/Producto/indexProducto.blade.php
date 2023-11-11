@@ -10,7 +10,7 @@
   </div><!-- End Page Title -->
 
   <!--Notificaciones de CRUD-->
-  @include('partials.notificaciones');
+  @include('partials.notificaciones')
   
   <section class="section">
     <div class="row">

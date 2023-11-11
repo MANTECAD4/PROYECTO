@@ -15,7 +15,7 @@ class ProductoVenta extends Model
     //Retorna la instancia de uno de los productos que componen a una venta
     public function producto()
     {
-        return $this->belongsTo(Producto::class,'producto_id');
+        return $this->belongsTo(Producto::class,'producto_id')->withTrashed();
     }
 
 }

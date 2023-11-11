@@ -202,6 +202,29 @@
                     </ul>
                 </li><!-- End categorias Nav -->
 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#papelera-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-trash2"></i><span>Papelera</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="papelera-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-circle"></i><span>Ver productos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-circle"></i><span>Ver empleados</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-circle"></i><span>Ver categorías</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End categorias Nav -->
+
                 <li class="nav-heading">Páginas</li>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="/cliente">

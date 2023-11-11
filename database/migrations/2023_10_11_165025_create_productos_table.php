@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image_path')->nullable();
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

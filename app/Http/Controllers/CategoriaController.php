@@ -85,15 +85,6 @@ class CategoriaController extends Controller
     public function destroy(Categoria $categoria)
     {
         $this->authorize('delete', $categoria);
-        $productos_dependientes = $categoria->productos;
-        
-        $default = Categoria::where('nombre','Varios')->get()->first();
-        
-        foreach ($productos_dependientes as $dependencia)
-        {
-            $dependencia->categoria_id = $default->id;
-            $dependencia->save();
-        }
         $nombre = $categoria->nombre;
         $categoria->delete();
         Session::flash('error', 'Categoría '. $nombre .' eliminada con éxito!');

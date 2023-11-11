@@ -18,10 +18,11 @@ return new class extends Migration
             $table->date('fecha_nac');
             $table->string('telefono');
             $table->string('direccion');
+            $table->softDeletes();
         });
     }
 
-    /**
+    /***
      * Reverse the migrations.
      */
     public function down(): void

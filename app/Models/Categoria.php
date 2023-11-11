@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categoria extends Model
 {
     public $timestamps = false;
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = ['nombre', 'descripcion'];
 
     public function productos()
     {
-        return $this->hasMany(Producto::class,'categoria_id');
+        return $this->hasMany(Producto::class,'categoria_id')->withTrashed();
     }
 }

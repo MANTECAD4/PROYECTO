@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->string('sueldo');
+            $table->softDeletes();
         });
     }
 

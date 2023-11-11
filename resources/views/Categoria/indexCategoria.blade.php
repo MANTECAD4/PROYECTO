@@ -79,7 +79,7 @@
 
             Swal.fire({
                 title: "¿Estás seguro?",
-                text: "No podrás revertir la eliminación de este registro.",
+                text: "Se puede revertir esta acción accediendo a la papelera.",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
