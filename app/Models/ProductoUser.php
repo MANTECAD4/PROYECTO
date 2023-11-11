@@ -9,6 +9,7 @@ class ProductoUser extends Model
 {
     use HasFactory;
     protected $table = 'producto_user';
+    protected $fillable = ['operacion', 'fecha', 'producto_id', 'user_id'];
 
     public $timestamps = false;
     public function user()

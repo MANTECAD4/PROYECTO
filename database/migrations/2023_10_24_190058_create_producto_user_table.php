@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('producto_user', function (Blueprint $table) {
             $table->foreignId('producto_id')->constrained('productos');
             $table->timestamp('fecha')->useCurrent();
+            $table->string('operacion');
             $table->foreignId('user_id')->contsrained('users');
         });
     }

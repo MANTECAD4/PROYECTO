@@ -19,9 +19,6 @@ class ProductoController extends Controller
         $this->authorize('viewAny', Producto::class);
         $productos = Producto::with('categoria')->get();
 
-        $productosFiltrados = $productos->reject(function ($producto) {
-            return $producto->name === 'producto default';
-        });
         return view('producto/indexproducto', compact('productos'));
 
     }
@@ -44,7 +41,7 @@ class ProductoController extends Controller
         $this->authorize('create', Producto::class);
         
         $request->validate([
-            'name' => 'required|unique:productos,name',
+            'name' => 'required|unique:productos,name|string|max:255',
             'price' => 'required|numeric|min:1',
             'descripcion' => 'nullable|max:164',
             'unidades' => 'required|integer|min:1',
@@ -70,7 +67,13 @@ class ProductoController extends Controller
             'image_path' => $imageName 
         ]);
         Session::flash('success', 'El producto '. $request->name .' ha sido registrado con éxito!');
-        return redirect('/producto');
+        ProductoUser::create([
+            'operacion' => 'Creación',
+            'producto_id' => $producto->id,
+            'user_id' => Auth::id(),
+        ]);
+        return redirect()->route('producto.index');
+
     }
 
 
@@ -111,11 +114,12 @@ class ProductoController extends Controller
         //
         $this->authorize('update', $producto);
         $request->validate([
-            'name' => 'required|unique:productos,name,'. $producto->id . ',id',
-            'descripcion' => 'max:164',
+            'name' => 'required|unique:productos,name,'. $producto->id . ',id|string|max:255',
+            'descripcion' => 'max:255',
             'price' => 'required|numeric|min:1',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required',
+            'image' => 'nullable'
         ]);
 
         // REHACER LOGS
@@ -142,7 +146,13 @@ class ProductoController extends Controller
     {
         $this->authorize('delete', $producto);
         $nombre = $producto->name;
+        ProductoUser::create([
+            'operacion' => 'Eliminación',
+            'producto_id' => $producto->id,
+            'user_id' => Auth::id(),
+        ]);
         $producto->delete();
+        
         Session::flash('error', 'Producto '. $nombre .' eliminado con éxito!');
         return redirect()->route('producto.index');
     }
@@ -159,6 +169,11 @@ class ProductoController extends Controller
     {
         $this->authorize('restore', Producto::class);
         $producto = Producto::onlyTrashed()->find($id);
+        ProductoUser::create([
+            'operacion' => 'Restauración',
+            'producto_id' => $producto->id,
+            'user_id' => Auth::id(),
+        ]);
         $producto->restore();
         Session::flash('success', 'Producto '. $producto->name .' restaurado con éxito!');
         return redirect('/papelera_producto');

@@ -96,7 +96,7 @@ class EmpleadoController extends Controller
             'telefono' => 'nullable|string|max:20',
             'correo' => 'required|email|max:255|unique:users,email,' . $empleado->user_id,
             'sueldo' => 'numeric|min:1',
-            'fecha_nac' => 'required|date',
+            'fecha_nac' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
             'direccion' => 'required|string|max:255',
             'password' => 'nullable|min:8',
             'password2' => 'same:password',

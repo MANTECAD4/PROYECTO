@@ -34,7 +34,7 @@
                     <thead>
                       <tr>
                         <th scope="col">PRODUCTO</th>
-                        <th scope="col">DESCRIPCION</th>
+                        <th scope="col">DESCRIPCIÓN</th>
                         <th scope="col">FECHA ELIMINACIÓN</th>
                         <th></th>
 

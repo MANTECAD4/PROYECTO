@@ -65,26 +65,38 @@
                                 <textarea class="form-control" placeholder="Descripción" id="descripcion" name="descripcion" style="height: 100px;">{{old('descripcion') ?? $producto->descripcion}}</textarea>
                                 <label for="descripcion">Descripción</label>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                        
-                            <div class="form-floating">
-                            <input type="number" class="form-control" id="price" name="price" placeholder="Precio" step="0.01" value="{{old('price') ?? $producto->price}}" required>
-                            <label for="price">Precio</label>
+                        </div>                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" id="price" name="price" placeholder="Precio" step="0.01" value="{{ old('price')  ?? $producto->price}}" required>
+                                            <label for="price">Precio</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input type="number" class="form-control" id="unidades" name="unidades" placeholder="Unidades" step="1" value="{{ old('unidades')  ?? $producto->unidades}}" required>
+                                            <label for="unidades">Unidades</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        
-                        </div>
-                        <div class="col-md-2">
-                        <div class="form-floating">
-                            <input type="number" class="form-control" id="unidades" name="unidades" placeholder="Unidades" step="1"  value="{{old('unidades') ?? $producto->unidades}}" required>
-                            <label for="unidades">Unidades</label>
-                        </div>
+                            <div class="col-md-6">
+                                <div class="row mb-3">
+                                    <label for="formFile" class="col-sm-2 col-form-label">Subir imagen</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="file" id="formFile" name="image" accept="image/jpeg, image/png, image/jpg, image/gif">
+                                    </div>
+                                </div>
+                            </div> 
                         </div>
                         <div class="text-center">
-                        <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
-                        <a href="{{ route('producto.index') }}" class="btn btn-secondary">
-                            <i class="bi bi-tag me-2"></i>Volver al inicio
-                        </a> 
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
+                            <a href="{{ route('producto.index') }}" class="btn btn-secondary">
+                                <i class="bi bi-tag me-2"></i>Volver al inicio
+                            </a> 
                         </div>
                     </form><!-- End floating Labels Form -->
                 </div>
