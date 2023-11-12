@@ -44,7 +44,7 @@
                       @foreach ($productos_borrados as $registro)   
                         <tr>
                             <td >{{ $registro->name}}</td>
-                            <td >{{ $registro->descripcion }}</td>
+                            <td >{{ $registro->descripcion ?? 'Sin descripción'}}</td>
                             <td >{{ $registro->deleted_at }}</td>
                             <td>
                                 <form  action="{{route('producto.restore',$registro->id)}}" method="POST">

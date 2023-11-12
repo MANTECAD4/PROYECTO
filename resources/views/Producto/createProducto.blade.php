@@ -30,7 +30,7 @@
                     @endif
                     
                     <!-- Create Post Form -->
-                    <form action="/producto" method="POST" class="row g-3" enctype="multipart/form-data">
+                    <form action="{{route('producto.store')}}" method="POST" class="row g-3" enctype="multipart/form-data">
                         @csrf <!-- Agrega el token CSRF -->
                         <div class="col-md-12">
                         <div class="form-floating">

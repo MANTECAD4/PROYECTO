@@ -62,7 +62,9 @@ Route::middleware('auth')->group(function() {
 });
 Route::resource('cliente', ClienteController::class);
 
-
+Route::get('/formnuevo', function () {
+    return view('formulario_prueba');
+});
 Route::get('/', function () {
     return view('landing_page');
 });

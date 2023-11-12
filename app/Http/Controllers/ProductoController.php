@@ -160,7 +160,7 @@ class ProductoController extends Controller
     public function log()
     {
         $this->authorize('log', Producto::class);
-        $registros = ProductoUser::with('user', 'producto')->get();
+        $registros = ProductoUser::with('user', 'producto')->orderBy('fecha', 'desc')->get();
         return view('producto/productos_log',compact('registros'));
     }
 

@@ -33,7 +33,7 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
 
             <div class="d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center">
+                <a href="/inicio" class="logo d-flex align-items-center">
                 <img src="{{asset('assets/img/logo.png')}}" alt="">
                 <span class="d-none d-lg-block">Tianguis Digital</span>
                 </a>
@@ -43,59 +43,67 @@
 
             <nav class="header-nav ms-auto">
                 <ul class="d-flex align-items-center">
-                <a class="nav-link nav-icon" href="/cart">
-                    <i class="bi bi-cart"></i>
-                    <span class="badge bg-success badge-number">{{\Cart::getTotalQuantity()}}</span>
-                </a><!-- End Notification Icon -->
-                <li class="nav-item dropdown pe-3">
 
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="{{asset('assets/img/usuario.png')}}" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
-                    </a><!-- End Profile Iamge Icon -->
+                    <a class="nav-link nav-icon" href="/shop" title="Ir a la tienda">
+                        <i class="bi bi-shop mx-2"></i>TIENDA
+                    </a><!-- End Notification Icon -->
 
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                    <li class="dropdown-header">
-                        <h6>{{ auth()->user()->name }}</h6>
-                        <span>{{ auth()->user()->type_user }}</span>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
+                    <a class="nav-link nav-icon" href="/cart" title="Ver carrito de compras">
+                        <i class="bi bi-cart"></i>
+                        <span class="badge bg-success badge-number">{{\Cart::getTotalQuantity()}}</span>
+                    </a><!-- End Notification Icon -->
 
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    @if(auth()->user()->type_user == 'administrador')
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="/perfil">
-                            <i class="bi bi-gear"></i>
-                            <span>Ajustes de cuenta</span>
-                            </a>
-                        </li>
-                    @endif
                     
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
 
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}" x-data>
-                            @csrf
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>
-                                    Cerrar sesión
-                                </span>
-                            </a>
-                        </form>
-                    </li>
+                    <li class="nav-item dropdown pe-3">
 
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="{{asset('assets/img/usuario.png')}}" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
+                        </a><!-- End Profile Iamge Icon -->
+
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>{{ auth()->user()->name }}</h6>
+                            <span>{{ auth()->user()->type_user }}</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        @if(auth()->user()->type_user == 'administrador')
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="/perfil">
+                                <i class="bi bi-gear"></i>
+                                <span>Ajustes de cuenta</span>
+                                </a>
+                            </li>
+                        @endif
+                        
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>
+                                        Cerrar sesión
+                                    </span>
+                                </a>
+                            </form>
+                        </li>
+
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li><!-- End Profile Nav -->
 
                 </ul>
             </nav><!-- End Icons Navigation -->

@@ -68,7 +68,7 @@
                                 <a href="{{ route('categoria.edit',$categoria) }}" class="btn btn-warning mx-2" title="Editar producto">
                                     <span class="bi bi-pencil"></span> Editar
                                 </a>
-                                <form action="{{ route('categoria.destroy',$categoria) }}" method="POST"class="d-inline">
+                                <form action="{{ route('categoria.destroy',$categoria) }}" method="POST"class="d-inline deleteForm">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" title="Borrar producto">
@@ -85,4 +85,25 @@
         </div>
     </div>
 </x-mi-layout>
-    
+<script>
+    document.querySelectorAll('.deleteForm').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+  
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "Se puede revertir esta acción accediendo a la papelera.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtontext: "Cancelar",
+                confirmButtonText: "Sí, eliminar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+  </script>      

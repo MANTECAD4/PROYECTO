@@ -3,7 +3,7 @@
         <h1>Detalles de producto</h1>
         <nav>
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/inicio">Inicio</a></li>
             <li class="breadcrumb-item"><a href="{{route('producto.index')}}">Productos</a></li>
             <li class="breadcrumb-item">Inspeccionar producto</li>
             <li class="breadcrumb-item active">{{$producto->name}}</li>
@@ -59,7 +59,7 @@
                                 <a href="{{ route('producto.edit', $producto) }}" class="btn btn-warning mx-2" title="Editar producto">
                                     <span class="bi bi-pencil"></span> Editar
                                 </a>
-                                <form action="{{ route('producto.destroy', $producto) }}" method="POST">
+                                <form class="deleteForm" action="{{ route('producto.destroy', $producto) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" title="Borrar producto">
@@ -75,4 +75,25 @@
         </div>
     </div>
 </x-mi-layout>
-    
+<script>
+    document.querySelectorAll('.deleteForm').forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+  
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "Se puede revertir esta acción accediendo a la papelera.",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                cancelButtontext: "Cancelar",
+                confirmButtonText: "Sí, eliminar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+  </script>   
