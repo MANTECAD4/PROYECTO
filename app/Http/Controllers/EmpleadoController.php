@@ -38,10 +38,10 @@ class EmpleadoController extends Controller
         $this->authorize('create', Empleado::class);
         $errores = $request->validate([
             'nombre' => 'required|string|max:255',
-            'telefono' => 'nullable|string|max:20',
+            'telefono' => 'required|string|max:20',
             'correo' => 'required|email|max:255|unique:users,email',
-            'sueldo' => 'numeric|min:1',
-            'fecha_nac' => 'required|date',
+            'sueldo' => 'numeric|min:207.44',
+            'fecha_nac' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
             'direccion' => 'required|string|max:255',
             'password' => 'required|min:8',
             'password2' => 'required|same:password',

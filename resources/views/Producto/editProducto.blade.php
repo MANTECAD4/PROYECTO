@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Descripción" id="descripcion" name="descripcion" style="height: 100px;">{{old('descripcion') ?? $producto->descripcion}}</textarea>
+                                <textarea class="form-control" placeholder="Descripción" id="descripcion" name="descripcion" style="height: 100px;" required>{{old('descripcion') ?? $producto->descripcion}}</textarea>
                                 <label for="descripcion">Descripción</label>
                             </div>
                         </div>                        

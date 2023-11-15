@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Descripción" id="descripcion" name="descripcion" style="height: 100px;">{{old('descripcion')}}</textarea>
+                                <textarea class="form-control" placeholder="Descripción" id="descripcion" name="descripcion" style="height: 100px;" required>{{old('descripcion')}}</textarea>
                                 <label for="descripcion">Descripción</label>
                             </div>
                         </div>
@@ -93,6 +93,9 @@
                         
                         
                         <div class="text-center">
+                            <a href="{{ route('producto.index') }}" class="btn btn-info">
+                                <i class="bi bi-bag me-1"></i> Volver al inicio
+                            </a> 
                         <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                         <button type="reset" class="btn btn-secondary">Limpiar</button>
                         </div>

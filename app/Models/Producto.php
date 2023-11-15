@@ -17,6 +17,7 @@ class Producto extends Model
     }
     public function usuarios()
     {
-        return $this->belongsToMany(User::class, 'producto_user', 'producto_id', 'user_id')->withTrashed();;
+        return $this->belongsToMany(User::class, 'producto_user', 'producto_id', 'user_id')->withTrashed();
     }
 }
+

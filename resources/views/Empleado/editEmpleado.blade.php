@@ -100,6 +100,9 @@
                         
                         
                         <div class="text-center">
+                            <a href="{{ route('empleado.index') }}" class="btn btn-info">
+                                <i class="bi bi-person-badge me-1"></i> Volver al inicio
+                            </a> 
                             <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                         </div>
                     </form><!-- End floating Labels Form -->

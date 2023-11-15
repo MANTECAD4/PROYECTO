@@ -44,9 +44,9 @@ class ProductoController extends Controller
         $request->validate([
             'name' => 'required|unique:productos,name|string|max:255',
             'price' => 'required|numeric|min:1',
-            'descripcion' => 'nullable|max:164',
+            'descripcion' => 'required|max:255',
             'unidades' => 'required|integer|min:1',
-            'marca' => 'required',
+            'marca' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' 
         ]);
 
@@ -122,6 +122,7 @@ class ProductoController extends Controller
         'marca' => 'required',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' 
     ]);
+    $nombre_old = $producto->name;
     $imageName = null; 
     if ($request->hasFile('image')) {
         $image = $request->file('image');
@@ -152,7 +153,8 @@ class ProductoController extends Controller
         'operacion' => 'Modificación',
         'producto_id' => $producto->id,
         'user_id' => Auth::id(),
-    ]);    Session::flash('warning', 'Producto ' . $producto->name . ' modificado con éxito!');
+    ]);    
+    Session::flash('warning', 'Producto ' . $nombre_old . ' modificado con éxito!');
     return redirect()->route('producto.index');
 }
 

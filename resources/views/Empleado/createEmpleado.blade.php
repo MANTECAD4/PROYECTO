@@ -1,10 +1,10 @@
 <x-mi-layout>
     <div class="pagetitle">
-        <h1>Inventario de empleados</h1>
+        <h1>Registro de empleados</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/inicio">Inicio</a></li>
-            <li class="breadcrumb-item"><a href="{{route('empleado.index')}}">empleados</a></li>
+            <li class="breadcrumb-item"><a href="{{route('empleado.index')}}">Empleados</a></li>
             <li class="breadcrumb-item active">Dar de alta empleado</li>
         </ol>
         </nav>
@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Agregar empleado</h5>
-                    <p>Aqui puedes añadir nuevos registros de empleados al inventario!</p>
+                    <p>Aqui puedes añadir nuevos registros de empleados al sistema!</p>
                     <!-- Floating Labels Form -->
                     <!-- /resources/views/post/create.blade.php -->
                         
@@ -100,6 +100,9 @@
                         
                         
                         <div class="text-center">
+                            <a href="{{ route('empleado.index') }}" class="btn btn-info">
+                                <i class="bi bi-person-badge me-1"></i> Volver al inicio
+                            </a> 
                             <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Guardar</button>
                             <button type="reset" class="btn btn-secondary">Limpiar</button>
                         </div>
