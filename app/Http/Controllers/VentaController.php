@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class VentaController extends Controller
 {
@@ -47,6 +48,7 @@ class VentaController extends Controller
             ]);
         } 
         \Cart::clear();
+        Session::flash('success', 'La venta se ha realizado exitosamente!');
         return redirect()->route('cart.index');
     }
     public function show(Venta $venta)

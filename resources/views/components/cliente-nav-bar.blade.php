@@ -22,6 +22,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/vendor2/style.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!--No quitar-->
   @livewireScripts
@@ -60,6 +61,15 @@
                       </a>
                     </form>
                   </li>
+                  <li>
+                    <form class="deleteForm" action="{{route('cliente.destroy',$cliente)}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="text-center" title="Borrar empleado">
+                        Eliminar cuenta
+                      </button>
+                    </form>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -86,3 +96,45 @@
 
     </body>
 </html>
+<script>
+  document.querySelectorAll('.deleteForm').forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success mx-2",
+            cancelButton: "btn btn-danger"
+          },
+          buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+          title: "¿Estas seguro/a?",
+          text: "Tendrias que contactar al negocio para recuperarla!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Si, deseo borrarla!",
+          cancelButtonText: "No, cancelar!",
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+              title: "Eliminada!",
+              text: "Tu cuenta ha sido borrada.",
+              icon: "success"
+            });
+            form.submit();
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire({
+              title: "Cancelado",
+              text: "Tu cuenta está a salvo :)",
+              icon: "error"
+            });
+          }
+        });
+     });
+  });
+</script> 

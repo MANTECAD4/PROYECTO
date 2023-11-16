@@ -141,8 +141,7 @@ class EmpleadoController extends Controller
             DB::beginTransaction();
             $usuario = $empleado->user;
             $default = User::where('email', 'vendedor@gmail.com')->get()->first();
-            $dependencia_ventas = $empleado->ventas;
-            
+            $dependencia_ventas = $empleado->ventas;    
             foreach ($dependencia_ventas as $dependencia)
             {
                 $dependencia->empleado_id = $default->id;

@@ -1,4 +1,14 @@
 <div>
+    @if(Session::has('success'))
+      <script>
+        Swal.fire({
+          title: "Éxito!",
+          text: "{{ Session::get('success') }}",
+          icon: "success",
+          timer: 3000,
+        });
+      </script>
+    @endif
     @if (auth()->user()->type_user != 'cliente')
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">

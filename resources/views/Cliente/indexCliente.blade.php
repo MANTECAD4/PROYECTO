@@ -9,6 +9,16 @@
       </nav>
     </div><!-- End Page Title -->
   
+    @if(Session::has('success'))
+        <script>
+          Swal.fire({
+            title: "Restauración exitosa!",
+            text: "{{ Session::get('success') }}",
+            icon: "success",
+            timer: 3000,
+          });
+        </script>
+      @endif
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -28,6 +38,9 @@
                       <th scope="col">GENERO</th>
                       <th scope="col">CORREO</th>
                       <th scope="col">DIRECCIÓN</th>
+                      @if (auth()->user()->type_user == 'administrador')
+                        <th>ELIMINADA POR CLIENTE</th>
+                      @endif
                     </tr>
                   </thead>
                   <tbody>
@@ -40,6 +53,20 @@
                           <td>{{ $cliente->genero }}</td>                        
                           <td>{{ $cliente->user->email}}</td>
                           <td>{{ $cliente->direccion}}</td>
+                          @if (auth()->user()->type_user == 'administrador')
+                            <td>
+                              @if ($cliente->deleted_at != null)
+                                <div class="d-flex justify-content-center">
+                                  <form  action="{{route('cliente.restore',$cliente->id)}}" method="POST">
+                                      @csrf
+                                      <button type="submit" class="btn btn-success" title="Restaurar cliente">
+                                        <span class="bx bx-revision"> Restaurar</span> 
+                                      </button>
+                                  </form>
+                                </div>
+                              @endif
+                          </td>
+                        @endif
                       </tr>
                     @endforeach
                   </tbody>

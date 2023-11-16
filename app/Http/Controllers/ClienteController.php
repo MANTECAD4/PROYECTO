@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ClienteController extends Controller
 {
@@ -22,10 +23,10 @@ class ClienteController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Cliente::class);
-        $clientes = Cliente::with('user')->get()->reject(function ($cliente) {
+        $clientes = Cliente::with('user')->withTrashed()->get()->reject(function ($cliente) {
             return $cliente->user->name === 'Cliente Default';
         });
-
+        
         return view('cliente/indexCliente', compact('clientes')); 
         
     }
@@ -139,6 +140,22 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $this->authorize('delete', $cliente);
+        $usuario = $cliente->user;
+        $cliente->delete();
+        $usuario->delete();
+        Auth::logout();
+        return redirect('/');
+
+    }
+    public function restore($id)
+    {
+        $this->authorize('restore', Cliente::class);
+        $cliente = Cliente::onlyTrashed()->find($id);
+        $cliente->restore();
+        $usuario = $cliente->user;
+        $usuario->restore();
+        Session::flash('success', 'Cliente '. $usuario->name .' restaurado con éxito!');
+        return redirect()->route('cliente.index');
     }
 }

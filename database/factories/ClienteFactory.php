@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Empleado>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cliente>
  */
-class EmpleadoFactory extends Factory
+class ClienteFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -23,7 +23,6 @@ class EmpleadoFactory extends Factory
             'fecha_nac' => fake()->dateTimeBetween('-100 years', '-18 years')->format('Y-m-d'),
             'telefono' => fake()->phoneNumber,
             'direccion' => fake()->address,
-            'sueldo' => fake()->randomFloat(2, 207.44,10000), 
         ];
     }
 }

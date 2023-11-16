@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/papelera_producto', [ProductoController::class, 'papelera']);
     Route::post('producto/{id}/restore', [ProductoController::class, 'restore'])->name('producto.restore');
 
+    Route::post('cliente/{id}/restore', [ClienteController::class, 'restore'])->name('cliente.restore');
 
     Route::get('/inicio', function () {
         return view('inicio');

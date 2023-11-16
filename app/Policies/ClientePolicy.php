@@ -51,15 +51,15 @@ class ClientePolicy
      */
     public function delete(User $user, Cliente $cliente): bool
     {
-        //
+        return $user->id === $cliente->user_id and $user->type_user == 'cliente' and $cliente->user->email != 'cliente@gmail.com';
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Cliente $cliente): bool
+    public function restore(User $user): bool
     {
-        //
+        return $user->type_user == 'administrador';
     }
 
     /**
