@@ -18,6 +18,10 @@ a {
   color: #3498db;
   text-decoration: none;
 }
+.botonBorrar {
+  color: #3498db;
+  text-decoration: none;
+}
 
 a:hover {
   color: #5faee3;

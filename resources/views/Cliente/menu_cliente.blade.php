@@ -1,4 +1,14 @@
 <x-cliente-nav-bar>
+  @if(Session::has('success'))
+      <script>
+        Swal.fire({
+          title: "Modificación exitosa!",
+          text: "{{ Session::get('success') }}",
+          icon: "success",
+          timer: 3000,
+        });
+      </script>
+    @endif
 
     <!-- ======= inicio Section ======= -->
   <section id="inicio" class="d-flex flex-column justify-content-center align-items-center">

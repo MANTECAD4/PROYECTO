@@ -50,7 +50,7 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
             'correo' => 'required|email|max:255|unique:users,email',
-            'fecha_nac' => 'required|date|',
+            'fecha_nac' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
             'direccion' => 'required|string|max:255',
             'password' => 'required|min:8',
             'password2' => 'required|same:password',
@@ -103,7 +103,7 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
             'correo' => 'required|email|max:255|unique:users,email,' . $cliente->user_id,
-            'fecha_nac' => 'required|date',
+            'fecha_nac' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
             'direccion' => 'required|string|max:255',
             'password' => 'nullable|min:8',
             'password2' => 'same:password',
@@ -126,6 +126,7 @@ class ClienteController extends Controller
             $cliente->direccion = $request->direccion;
             $cliente->save();
             DB::commit(); 
+            Session::flash('success', 'Tu cuenta ha sido modificada :)');
             return redirect('/shop'); 
         } 
         catch (\Exception $e) 

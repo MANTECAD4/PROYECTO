@@ -65,7 +65,7 @@
                     <form class="deleteForm" action="{{route('cliente.destroy',$cliente)}}" method="POST">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="text-center" title="Borrar empleado">
+                      <button type="submit" class="text-center mx-4 botonBorrar" title="Borrar empleado" style="display: inline; background: none; border: none; padding: 0;">
                         Eliminar cuenta
                       </button>
                     </form>
