@@ -15,7 +15,7 @@ class AdminOnly
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type_user !== 'administrador') {
+        if (auth()->user()->type_user !== 'administrador' and auth()->user()->type_user !== 'vendedor') {
             return response('Acceso no autorizado', 403); 
         }
 

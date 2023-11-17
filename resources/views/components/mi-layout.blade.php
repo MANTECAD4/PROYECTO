@@ -74,7 +74,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        @if(auth()->user()->type_user == 'administrador')
+                        @if(auth()->user()->type_user == 'administrador' or auth()->user()->type_user == 'vendedor')
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="/perfil">
                                 <i class="bi bi-gear"></i>
@@ -240,7 +240,7 @@
                         </a>
                     </li>
                 @endif
-                @if(auth()->user()->type_user == 'administrador')
+                @if(auth()->user()->type_user == 'administrador' or auth()->user()->type_user == 'vendedor')
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="/perfil">
                             <i class="bi bi-gear"></i>

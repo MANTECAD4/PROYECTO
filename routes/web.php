@@ -69,7 +69,7 @@ Route::get('/formnuevo', function () {
 Route::get('/', function () {
     return view('landing_page');
 });
-
+/*
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -78,4 +78,4 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
+});*/
