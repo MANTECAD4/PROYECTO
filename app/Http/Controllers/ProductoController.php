@@ -47,7 +47,7 @@ class ProductoController extends Controller
             'descripcion' => 'required|max:255',
             'unidades' => 'required|integer|min:1',
             'marca' => 'required|string|max:255',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' 
+            'image' => 'image|mimes:jpeg,png,jpg,gif' 
         ]);
 
         $imageName = null; 
@@ -120,7 +120,7 @@ class ProductoController extends Controller
         'descripcion' => 'nullable|max:164',
         'unidades' => 'required|integer|min:1',
         'marca' => 'required',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048' 
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif' 
     ]);
     $nombre_old = $producto->name;
     $imageName = null; 

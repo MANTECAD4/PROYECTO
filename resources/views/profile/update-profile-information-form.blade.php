@@ -84,11 +84,18 @@
     </x-slot>
 
     <x-slot name="actions">
-        <x-action-message class="mr-3" on="saved">
+        <!-- Muestra el mensaje mientras se está procesando la acción -->
+        <div wire:loading wire:target="updateProfileInformation" class="text-sm text-gray-600 dark:text-gray-400 mr-3">
+            {{ __('Saving...') }}
+        </div>
+
+        <!-- Muestra el mensaje después de que se ha guardado exitosamente -->
+        <x-action-message class="mr-3" wire:target="updateProfileInformation" on="saved">
             {{ __('Saved.') }}
         </x-action-message>
 
-        <x-button wire:loading.attr="disabled" wire:target="photo">
+        <!-- Botón de envío del formulario -->
+        <x-button wire:loading.attr="disabled">
             {{ __('Save') }}
         </x-button>
     </x-slot>

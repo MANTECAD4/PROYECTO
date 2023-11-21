@@ -26,13 +26,20 @@
             <x-input-error for="password_confirmation" class="mt-2" />
         </div>
     </x-slot>
-
+    
     <x-slot name="actions">
+        <!-- Muestra el mensaje mientras se está procesando la acción -->
+        <div wire:loading wire:target="updatePassword" class="text-sm text-gray-600 dark:text-gray-400 mr-3">
+            {{ __('Saving...') }}
+        </div>
+
+        <!-- Muestra el mensaje después de que se ha guardado exitosamente -->
         <x-action-message class="mr-3" on="saved">
             {{ __('Saved.') }}
         </x-action-message>
 
-        <x-button>
+        <!-- Botón de envío del formulario -->
+        <x-button wire:loading.attr="disabled">
             {{ __('Save') }}
         </x-button>
     </x-slot>

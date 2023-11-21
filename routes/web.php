@@ -59,17 +59,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/perfil', function () {
         return view('editarPerfil');
     })->middleware(AdminOnly::class);
-
 });
 Route::resource('cliente', ClienteController::class);
 
-Route::get('/formnuevo', function () {
-    return view('formulario_prueba');
-});
 Route::get('/', function () {
     return view('landing_page');
 });
-/*
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -78,4 +74,4 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});*/
+});

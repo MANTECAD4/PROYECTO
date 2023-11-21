@@ -14,13 +14,14 @@
         <!-- Scripts -->
         <link href="{{ asset('assets/css/editarPerfil.css')}}" rel="stylesheet">
         <!-- Styles -->
-        @livewireScripts
+        @livewireStyles
     </head>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
                 @livewire('profile.update-profile-information-form')
                 <x-section-border />
+                
             @endif
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
@@ -32,5 +33,5 @@
         </div>
         
     </div>
-
+    @livewireScripts
 </x-mi-layout>
