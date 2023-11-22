@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder
             CategoriaSeeder::class,
             ProductoSeeder::class,
             EmpleadoSeeder::class,
+            ClienteSeeder::class,
         ]);
     }
 }

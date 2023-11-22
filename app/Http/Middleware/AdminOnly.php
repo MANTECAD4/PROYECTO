@@ -15,10 +15,11 @@ class AdminOnly
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type_user !== 'administrador' and auth()->user()->type_user !== 'vendedor') {
-            return response('Acceso no autorizado', 403); 
-        }
-
+        $user = auth()->user();
+        if (($user->type_user !== 'administrador' && $user->type_user !== 'vendedor') ||
+        in_array($user->email, ['admin@gmail.com', 'vendedor@gmail.com'])) {
+        return response('Acceso no autorizado', 403);
+    }
         return $next($request);
     }
 }

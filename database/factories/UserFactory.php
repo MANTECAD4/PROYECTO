@@ -30,9 +30,37 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
-            'type_user' => 'cliente'
         ];
     }
+
+    /**
+     * Indica que el usuario es un vendedor.
+     *
+     * @return $this
+     */
+    public function vendedor()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'type_user' => 'vendedor',
+            ];
+        });
+    }
+
+    /**
+     * Indica que el usuario es un cliente.
+     *
+     * @return $this
+     */
+    public function cliente()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'type_user' => 'cliente',
+            ];
+        });
+    }
+
 
     /**
      * Indicate that the model's email address should be unverified.

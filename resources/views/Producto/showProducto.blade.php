@@ -42,7 +42,7 @@
                                 <ul>
                                 <li><strong>price</strong>: ${{$producto->price}}</li>
                                 <li><strong>Marca</strong>: {{$producto->marca}}</li>
-                                <li><strong>Categoría</strong>: {{$producto->categoria->name}}</li>
+                                <li><strong>Categoría</strong>: {{$producto->categoria->nombre}}</li>
                                 <li><strong>Unidades</strong>: {{$producto->unidades}}</li>
                                 </ul>
                             </div>
