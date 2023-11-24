@@ -17,7 +17,7 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h3 class="card-title">Datatables</h3>
+            <h3 class="card-title">Registros</h3>
             <p>Información de todos los productos registrados en la tienda. Haz click sobre el nombre un producto para inspeccionarlo!</p>
             <!-- Table with stripped rows -->
             <div class="tabla-contenedor">

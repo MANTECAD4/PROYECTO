@@ -14,7 +14,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">Datatables</h3>
+              <h3 class="card-title">Registros</h3>
               <p>Historial de ventas de la tienda. Haz click sobre el id de una venta para más detalles!</p>
               <!-- Table with stripped rows -->
               <div class="tabla-contenedor">
