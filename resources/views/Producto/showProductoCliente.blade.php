@@ -25,7 +25,7 @@
               <div class="col-lg-8">
                 <div class="portfolio-details-slider swiper">
                   <div class="swiper-wrapper align-items-center">
-                    <img src="/images/{{ $producto->image_path }}" alt="">
+                    <img src="{{ \Storage::url( $producto->ruta_imagen) }}" alt="">
                   </div>
                   <div class="swiper-pagination"></div>
                 </div>
@@ -57,7 +57,7 @@
                           <input type="hidden" value="{{ $producto->id }}" id="id" name="id">
                           <input type="hidden" value="{{ $producto->name }}" id="name" name="name">
                           <input type="hidden" value="{{ $producto->price }}" id="price" name="price">
-                          <input type="hidden" value="{{ $producto->image_path }}" id="img" name="img">
+                          <input type="hidden" value="{{ $producto->ruta_imagen }}" id="img" name="img">
                           <input type="hidden" value="{{ $producto->unidades }}" id="unidades" name="unidades">
                           <input type="hidden" value="1" id="quantity" name="quantity">
                           <div class="card-footer" style="background-color: white;">

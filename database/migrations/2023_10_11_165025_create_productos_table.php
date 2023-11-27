@@ -18,7 +18,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('unidades');
             $table->string('marca');
-            $table->string('image_path')->nullable();
+            $table->string('ruta_imagen');
+            $table->string('nombre_imagen');
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();
             $table->softDeletes();

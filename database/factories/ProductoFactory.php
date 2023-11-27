@@ -26,7 +26,7 @@ class ProductoFactory extends Factory
             'price'=>fake()->randomFloat(2, 0.01, 1000.00),
             'unidades'=>fake()->numberBetween(1,20),
             'marca'=>fake()->unique()->word(),
-            'image_path'=>fake()->randomElement(['macbook-pro.png','iphone-11-pro.png']),
+            'ruta_imagen'=>fake()->randomElement(['macbook-pro.png','iphone-11-pro.png']),
             'categoria_id'=> $categoria->id
         ];
     }

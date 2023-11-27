@@ -18,22 +18,6 @@
         </nav>   
     @endif
     
-    @if(session()->has('success_msg'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session()->get('success_msg') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-    @endif
-    @if(session()->has('alert_msg'))
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            {{ session()->get('alert_msg') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-    @endif
     @if(count($errors) > 0)
         @foreach($errors0>all() as $error)
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -63,7 +47,7 @@
                 
                 <div class="row">
                     <div class="col-lg-3">
-                        <img src="/images/{{ $item->attributes->image ? $item->attributes->image : 'default.png' }}" class="img-thumbnail" width="200" height="200">
+                        <img src="{{ \Storage::url($item->attributes->image)}}" class="img-thumbnail" width="200" height="200">
 
                     </div>
                     <div class="col-lg-5">

@@ -22,6 +22,7 @@ use App\Http\Middleware\Inicio;
 */
 
 Route::middleware('auth')->group(function() {
+    Route::get('producto/descarga/{producto}',[ProductoController::class,'descarga'])->name('producto.descarga');
     Route::resource('producto',ProductoController::class);  
     Route::resource('empleado',EmpleadoController::class);  
     

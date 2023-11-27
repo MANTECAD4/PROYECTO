@@ -268,7 +268,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item filter-{{$producto->categoria->nombre}} wow fadeInUp">
                 <div class="portfolio-wrap">
                 <figure>
-                  <img src="/images/{{$producto->image_path}}" class="img-fluid" alt="">
+                  <img src="{{ \Storage::url( $producto->ruta_imagen) }}" class="img-fluid" alt="">
                   @if ($producto->unidades <=1)
                     <div class="link-preview" title="No hay unidades de este producto por el momento"><i class="bi bi-x-lg"></i></div>
                   @elseif (!\Cart::get($producto->id))
@@ -277,7 +277,7 @@
                           <input type="hidden" value="{{ $producto->id }}" id="id" name="id">
                           <input type="hidden" value="{{ $producto->name }}" id="name" name="name">
                           <input type="hidden" value="{{ $producto->price }}" id="price" name="price">
-                          <input type="hidden" value="{{ $producto->image_path }}" id="img" name="img">
+                          <input type="hidden" value="{{ $producto->ruta_imagen }}" id="img" name="img">
                           <input type="hidden" value="{{ $producto->unidades }}" id="unidades" name="unidades">
                           <input type="hidden" value="1" id="quantity" name="quantity">
                           <div class="card-footer" style="background-color: white;">
@@ -289,7 +289,7 @@
                           </div>
                       </form>
                     @else
-                      <a href="/images/{{$producto->image_path}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Ya agregaste este producto a tu carrito"><i class="bx bx-check"></i></a>
+                      <a href="/images/{{$producto->ruta_imagen}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Ya agregaste este producto a tu carrito"><i class="bx bx-check"></i></a>
                     @endif
                   <a href="{{route('producto.show',$producto)}}" class="link-details" title="Más Detalles"><i class="bx bx-link"></i></a>
                 </figure>

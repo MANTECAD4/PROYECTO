@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProductoController extends Controller
 {
@@ -52,10 +53,9 @@ class ProductoController extends Controller
 
         $imageName = null; 
 
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images'), $imageName);
+        if ($request->file('image')->isValid()) {
+            $ruta = $request->file('image')->store('public/img');
+            $nombre_img = $request->file('image')->getClientOriginalName();
         }
 
         $producto = Producto::create([
@@ -65,7 +65,8 @@ class ProductoController extends Controller
             'unidades' => $request->unidades,
             'marca' => $request->marca,
             'categoria_id' => $request->categoria_id,
-            'image_path' => $imageName 
+            'ruta_imagen' => $ruta,
+            'nombre_imagen' => $nombre_img
         ]);
         Session::flash('success', 'El producto '. $request->name .' ha sido registrado con éxito!');
         ProductoUser::create([
@@ -129,15 +130,15 @@ class ProductoController extends Controller
         $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path('images'), $imageName);
 
-        if ($producto->image_path) {
-            $oldImagePath = public_path('images') . '/' . $producto->image_path;
+        if ($producto->ruta_imagen) {
+            $oldImagePath = public_path('images') . '/' . $producto->ruta_imagen;
             if (File::exists($oldImagePath)) {
                 File::delete($oldImagePath);
             }
         }
 
         $producto->update([
-            'image_path' => $imageName,
+            'ruta_imagen' => $imageName,
             'name' => $request->name,
             'price' => $request->price,
             'descripcion' => $request->descripcion,
@@ -204,5 +205,10 @@ class ProductoController extends Controller
         $producto->restore();
         Session::flash('success', 'Producto '. $producto->name .' restaurado con éxito!');
         return redirect('/papelera_producto');
+    }
+
+    public function descarga(Producto $producto)
+    {
+        return Storage::download($producto->ruta_imagen,$producto->nombre_imagen);
     }
 }

@@ -43,7 +43,7 @@
                         <td scope="row">{{ $producto->id }}</td>
                         <td>
                           <div style="width: 50px; height: 50px; overflow: hidden;">
-                              <img src="/images/{{ $producto->image_path }}" alt="{{ $producto->name }}" style="width: 100%;">
+                              <img src="{{ \Storage::url( $producto->ruta_imagen) }}" alt="{{ $producto->name }}" style="width: 100%;">
                           </div>
                         </td>
                         <td>
