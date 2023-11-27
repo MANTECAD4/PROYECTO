@@ -51,7 +51,6 @@ class ProductoController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif' 
         ]);
 
-        $imageName = null; 
 
         if ($request->file('image')->isValid()) {
             $ruta = $request->file('image')->store('public/img');
@@ -124,21 +123,18 @@ class ProductoController extends Controller
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif' 
     ]);
     $nombre_old = $producto->name;
-    $imageName = null; 
     if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('images'), $imageName);
+        $nueva_ruta = $request->file('image')->store('public/img');
+        $nuevo_nombre = $request->file('image')->getClientOriginalName();
 
         if ($producto->ruta_imagen) {
-            $oldImagePath = public_path('images') . '/' . $producto->ruta_imagen;
-            if (File::exists($oldImagePath)) {
-                File::delete($oldImagePath);
-            }
+            $oldImagePath = $producto->ruta_imagen;
+            Storage::delete($oldImagePath);
         }
 
         $producto->update([
-            'ruta_imagen' => $imageName,
+            'ruta_imagen' => $nueva_ruta,
+            'nombre_imagen' => $nuevo_nombre,
             'name' => $request->name,
             'price' => $request->price,
             'descripcion' => $request->descripcion,
