@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function shop()
     {
-        $productos = Producto::where('name', '!=', 'Producto Default')->get();
+        $productos = Producto::where('name', '!=', 'Producto Default')->with('categoria')->get();
         $categorias = categoria::all();
         if(Auth::user()->type_user == 'cliente')
         {

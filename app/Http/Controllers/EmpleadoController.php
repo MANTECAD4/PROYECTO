@@ -17,7 +17,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Empleado::class);
-        $empleados = Empleado::all();
+        $empleados = Empleado::with('user')->get();
         return view('empleado/indexEmpleado', compact('empleados'));
     }
 

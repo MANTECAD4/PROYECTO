@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CompraExitosa;
 use App\Models\Producto;
 use App\Models\ProductoVenta;
 use App\Models\User;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class VentaController extends Controller
@@ -48,7 +50,12 @@ class VentaController extends Controller
             ]);
         } 
         \Cart::clear();
+        
         Session::flash('success', 'La venta se ha realizado exitosamente!');
+        if (auth()->user()->type_user == 'cliente')
+        {
+            Mail::to($request->user())->send(new CompraExitosa($venta,auth()->user()));
+        }
         return redirect()->route('cart.index');
     }
     public function show(Venta $venta)
