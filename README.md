@@ -15,6 +15,6 @@ Como algunas de las funcionalidades estan algo escondidas, mencionare donde o ba
 - Uno a muchos (1:m). - la relacion entre productos y categorias es de este tipo
 - Muchos a muchos (m:n). - existe la relacion entre los productos y las ventas, esto para saber que productos pertenecen a que venta, ademas existe otra relacion de este tipo entre productos y empleados, la cual funciona como una especie de log para indicar que operaciones se han hecho sobre los productos (creacion, mod, eliminacion y restauracion). Ambas tienen datos adicionales en la tabla pivote.
 
--envio de correo personalizado. - ademas del correo cuando se crea un usuario de tipo admin, tambien al hacer una compra en la interfaz del cliente se envia un correo con los detalles de dicha transaccion.
+- Envio de correo personalizado. - ademas del correo cuando se crea un usuario de tipo admin, tambien al hacer una compra en la interfaz del cliente se envia un correo con los detalles de dicha transaccion.
 
 - extras - datos en tabla pivote, notificaciones al hacer operaciones de crud, reemplazo de archivos al modificar la imagen del producto.
