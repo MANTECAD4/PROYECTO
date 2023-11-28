@@ -29,7 +29,7 @@ class CompraExitosa extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Compra Confirmada!',
+            subject: 'Compra Confirmada! 🤑🤑🤑',
         );
     }
 
@@ -40,6 +40,7 @@ class CompraExitosa extends Mailable
     {
         return new Content(
             markdown: 'emails.compra',
+            with: ['venta' => $this->venta, 'user' => $this->user],
         );
     }
 

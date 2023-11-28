@@ -54,7 +54,7 @@ class VentaController extends Controller
         Session::flash('success', 'La venta se ha realizado exitosamente!');
         if (auth()->user()->type_user == 'cliente')
         {
-            Mail::to($request->user())->send(new CompraExitosa($venta,auth()->user()));
+            Mail::to($request->user())->send(new CompraExitosa($venta,$request->user()));
         }
         return redirect()->route('cart.index');
     }
